@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hailey Skin Studio | Herbal Skin Repair</title>
+    <meta
+      name="description"
+      content="Hailey Skin Studio is a flagship beauty studio bringing Hong Kong herbal facial expertise to London with acne care, dry-skin support, advanced machines and easy online booking."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h13" />
+        <path d="m13 6 6 6-6 6" />
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <path d="M8 2v4" />
+        <path d="M16 2v4" />
+        <path d="M3 10h18" />
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+      </symbol>
+      <symbol id="icon-leaf" viewBox="0 0 24 24">
+        <path d="M4 20c8-1 15-8 16-16C12 5 5 12 4 20Z" />
+        <path d="M4 20 15 9" />
+      </symbol>
+      <symbol id="icon-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3c3 3 3 15 0 18" />
+        <path d="M12 3c-3 3-3 15 0 18" />
+      </symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24">
+        <rect x="4" y="4" width="16" height="16" rx="5" />
+        <circle cx="12" cy="12" r="3.5" />
+        <path d="M17.4 6.6h.01" />
+      </symbol>
+      <symbol id="icon-facebook" viewBox="0 0 24 24">
+        <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1Z" />
+      </symbol>
+      <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+        <path d="M5.5 19.5 6.8 16A8 8 0 1 1 10 18.7l-4.5.8Z" />
+        <path d="M9.5 8.8c.4 2.4 2.1 4.1 4.5 4.9l1.2-1.2 2 1.1c-.2 1.2-1 2-2.1 2-3.7-.2-6.5-3-6.7-6.7 0-1.1.8-1.9 2-2.1l1.1 2-1.2 1.2Z" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 5 6v5c0 4.4 2.8 8.2 7 10 4.2-1.8 7-5.6 7-10V6l-7-3Z" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+    </svg>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Hailey Beauty Studio home">
+        <span class="brand-mark">H</span>
+        <span class="brand-copy">
+          <strong>Hailey Beauty</strong>
+          <span>Studio</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" data-nav aria-label="Main navigation">
+        <a href="#treatments" data-i18n="navTreatments">Treatments</a>
+        <a href="#prices" data-i18n="navPrices">Prices</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#gallery" data-i18n="navGallery">Gallery</a>
+        <a href="#booking" data-i18n="navBooking">Book</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="language-switcher" aria-label="Language">
+          <button class="is-active" type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh" aria-label="Mandarin">普通</button>
+          <button type="button" data-lang="yue" aria-label="Cantonese">廣東</button>
+        </div>
+        <div class="social-mini" aria-label="Social links">
+          <a href="https://www.instagram.com/haileyskinstudio" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <svg><use href="#icon-facebook"></use></svg>
+          </a>
+          <a href="https://wa.me/440000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <svg><use href="#icon-whatsapp"></use></svg>
+          </a>
+        </div>
+        <a class="button button-gold header-cta" href="#booking" data-i18n="bookNow">Book now</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-light" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="heroEyebrow">Flagship beauty studio</span>
+          </p>
+          <h1 id="hero-title" data-i18n="heroTitle">Herbal skin repair, visibly calm.</h1>
+          <p class="lead" data-i18n="heroCopy">
+            Hong Kong facial expertise, brought to a London flagship studio for acne-prone,
+            reactive and dry-weather skin.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#booking">
+              <span data-i18n="ctaBook">Book consultation</span>
+              <svg><use href="#icon-arrow"></use></svg>
+            </a>
+            <a class="button button-outline" href="#prices">
+              <span data-i18n="ctaPrices">View prices</span>
+              <svg><use href="#icon-arrow"></use></svg>
+            </a>
+          </div>
+          <p class="support-line">
+            <svg><use href="#icon-leaf"></use></svg>
+            <span data-i18n="heroNote">Acne care, dry-skin support, student and senior discounts.</span>
+          </p>
+        </div>
+
+        <div class="hero-media" aria-label="Herbal facial treatment">
+          <img src="./assets/hero-treatment.png" alt="A calm herbal facial treatment in a luxury skin studio" />
+          <div class="hero-media-note">
+            <span data-i18n="heroMediaKicker">Signature focus</span>
+            <strong data-i18n="heroMediaTitle">Herbal treatment first</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Studio credentials">
+        <div>
+          <strong>30</strong>
+          <span data-i18n="trustYears">years of skin practice</span>
+        </div>
+        <div>
+          <strong>2</strong>
+          <span data-i18n="trustSalons">salons in Hong Kong</span>
+        </div>
+        <div>
+          <strong>1</strong>
+          <span data-i18n="trustFlagship">London flagship studio</span>
+        </div>
+        <div>
+          <svg><use href="#icon-globe"></use></svg>
+          <span data-i18n="trustLanguages">English, Mandarin and Cantonese consultations</span>
+        </div>
+      </section>
+
+      <section class="treatment-story section-green" id="treatments" aria-labelledby="treatment-story-title">
+        <div class="story-media-stack">
+          <figure class="story-frame story-frame-large">
+            <div class="image-placeholder placeholder-herbs" role="img" aria-label="Placeholder for herbal treatment preparation">
+              <span>Herbal prep image</span>
+            </div>
+          </figure>
+          <figure class="story-frame story-frame-small">
+            <div class="image-placeholder placeholder-machine" role="img" aria-label="Placeholder for machine-assisted treatment">
+              <span>Machine detail image</span>
+            </div>
+          </figure>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="signatureTreatment">Signature herbal treatment</span>
+          </p>
+          <h2 id="treatment-story-title" data-i18n="herbsTitle">Herbs delivered deeper.</h2>
+          <p data-i18n="herbsCopy">
+            Our machines help carry selected herbal ingredients into the skin surface so reactive,
+            dry or acne-prone skin can look calmer faster.
+          </p>
+          <div class="steps" aria-label="Treatment steps">
+            <article>
+              <span>01</span>
+              <div>
+                <h3 data-i18n="stepOneTitle">Skin reading</h3>
+                <p data-i18n="stepOneCopy">We assess your skin condition and sensitivity in detail.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3 data-i18n="stepTwoTitle">Herbal blend</h3>
+                <p data-i18n="stepTwoCopy">We select and prepare a targeted herbal blend for your skin.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3 data-i18n="stepThreeTitle">Machine infusion</h3>
+                <p data-i18n="stepThreeCopy">Advanced machines support deeper, more even delivery.</p>
+              </div>
+            </article>
+          </div>
+          <blockquote data-i18n="herbsQuote">
+            Built from our own acne journey and 30 years of salon practice.
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="prices section-light" id="prices" aria-labelledby="prices-title">
+        <div class="section-intro">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="pricesEyebrow">Easy to compare</span>
+          </p>
+          <h2 id="prices-title" data-i18n="pricesTitle">Treatments & prices</h2>
+          <p data-i18n="pricesCopy">
+            Targeted herbal facials, machine-assisted delivery and calm aftercare. No hidden
+            price reveal: choose what fits your skin and your time.
+          </p>
+        </div>
+
+        <div class="price-system">
+          <div class="price-tabs" role="tablist" aria-label="Treatment category">
+            <button class="is-active" type="button" data-category="acne" role="tab">Acne</button>
+            <button type="button" data-category="hydration" role="tab">Hydration</button>
+            <button type="button" data-category="herbal" role="tab">Herbal repair</button>
+            <button type="button" data-category="machine" role="tab">Advanced machine</button>
+          </div>
+
+          <div class="price-heading" aria-hidden="true">
+            <span data-i18n="priceTreatment">Treatment</span>
+            <span data-i18n="priceDuration">Duration</span>
+            <span data-i18n="pricePrice">Price</span>
+          </div>
+          <div class="price-list" data-price-list></div>
+
+          <div class="deposit-row">
+            <div>
+              <svg><use href="#icon-shield"></use></svg>
+              <span data-i18n="depositNote">Online booking holds your appointment with a small deposit.</span>
+            </div>
+            <a class="button button-gold" href="#booking">
+              <span data-i18n="bookTreatment">Book treatment</span>
+              <svg><use href="#icon-arrow"></use></svg>
+            </a>
+            <a class="button button-outline" href="https://wa.me/440000000000" target="_blank" rel="noreferrer">
+              <svg><use href="#icon-whatsapp"></use></svg>
+              <span data-i18n="askWhatsapp">Ask on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="weather-products section-sage" aria-labelledby="weather-title">
+        <div class="weather-copy">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="weatherEyebrow">Skin support between visits</span>
+          </p>
+          <h2 id="weather-title" data-i18n="weatherTitle">For British weather swings.</h2>
+          <p data-i18n="weatherCopy">
+            Cold wind, indoor heating and sudden humidity changes can leave skin dry, tight or
+            reactive. We recommend gentle herbal products to keep your barrier calm between treatments.
+          </p>
+          <a class="button button-primary" href="#booking">
+            <span data-i18n="askProducts">Ask about products</span>
+            <svg><use href="#icon-arrow"></use></svg>
+          </a>
+        </div>
+        <div class="product-lines" aria-label="Product support">
+          <article>
+            <span>01</span>
+            <h3 data-i18n="productOne">Dry-weather repair</h3>
+            <p data-i18n="productOneCopy">Comforting hydration for tight, weather-stressed skin.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3 data-i18n="productTwo">Acne calm routine</h3>
+            <p data-i18n="productTwoCopy">Simple daily steps for students and breakout-prone skin.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3 data-i18n="productThree">Post-treatment care</h3>
+            <p data-i18n="productThreeCopy">What to use after extraction, infusion or herbal repair.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about section-light" id="about" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="aboutEyebrow">About us</span>
+          </p>
+          <h2 id="about-title" data-i18n="aboutTitle">30 years of skin practice.</h2>
+          <p class="lead-small" data-i18n="aboutLead">
+            From two Hong Kong salons to a London flagship, our work combines eastern herbal
+            knowledge, careful extraction and advanced machines.
+          </p>
+          <p data-i18n="aboutCopy">
+            We know acne personally. Our founders once struggled with persistent breakouts and found
+            relief through consistent treatments and herbal ingredients. Today, that experience shapes
+            every consultation.
+          </p>
+          <div class="metrics">
+            <div>
+              <strong>30</strong>
+              <span data-i18n="metricYears">years experience</span>
+            </div>
+            <div>
+              <strong>2</strong>
+              <span data-i18n="metricSalons">HK salons</span>
+            </div>
+            <div>
+              <strong>1</strong>
+              <span data-i18n="metricStudio">UK flagship</span>
+            </div>
+          </div>
+          <p class="support-line">
+            <svg><use href="#icon-globe"></use></svg>
+            <span data-i18n="aboutLanguages">Consultations available in English, Mandarin and Cantonese.</span>
+          </p>
+        </div>
+        <div class="about-media">
+          <div class="image-placeholder placeholder-team" role="img" aria-label="Placeholder for studio team or reception image">
+            <span>Studio image slot</span>
+          </div>
+        </div>
+        <div class="diploma-band" aria-label="Diplomas and training">
+          <div class="band-title" data-i18n="diplomaTitle">Diplomas & training</div>
+          <article>
+            <span>CIDESCO</span>
+            <strong>International Aesthetics</strong>
+            <div class="certificate-insert-slot">
+              <small data-i18n="certificateSlot">Insert diploma / certification</small>
+            </div>
+          </article>
+          <article>
+            <span>ITEC</span>
+            <strong>Skin Care Diploma</strong>
+            <div class="certificate-insert-slot">
+              <small data-i18n="certificateSlot">Insert diploma / certification</small>
+            </div>
+          </article>
+          <article>
+            <span>HKHYC</span>
+            <strong>Herbal Therapy</strong>
+            <div class="certificate-insert-slot">
+              <small data-i18n="certificateSlot">Insert diploma / certification</small>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery section-light" id="gallery" aria-labelledby="gallery-title">
+        <div class="gallery-head">
+          <div>
+            <p class="eyebrow">
+              <span></span>
+              <span data-i18n="galleryEyebrow">Gallery & proof</span>
+            </p>
+            <h2 id="gallery-title" data-i18n="galleryTitle">Real care. Real results.</h2>
+            <p data-i18n="galleryCopy">
+              A place for treatment photos, the flagship studio, diplomas and recent social media work.
+            </p>
+          </div>
+          <a class="button button-outline" href="https://www.instagram.com/haileyskinstudio" target="_blank" rel="noreferrer">
+            <svg><use href="#icon-instagram"></use></svg>
+            <span data-i18n="followInstagram">Follow Instagram</span>
+          </a>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card before">
+            <div class="photo-placeholder">
+              <span data-i18n="beforeSlot">Before photo slot</span>
+            </div>
+            <figcaption data-i18n="beforeLabel">Before treatment</figcaption>
+          </figure>
+          <figure class="gallery-card after">
+            <div class="photo-placeholder">
+              <span data-i18n="afterSlot">After photo slot</span>
+            </div>
+            <figcaption data-i18n="afterLabel">After 6 weeks</figcaption>
+          </figure>
+          <figure class="gallery-card studio">
+            <div class="image-placeholder placeholder-studio" role="img" aria-label="Placeholder for flagship studio image"></div>
+            <figcaption data-i18n="studioLabel">Flagship studio</figcaption>
+          </figure>
+          <figure class="gallery-card herbs">
+            <div class="image-placeholder placeholder-herbs" role="img" aria-label="Placeholder for herbal preparation image"></div>
+            <figcaption data-i18n="herbalPrepLabel">Herbal preparation</figcaption>
+          </figure>
+          <figure class="gallery-card diploma">
+            <div class="image-placeholder placeholder-certificate" role="img" aria-label="Placeholder for diploma wall image"></div>
+            <figcaption data-i18n="diplomaWallLabel">Diploma wall</figcaption>
+          </figure>
+          <figure class="gallery-card room">
+            <div class="image-placeholder placeholder-room" role="img" aria-label="Placeholder for treatment room image"></div>
+            <figcaption data-i18n="roomLabel">Treatment room</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-actions">
+          <a class="button button-outline" href="https://www.instagram.com/haileyskinstudio" target="_blank" rel="noreferrer">
+            <svg><use href="#icon-instagram"></use></svg>
+            <span data-i18n="followInstagram">Follow Instagram</span>
+          </a>
+          <a class="button button-outline" href="https://wa.me/440000000000" target="_blank" rel="noreferrer">
+            <svg><use href="#icon-whatsapp"></use></svg>
+            <span data-i18n="sendPhotos">Send photos on WhatsApp</span>
+          </a>
+          <p data-i18n="resultsNote">Results vary; your practitioner will advise a treatment plan.</p>
+        </div>
+      </section>
+
+      <section class="booking section-light" id="booking" aria-labelledby="booking-title">
+        <form class="booking-panel" data-booking-form>
+          <div class="panel-heading">
+            <svg><use href="#icon-calendar"></use></svg>
+            <h2 data-i18n="bookingPanelTitle">Book your appointment</h2>
+          </div>
+
+          <label>
+            <span data-i18n="fieldTreatment">Treatment</span>
+            <select data-treatment-select></select>
+          </label>
+          <label>
+            <span data-i18n="fieldPractitioner">Skin practitioner</span>
+            <select data-practitioner-select>
+              <option value="Hailey" data-i18n="practitionerHailey">Hailey, founder</option>
+              <option value="Mei" data-i18n="practitionerMei">Mei, herbal therapist</option>
+              <option value="Any" data-i18n="practitionerAny">First available</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="fieldDate">Date</span>
+            <input type="date" data-date-input />
+          </label>
+          <label>
+            <span data-i18n="fieldName">Name</span>
+            <input type="text" autocomplete="name" data-name-input />
+          </label>
+          <label>
+            <span data-i18n="fieldContact">Phone or WhatsApp</span>
+            <input type="tel" autocomplete="tel" data-contact-input />
+          </label>
+          <fieldset>
+            <legend data-i18n="fieldTime">Time</legend>
+            <div class="time-grid" data-time-grid>
+              <button type="button">10:00</button>
+              <button class="is-active" type="button">12:00</button>
+              <button type="button">14:00</button>
+              <button type="button">16:00</button>
+              <button type="button">18:00</button>
+              <button type="button">19:30</button>
+            </div>
+          </fieldset>
+          <div class="booking-summary">
+            <div>
+              <span data-i18n="summaryTreatment">Selected treatment</span>
+              <strong data-summary-treatment>Treatment 1</strong>
+            </div>
+            <div>
+              <span data-i18n="summaryPrice">Treatment price</span>
+              <strong data-summary-price>88</strong>
+            </div>
+            <div>
+              <span data-i18n="summaryDeposit">Deposit today</span>
+              <strong>20</strong>
+            </div>
+          </div>
+          <p class="deposit-copy">
+            <svg><use href="#icon-shield"></use></svg>
+            <span data-i18n="bookingDeposit">A deposit reserves your appointment and is deducted from your final treatment price.</span>
+          </p>
+          <button class="button button-primary button-full" type="submit">
+            <span data-i18n="reserveNow">Reserve appointment</span>
+            <svg><use href="#icon-arrow"></use></svg>
+          </button>
+          <p class="confirmation" data-confirmation role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="booking-copy">
+          <p class="eyebrow">
+            <span></span>
+            <span data-i18n="bookingEyebrow">Fast, clear booking</span>
+          </p>
+          <h2 id="booking-title" data-i18n="bookingTitle">Book your skin treatment.</h2>
+          <p data-i18n="bookingCopy">
+            Choose a treatment, hold your time with a deposit, and tell us about your skin before
+            you arrive. Student and senior prices are available when you book.
+          </p>
+          <ul class="booking-benefits">
+            <li data-i18n="bookingBenefitOne">No hidden prices</li>
+            <li data-i18n="bookingBenefitTwo">English, Mandarin and Cantonese support</li>
+            <li data-i18n="bookingBenefitThree">WhatsApp help before your visit</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="brand-mark">H</span>
+        <strong>Hailey</strong>
+        <span>Skin Studio</span>
+        <em data-i18n="footerTagline">Skin confidence, inside and out.</em>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/haileyskinstudio" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <svg><use href="#icon-facebook"></use></svg>
+          </a>
+          <a href="https://wa.me/440000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <svg><use href="#icon-whatsapp"></use></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 data-i18n="footerFlagship">Flagship salon</h3>
+        <p>
+          00 Queen Street<br />
+          London W1, United Kingdom<br />
+          <span data-i18n="footerAddressNote">Replace with final studio address.</span>
+        </p>
+        <a class="footer-link" href="https://wa.me/440000000000" target="_blank" rel="noreferrer">
+          <svg><use href="#icon-whatsapp"></use></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div>
+        <h3 data-i18n="footerHours">Opening hours</h3>
+        <p>
+          Monday 10:00-18:00<br />
+          Tuesday 10:00-18:00<br />
+          Wednesday 10:00-20:00<br />
+          Thursday 10:00-20:00<br />
+          Friday 10:00-18:00<br />
+          Saturday 9:00-17:00<br />
+          Sunday closed
+        </p>
+      </div>
+      <div>
+        <h3 data-i18n="footerImportant">Important</h3>
+        <a href="#booking" data-i18n="footerDeposit">Deposit policy</a>
+        <a href="#prices" data-i18n="footerPrices">Prices</a>
+        <a href="#about" data-i18n="footerDiplomas">Diplomas</a>
+        <a href="#gallery" data-i18n="footerResults">Results gallery</a>
+      </div>
+      <p class="copyright">© 2026 Hailey Skin Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
