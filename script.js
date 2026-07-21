@@ -1,449 +1,425 @@
+const SITE_CONFIG = {
+  name: "Hailey Beauty",
+  bookingUrl: "",
+  bookingProvider: "",
+  instagramUrl: "https://www.instagram.com/haileyskinstudio",
+  whatsappUrl: "",
+  facebookUrl: "",
+  phone: "",
+  email: "",
+  address: "",
+  openingHours: [],
+  canonicalUrl: "",
+  treatmentPdf: "./assets/hailey-beauty-treatments-prices.pdf",
+  socialImage: "./assets/hero-treatment.webp"
+};
+
 const translations = {
   en: {
+    skipContent: "Skip to content",
+    brandLine: "London · Hong Kong roots",
     navTreatments: "Treatments",
     navPrices: "Prices",
-    navAbout: "About",
-    navGallery: "Gallery",
-    navBooking: "Book",
+    navStory: "Our story",
+    navResults: "Results",
     bookNow: "Book now",
-    heroEyebrow: "Flagship beauty studio",
-    heroTitle: "Herbal skin repair, visibly calm.",
-    heroCopy: "Hong Kong facial expertise, brought to a London flagship studio for acne-prone, reactive and dry-weather skin.",
-    ctaBook: "Book consultation",
-    ctaPrices: "View prices",
-    heroNote: "Acne care, dry-skin support, student and senior discounts.",
-    heroMediaKicker: "Signature focus",
-    heroMediaTitle: "Herbal treatment first",
-    trustYears: "years of skin practice",
-    trustSalons: "salons in Hong Kong",
-    trustFlagship: "London flagship studio",
-    trustLanguages: "English, Mandarin and Cantonese consultations",
-    signatureTreatment: "Signature herbal treatment",
-    herbsTitle: "Herbs delivered deeper.",
-    herbsCopy: "Our machines help carry selected herbal ingredients into the skin surface so reactive, dry or acne-prone skin can look calmer faster.",
-    stepOneTitle: "Skin reading",
-    stepOneCopy: "We assess your skin condition and sensitivity in detail.",
-    stepTwoTitle: "Herbal blend",
-    stepTwoCopy: "We select and prepare a targeted herbal blend for your skin.",
-    stepThreeTitle: "Machine infusion",
-    stepThreeCopy: "Advanced machines support deeper, more even delivery.",
-    herbsQuote: "Built from our own acne journey and 30 years of salon practice.",
-    pricesEyebrow: "Easy to compare",
-    pricesTitle: "Treatments & prices",
-    pricesCopy: "Targeted herbal facials, machine-assisted delivery and calm aftercare. No hidden price reveal: choose what fits your skin and your time.",
-    pdfNotice: "Browse the complete treatment menu below.",
-    openPriceList: "Open full price list",
-    pdfFallback: "Your browser cannot show the price list here.",
-    priceTreatment: "Treatment",
-    priceDuration: "Duration",
-    pricePrice: "Price",
-    depositNote: "Online booking holds your appointment with a small deposit.",
-    bookTreatment: "Book treatment",
-    askWhatsapp: "Ask on WhatsApp",
-    weatherEyebrow: "Skin support between visits",
-    weatherTitle: "For British weather swings.",
-    weatherCopy: "Cold wind, indoor heating and sudden humidity changes can leave skin dry, tight or reactive. We recommend gentle herbal products to keep your barrier calm between treatments.",
-    askProducts: "Ask about products",
-    productOne: "Dry-weather repair",
-    productOneCopy: "Comforting hydration for tight, weather-stressed skin.",
-    productTwo: "Acne calm routine",
-    productTwoCopy: "Simple daily steps for students and breakout-prone skin.",
-    productThree: "Post-treatment care",
-    productThreeCopy: "What to use after extraction, infusion or herbal repair.",
-    aboutEyebrow: "About us",
-    aboutTitle: "30 years of skin practice.",
-    aboutLead: "From two Hong Kong salons to a London flagship, our work combines eastern herbal knowledge, careful extraction and advanced machines.",
-    aboutCopy: "We know acne personally. Our founders once struggled with persistent breakouts and found relief through consistent treatments and herbal ingredients. Today, that experience shapes every consultation.",
-    metricYears: "years experience",
-    metricSalons: "HK salons",
-    metricStudio: "UK flagship",
-    aboutLanguages: "Consultations available in English, Mandarin and Cantonese.",
-    diplomaTitle: "Diplomas & training",
-    certificateSlot: "Insert diploma / certification",
-    galleryEyebrow: "Gallery & proof",
-    galleryTitle: "Real care. Real results.",
-    galleryCopy: "Treatment moments, visible skin results, diplomas and recent social media work.",
-    followInstagram: "Follow Instagram",
-    beforeSlot: "Before photo slot",
-    afterSlot: "After photo slot",
+    bookConsultation: "Book a consultation",
+    enquireInstagram: "Enquire on Instagram",
+    heroAnnouncement: "Now open in Oxford Circus",
+    heroKicker: "Herbal facial practice",
+    heroTitle: "Tailored Herbal Treatments",
+    heroCopy: "Thirty years of Hong Kong facial practice, now tailoring herbal care for London skin.",
+    viewPrices: "View treatments & prices",
+    proofPractice: "30 years of salon practice",
+    proofOrigin: "Rooted in Hong Kong",
+    proofLondon: "Now welcoming London clients",
+    proofLanguages: "English · 普通話 · 廣東話",
+    ritualKicker: "The signature ritual",
+    ritualTitle: "A treatment begins by listening to the skin.",
+    ritualCopy: "We assess sensitivity first, prepare a targeted herbal blend, then use suitable salon technology to support even application.",
+    stepRead: "Read",
+    stepReadCopy: "A calm consultation focused on condition, comfort and goals.",
+    stepBlend: "Blend",
+    stepBlendCopy: "Herbal care selected around what your skin needs that day.",
+    stepTreat: "Treat",
+    stepTreatCopy: "Measured application, thoughtful technique and clear aftercare.",
+    ritualQuote: "Care shaped by personal acne experience and three decades in the salon.",
+    openPdf: "Open full menu",
+    pdfLoading: "Preparing the menu…",
+    pdfFallback: "Your browser opens price guides in a new tab.",
+    aboutKicker: "Our point of view",
+    aboutTitle: "Hong Kong practice, made personal in London.",
+    aboutLead: "Hailey Beauty grew from two Hong Kong salons and a personal understanding of persistent acne.",
+    aboutCopy: "That experience still shapes the studio: careful skin reading, herbal knowledge, considered technology and treatments tailored without pressure.",
+    yearsPractice: "years of practice",
+    hongKongSalons: "Hong Kong salons",
+    consultLanguages: "consultation languages",
+    aboutCaption: "Herbal knowledge · careful technique",
+    locationLabel: "London studio",
+    locationAddress: "Margaret Street · near Oxford Street",
+    viewMap: "View in Google Maps",
+    galleryKicker: "Treatment journal",
+    galleryTitle: "Real skin. Real treatment moments.",
+    galleryCopy: "A closer look at the process and the skin immediately before and after care.",
     beforeLabel: "Before treatment",
     afterLabel: "After treatment",
-    studioLabel: "Treatment in progress",
-    herbalPrepLabel: "Herbal facial mask",
-    diplomaWallLabel: "Diploma wall",
-    roomLabel: "Post-treatment skin",
-    sendPhotos: "Send photos on WhatsApp",
-    resultsNote: "Results vary; your practitioner will advise a treatment plan.",
-    bookingPanelKicker: "Online booking",
-    bookingPanelTitle: "Choose your treatment and time.",
-    bookingPanelCopy: "See live availability and complete your booking with our booking partner.",
-    bookOnline: "Book online",
-    bookingPartnerNote: "Bookings, deposits and appointment changes are handled securely by our booking partner.",
-    fieldTreatment: "Treatment",
-    fieldPractitioner: "Skin practitioner",
-    fieldDate: "Date",
-    fieldName: "Name",
-    fieldContact: "Phone or WhatsApp",
-    fieldTime: "Time",
-    practitionerHailey: "Hailey, founder",
-    practitionerMei: "Mei, herbal therapist",
-    practitionerAny: "First available",
-    summaryTreatment: "Selected treatment",
-    summaryPrice: "Treatment price",
-    summaryDeposit: "Deposit today",
-    bookingDeposit: "A deposit reserves your appointment and is deducted from your final treatment price.",
-    reserveNow: "Reserve appointment",
-    bookingEyebrow: "Fast, clear booking",
-    bookingTitle: "Book your skin treatment.",
-    bookingCopy: "Use our online booking page to view available treatments and times. Student and senior prices are available when you book.",
-    bookingBenefitOne: "Live appointment availability",
-    bookingBenefitTwo: "Secure online booking",
-    bookingBenefitThree: "Manage your appointment online",
-    footerTagline: "Skin confidence, inside and out.",
-    footerFlagship: "Flagship salon",
-    footerAddressNote: "Replace with final studio address.",
-    footerHours: "Opening hours",
-    footerImportant: "Important",
-    footerDeposit: "Deposit policy",
-    footerPrices: "Prices",
-    footerDiplomas: "Diplomas",
-    footerResults: "Results gallery",
-    confirmation: "Request held. We will confirm your appointment and deposit link by WhatsApp.",
-    required: "Please add your name and phone or WhatsApp."
+    processLabel: "A quiet treatment moment",
+    herbsLabel: "Fresh herbal preparation",
+    finishLabel: "Immediately after care",
+    resultsNote: "Photographs show individual treatment moments. Results vary by skin and treatment plan.",
+    followInstagram: "See recent work on Instagram",
+    bookingKicker: "Your next appointment",
+    bookingTitle: "Let’s begin",
+    bookingCopy: "View live availability and choose your treatment through our booking destination. You can discuss sensitivities and goals during consultation.",
+    continueBooking: "Continue to booking",
+    bookingNote: "The booking page opens in a new tab.",
+    footerTagline: "Herbal facial practice with Hong Kong roots.",
+    footerVisit: "London appointments",
+    footerDetails: "Studio details",
+    privacyTitle: "Privacy",
+    privacyCopy: "This website does not collect personal information. External booking and social platforms apply their own privacy terms.",
+    termsTitle: "Treatment information",
+    termsCopy: "Treatment suitability and expected results are discussed during consultation. Individual results vary.",
+    rights: "All rights reserved.",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
+    bookingFallbackNote: "Enquiries currently open through Instagram in a new tab."
   },
   zh: {
-    navTreatments: "护理项目",
+    skipContent: "跳到主要内容",
+    brandLine: "伦敦 · 源自香港",
+    navTreatments: "护理",
     navPrices: "价目",
-    navAbout: "关于我们",
-    navGallery: "案例相册",
-    navBooking: "预约",
+    navStory: "我们的故事",
+    navResults: "护理记录",
     bookNow: "立即预约",
-    heroEyebrow: "旗舰美容皮肤工作室",
-    heroTitle: "草本修护，肌肤更稳定。",
-    heroCopy: "来自香港的面部护理经验，带到伦敦旗舰工作室，专注痘痘、敏感和干燥天气肌肤。",
-    ctaBook: "预约咨询",
-    ctaPrices: "查看价目",
-    heroNote: "痘痘护理、干燥修护、学生和长者优惠。",
-    heroMediaKicker: "主打护理",
-    heroMediaTitle: "草本疗程优先",
-    trustYears: "年皮肤护理经验",
-    trustSalons: "间香港美容院",
-    trustFlagship: "伦敦旗舰工作室",
-    trustLanguages: "英语、普通话和粤语咨询",
-    signatureTreatment: "主打草本护理",
-    herbsTitle: "草本成分，导入更深。",
-    herbsCopy: "我们的仪器帮助把精选草本成分带到肌肤表层，让敏感、干燥或痘痘肌更快看起来稳定。",
-    stepOneTitle: "皮肤分析",
-    stepOneCopy: "详细了解你的肤况和敏感度。",
-    stepTwoTitle: "草本调配",
-    stepTwoCopy: "为你的肌肤选择和准备针对性的草本配方。",
-    stepThreeTitle: "仪器导入",
-    stepThreeCopy: "先进仪器帮助成分更均匀地传递。",
-    herbsQuote: "源自我们的痘痘经历，以及30年美容院实践。",
-    pricesEyebrow: "清楚比较",
-    pricesTitle: "护理项目与价目",
-    pricesCopy: "针对性草本面部护理、仪器辅助导入和舒缓护理。价目清晰，方便按肤况和时间选择。",
-    pdfNotice: "请在下方浏览完整护理价目。",
-    openPriceList: "打开完整价目表",
-    pdfFallback: "你的浏览器无法在此显示价目表。",
-    priceTreatment: "护理项目",
-    priceDuration: "时长",
-    pricePrice: "价格",
-    depositNote: "网上预约需支付小额订金以保留时间。",
-    bookTreatment: "预约护理",
-    askWhatsapp: "WhatsApp咨询",
-    weatherEyebrow: "护理后的日常支持",
-    weatherTitle: "应对英国多变天气。",
-    weatherCopy: "冷风、室内暖气和湿度变化容易令肌肤干燥、紧绷或敏感。我们会建议温和草本产品，帮助护理后维持稳定。",
-    askProducts: "咨询产品",
-    productOne: "干燥天气修护",
-    productOneCopy: "为紧绷和受天气影响的肌肤补充舒适水分。",
-    productTwo: "痘痘舒缓日程",
-    productTwoCopy: "适合学生和易长痘肌肤的简单日常步骤。",
-    productThree: "护理后保养",
-    productThreeCopy: "清洁挤压、导入或草本修护后的使用建议。",
-    aboutEyebrow: "关于我们",
-    aboutTitle: "30年皮肤护理实践。",
-    aboutLead: "从香港两间美容院到伦敦旗舰店，我们结合东方草本知识、细致清洁和先进仪器。",
-    aboutCopy: "我们真正了解痘痘困扰。创办人曾长期受痘痘影响，并通过持续护理和草本成分改善。今天，这段经历塑造了每一次咨询。",
-    metricYears: "年经验",
-    metricSalons: "香港美容院",
-    metricStudio: "英国旗舰店",
-    aboutLanguages: "可用英语、普通话和粤语咨询。",
-    diplomaTitle: "文凭与培训",
-    certificateSlot: "插入文凭 / 证书",
-    galleryEyebrow: "相册与证明",
-    galleryTitle: "真实护理。真实效果。",
-    galleryCopy: "这里展示护理过程、肌肤效果、证书和社交媒体近况。",
-    followInstagram: "关注Instagram",
-    beforeSlot: "护理前照片位置",
-    afterSlot: "护理后照片位置",
+    bookConsultation: "预约皮肤咨询",
+    enquireInstagram: "Instagram 咨询",
+    heroAnnouncement: "现已于 Oxford Circus 开业",
+    heroKicker: "草本面部护理",
+    heroTitle: "草本修护，让肌肤看起来更平静。",
+    heroCopy: "三十年香港面部护理经验，如今在伦敦为每一种肤况定制草本护理。",
+    viewPrices: "查看护理与价目",
+    proofPractice: "30年美容院实践",
+    proofOrigin: "源自香港",
+    proofLondon: "现于伦敦接待顾客",
+    proofLanguages: "English · 普通話 · 廣東話",
+    ritualKicker: "主打护理步骤",
+    ritualTitle: "每次护理，都从认真了解肌肤开始。",
+    ritualCopy: "我们先了解敏感度，再准备针对性的草本配方，并按肤况使用合适的美容仪器帮助均匀护理。",
+    stepRead: "了解",
+    stepReadCopy: "从肤况、舒适度和护理目标开始轻松咨询。",
+    stepBlend: "调配",
+    stepBlendCopy: "根据当天的肌肤需要选择草本护理。",
+    stepTreat: "护理",
+    stepTreatCopy: "细致操作、合适技术和清晰的护理后建议。",
+    ritualQuote: "源于亲身痘痘经历，也经过三十年美容院实践。",
+    openPdf: "打开完整价目",
+    pdfLoading: "正在准备价目表…",
+    pdfFallback: "你的浏览器会在新标签页打开价目表。",
+    aboutKicker: "我们的理念",
+    aboutTitle: "香港经验，在伦敦用心延续。",
+    aboutLead: "Hailey Beauty 从香港两间美容院和对顽固痘痘的亲身理解中成长。",
+    aboutCopy: "这段经历仍影响着工作室：细致了解肤况、草本知识、谨慎使用仪器，并在没有压力的情况下定制护理。",
+    yearsPractice: "年护理实践",
+    hongKongSalons: "间香港美容院",
+    consultLanguages: "种咨询语言",
+    aboutCaption: "草本知识 · 细致技术",
+    locationLabel: "伦敦工作室",
+    locationAddress: "Margaret Street · Oxford Street 附近",
+    viewMap: "在 Google 地图中查看",
+    galleryKicker: "护理记录",
+    galleryTitle: "真实肌肤，真实护理时刻。",
+    galleryCopy: "近距离了解护理过程，以及护理前后的即时肤况。",
     beforeLabel: "护理前",
     afterLabel: "护理后",
-    studioLabel: "护理进行中",
-    herbalPrepLabel: "草本面膜",
-    diplomaWallLabel: "证书墙",
-    roomLabel: "护理后肌肤",
-    sendPhotos: "WhatsApp发送照片",
-    resultsNote: "效果因人而异；皮肤护理师会建议合适疗程计划。",
-    bookingPanelKicker: "网上预约",
-    bookingPanelTitle: "选择护理项目和时间。",
-    bookingPanelCopy: "查看实时空档，并通过我们的预约平台完成预约。",
-    bookOnline: "网上预约",
-    bookingPartnerNote: "预约、订金和时间更改均由我们的预约平台安全处理。",
-    fieldTreatment: "护理项目",
-    fieldPractitioner: "皮肤护理师",
-    fieldDate: "日期",
-    fieldName: "姓名",
-    fieldContact: "电话或WhatsApp",
-    fieldTime: "时间",
-    practitionerHailey: "Hailey，创办人",
-    practitionerMei: "Mei，草本护理师",
-    practitionerAny: "最早可预约",
-    summaryTreatment: "已选护理",
-    summaryPrice: "护理价格",
-    summaryDeposit: "今日订金",
-    bookingDeposit: "订金用于保留预约时间，并会从最终护理费用中扣除。",
-    reserveNow: "保留预约",
-    bookingEyebrow: "快速清晰预约",
-    bookingTitle: "预约你的皮肤护理。",
-    bookingCopy: "通过网上预约页面查看可选护理项目和时间。学生和长者优惠可在预约时咨询。",
-    bookingBenefitOne: "实时查看预约空档",
-    bookingBenefitTwo: "安全网上预约",
-    bookingBenefitThree: "网上管理预约",
-    footerTagline: "由内到外，建立肌肤自信。",
-    footerFlagship: "旗舰美容院",
-    footerAddressNote: "请替换为最终工作室地址。",
-    footerHours: "营业时间",
-    footerImportant: "重要信息",
-    footerDeposit: "订金政策",
-    footerPrices: "价目",
-    footerDiplomas: "文凭",
-    footerResults: "效果相册",
-    confirmation: "预约请求已保留。我们会通过WhatsApp确认时间和订金链接。",
-    required: "请填写姓名和电话或WhatsApp。"
+    processLabel: "安静的护理时刻",
+    herbsLabel: "新鲜草本护理",
+    finishLabel: "护理后即时肤况",
+    resultsNote: "照片记录个人护理时刻。效果会因肤况和护理计划而异。",
+    followInstagram: "在 Instagram 查看近期作品",
+    bookingKicker: "下一次预约",
+    bookingTitle: "让我们先了解你的肌肤。",
+    bookingCopy: "通过预约平台查看实时空位并选择护理项目。咨询时可以说明敏感情况和护理目标。",
+    continueBooking: "前往预约",
+    bookingNote: "预约页面将在新标签页打开。",
+    footerTagline: "源自香港的草本面部护理。",
+    footerVisit: "伦敦预约",
+    footerDetails: "工作室资料",
+    privacyTitle: "隐私",
+    privacyCopy: "本网站不收集个人资料。外部预约和社交平台适用其各自的隐私条款。",
+    termsTitle: "护理资料",
+    termsCopy: "护理是否适合和预期效果会在咨询时讨论，个人效果会有所不同。",
+    rights: "保留所有权利。",
+    menuOpen: "打开菜单",
+    menuClose: "关闭菜单",
+    bookingFallbackNote: "目前可通过 Instagram 在新标签页进行咨询。"
   },
   yue: {
-    navTreatments: "护理疗程",
-    navPrices: "价目",
-    navAbout: "关于我哋",
-    navGallery: "相册",
-    navBooking: "预约",
-    bookNow: "立即预约",
-    heroEyebrow: "旗舰皮肤美容工作室",
-    heroTitle: "草本修护，令肌肤更稳定。",
-    heroCopy: "将香港面部护理经验带到伦敦旗舰工作室，专注暗疮、敏感同干燥天气肌肤。",
-    ctaBook: "预约咨询",
-    ctaPrices: "睇价目",
-    heroNote: "暗疮护理、干燥修护、学生同长者优惠。",
-    heroMediaKicker: "主打重点",
-    heroMediaTitle: "草本护理行先",
-    trustYears: "年皮肤护理经验",
-    trustSalons: "间香港美容院",
-    trustFlagship: "伦敦旗舰工作室",
-    trustLanguages: "英语、普通话同粤语咨询",
-    signatureTreatment: "主打草本护理",
-    herbsTitle: "草本成分，导入更深。",
-    herbsCopy: "我哋用仪器帮助精选草本成分去到肌肤表层，令敏感、干燥或暗疮肌更快望落稳定。",
-    stepOneTitle: "皮肤分析",
-    stepOneCopy: "仔细了解你嘅肤况同敏感程度。",
-    stepTwoTitle: "草本调配",
-    stepTwoCopy: "按你嘅皮肤准备针对性草本配方。",
-    stepThreeTitle: "仪器导入",
-    stepThreeCopy: "先进仪器帮助成分更均匀传递。",
-    herbsQuote: "来自我哋自己嘅暗疮经历，同30年美容院实践。",
-    pricesEyebrow: "一眼比较",
-    pricesTitle: "疗程同价目",
-    pricesCopy: "针对性草本面部护理、仪器辅助导入同舒缓护理。价目清楚，方便按肤况同时间选择。",
-    pdfNotice: "请喺下面浏览完整疗程价目。",
-    openPriceList: "打开完整价目表",
-    pdfFallback: "你嘅浏览器无法喺呢度显示价目表。",
-    priceTreatment: "疗程",
-    priceDuration: "时间",
-    pricePrice: "价钱",
-    depositNote: "网上预约需要小额订金保留时间。",
-    bookTreatment: "预约疗程",
-    askWhatsapp: "WhatsApp查询",
-    weatherEyebrow: "疗程之间嘅肌肤支持",
-    weatherTitle: "应对英国天气转变。",
-    weatherCopy: "冻风、室内暖气同湿度变化会令皮肤干、紧同敏感。我哋会建议温和草本产品，帮助疗程后保持稳定。",
-    askProducts: "查询产品",
-    productOne: "干燥天气修护",
-    productOneCopy: "俾受天气影响、绷紧嘅肌肤舒缓补水。",
-    productTwo: "暗疮舒缓日程",
-    productTwoCopy: "适合学生同易出暗疮肌嘅简单日常步骤。",
-    productThree: "疗程后护理",
-    productThreeCopy: "清洁、导入或草本修护之后嘅产品建议。",
-    aboutEyebrow: "关于我哋",
-    aboutTitle: "30年皮肤护理实践。",
-    aboutLead: "由香港两间美容院到伦敦旗舰店，我哋结合东方草本知识、细致清洁同先进仪器。",
-    aboutCopy: "我哋明白暗疮困扰。创办人曾经长期受暗疮影响，透过持续疗程同草本成分改善。今日，每次咨询都由呢段经验出发。",
-    metricYears: "年经验",
-    metricSalons: "香港美容院",
-    metricStudio: "英国旗舰店",
-    aboutLanguages: "可用英语、普通话同粤语咨询。",
-    diplomaTitle: "文凭同培训",
-    certificateSlot: "插入文凭 / 证书",
-    galleryEyebrow: "相册同证明",
-    galleryTitle: "真实护理。真实效果。",
-    galleryCopy: "用嚟展示护理过程、肌肤效果、证书同社交媒体近况。",
-    followInstagram: "关注Instagram",
-    beforeSlot: "护理前相片位置",
-    afterSlot: "护理后相片位置",
-    beforeLabel: "护理前",
-    afterLabel: "护理后",
-    studioLabel: "护理进行中",
-    herbalPrepLabel: "草本面膜",
-    diplomaWallLabel: "证书墙",
-    roomLabel: "护理后肌肤",
-    sendPhotos: "WhatsApp发送相片",
-    resultsNote: "效果因人而异；皮肤护理师会建议合适疗程计划。",
-    bookingPanelKicker: "网上预约",
-    bookingPanelTitle: "选择疗程同时间。",
-    bookingPanelCopy: "查看实时空档，并通过我哋嘅预约平台完成预约。",
-    bookOnline: "网上预约",
-    bookingPartnerNote: "预约、订金同时间更改都会由我哋嘅预约平台安全处理。",
-    fieldTreatment: "疗程",
-    fieldPractitioner: "皮肤护理师",
-    fieldDate: "日期",
-    fieldName: "姓名",
-    fieldContact: "电话或WhatsApp",
-    fieldTime: "时间",
-    practitionerHailey: "Hailey，创办人",
-    practitionerMei: "Mei，草本护理师",
-    practitionerAny: "最快可预约",
-    summaryTreatment: "已选疗程",
-    summaryPrice: "疗程价钱",
-    summaryDeposit: "今日订金",
-    bookingDeposit: "订金会保留预约时间，并会喺最终疗程费用扣除。",
-    reserveNow: "保留预约",
-    bookingEyebrow: "快速清楚预约",
-    bookingTitle: "预约你嘅皮肤护理。",
-    bookingCopy: "通过网上预约页面查看可选疗程同时间。学生同长者优惠可预约时查询。",
-    bookingBenefitOne: "实时查看预约空档",
-    bookingBenefitTwo: "安全网上预约",
-    bookingBenefitThree: "网上管理预约",
-    footerTagline: "由内到外，建立肌肤自信。",
-    footerFlagship: "旗舰美容院",
-    footerAddressNote: "请换成最终工作室地址。",
-    footerHours: "营业时间",
-    footerImportant: "重要资料",
-    footerDeposit: "订金政策",
-    footerPrices: "价目",
-    footerDiplomas: "文凭",
-    footerResults: "效果相册",
-    confirmation: "预约请求已保留。我哋会用WhatsApp确认时间同订金链接。",
-    required: "请填写姓名同电话或WhatsApp。"
+    skipContent: "跳到主要内容",
+    brandLine: "倫敦 · 源自香港",
+    navTreatments: "護理",
+    navPrices: "價目",
+    navStory: "我哋嘅故事",
+    navResults: "護理記錄",
+    bookNow: "立即預約",
+    bookConsultation: "預約皮膚諮詢",
+    enquireInstagram: "Instagram 查詢",
+    heroAnnouncement: "現已於 Oxford Circus 開業",
+    heroKicker: "草本面部護理",
+    heroTitle: "草本修護，令肌膚望落更平靜。",
+    heroCopy: "三十年香港面部護理經驗，依家喺倫敦為每種膚況度身定制草本護理。",
+    viewPrices: "睇護理同價目",
+    proofPractice: "30年美容院實踐",
+    proofOrigin: "源自香港",
+    proofLondon: "現於倫敦接待客人",
+    proofLanguages: "English · 普通話 · 廣東話",
+    ritualKicker: "主打護理步驟",
+    ritualTitle: "每次護理，都由細心了解肌膚開始。",
+    ritualCopy: "我哋先了解敏感程度，再準備針對性草本配方，並按膚況使用合適美容儀器協助均勻護理。",
+    stepRead: "了解",
+    stepReadCopy: "由膚況、舒適度同護理目標開始輕鬆諮詢。",
+    stepBlend: "調配",
+    stepBlendCopy: "按當日肌膚需要選擇草本護理。",
+    stepTreat: "護理",
+    stepTreatCopy: "細緻操作、合適技術同清晰嘅護理後建議。",
+    ritualQuote: "源於親身暗瘡經歷，亦經過三十年美容院實踐。",
+    openPdf: "打開完整價目",
+    pdfLoading: "正在準備價目表…",
+    pdfFallback: "你嘅瀏覽器會喺新分頁打開價目表。",
+    aboutKicker: "我哋嘅理念",
+    aboutTitle: "香港經驗，喺倫敦用心延續。",
+    aboutLead: "Hailey Beauty 由香港兩間美容院同對頑固暗瘡嘅親身理解中成長。",
+    aboutCopy: "呢段經歷依然影響工作室：細心了解膚況、草本知識、謹慎使用儀器，同埋冇壓力嘅度身護理。",
+    yearsPractice: "年護理實踐",
+    hongKongSalons: "間香港美容院",
+    consultLanguages: "種諮詢語言",
+    aboutCaption: "草本知識 · 細緻技術",
+    locationLabel: "倫敦工作室",
+    locationAddress: "Margaret Street · Oxford Street 附近",
+    viewMap: "喺 Google 地圖查看",
+    galleryKicker: "護理記錄",
+    galleryTitle: "真實肌膚，真實護理時刻。",
+    galleryCopy: "近距離了解護理過程，同護理前後嘅即時膚況。",
+    beforeLabel: "護理前",
+    afterLabel: "護理後",
+    processLabel: "安靜嘅護理時刻",
+    herbsLabel: "新鮮草本護理",
+    finishLabel: "護理後即時膚況",
+    resultsNote: "相片記錄個人護理時刻。效果會因膚況同護理計劃而異。",
+    followInstagram: "喺 Instagram 睇近期作品",
+    bookingKicker: "下一次預約",
+    bookingTitle: "等我哋先了解你嘅肌膚。",
+    bookingCopy: "透過預約平台睇即時空位同選擇護理項目。諮詢時可以講低敏感情況同護理目標。",
+    continueBooking: "前往預約",
+    bookingNote: "預約頁面會喺新分頁打開。",
+    footerTagline: "源自香港嘅草本面部護理。",
+    footerVisit: "倫敦預約",
+    footerDetails: "工作室資料",
+    privacyTitle: "私隱",
+    privacyCopy: "本網站唔會收集個人資料。外部預約同社交平台適用各自嘅私隱條款。",
+    termsTitle: "護理資料",
+    termsCopy: "護理是否適合同預期效果會喺諮詢時討論，個人效果會有所不同。",
+    rights: "保留所有權利。",
+    menuOpen: "打開選單",
+    menuClose: "關閉選單",
+    bookingFallbackNote: "目前可以透過 Instagram 喺新分頁進行查詢。"
   }
 };
 
-const treatmentCategories = {
-  acne: {
-    labels: { en: "Acne", zh: "痘痘", yue: "暗疮" },
-    treatments: [
-      { name: { en: "Treatment 1", zh: "护理 1", yue: "疗程 1" }, duration: "60 min", price: "88" },
-      { name: { en: "Treatment 2", zh: "护理 2", yue: "疗程 2" }, duration: "60 min", price: "76" },
-      { name: { en: "Treatment 3", zh: "护理 3", yue: "疗程 3" }, duration: "55 min", price: "58" }
-    ]
-  },
-  hydration: {
-    labels: { en: "Hydration", zh: "补水", yue: "补水" },
-    treatments: [
-      { name: { en: "Treatment 4", zh: "护理 4", yue: "疗程 4" }, duration: "50 min", price: "72" },
-      { name: { en: "Treatment 5", zh: "护理 5", yue: "疗程 5" }, duration: "60 min", price: "86" },
-      { name: { en: "Treatment 6", zh: "护理 6", yue: "疗程 6" }, duration: "55 min", price: "62" }
-    ]
-  },
-  herbal: {
-    labels: { en: "Herbal repair", zh: "草本修护", yue: "草本修护" },
-    treatments: [
-      { name: { en: "Treatment 7", zh: "护理 7", yue: "疗程 7" }, duration: "70 min", price: "108" },
-      { name: { en: "Treatment 8", zh: "护理 8", yue: "疗程 8" }, duration: "60 min", price: "92" },
-      { name: { en: "Treatment 9", zh: "护理 9", yue: "疗程 9" }, duration: "65 min", price: "96" }
-    ]
-  },
-  machine: {
-    labels: { en: "Advanced machine", zh: "先进仪器", yue: "先进仪器" },
-    treatments: [
-      { name: { en: "Treatment 10", zh: "护理 10", yue: "疗程 10" }, duration: "75 min", price: "128" },
-      { name: { en: "Treatment 11", zh: "护理 11", yue: "疗程 11" }, duration: "65 min", price: "118" },
-      { name: { en: "Treatment 12", zh: "护理 12", yue: "疗程 12" }, duration: "90 min", price: "168" }
-    ]
-  }
-};
+let currentLang = localStorage.getItem("hailey-language") || "en";
+if (!translations[currentLang]) currentLang = "en";
 
-let currentLang = "en";
-let activeCategory = "acne";
-
-const priceList = document.querySelector("[data-price-list]");
-// Replace this with the studio's final Fresha (or other booking platform) profile URL.
-const BOOKING_URL = "https://www.fresha.com/";
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const siteMenu = document.querySelector("[data-site-menu]");
+const bookingNote = document.querySelector(".booking-note");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function translatePage(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang === "en" ? "en" : "zh";
+  currentLang = translations[lang] ? lang : "en";
+  const languageCodes = { en: "en", zh: "zh-Hans", yue: "zh-Hant" };
+  document.documentElement.lang = languageCodes[currentLang];
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
-    if (translations[lang][key]) {
-      element.textContent = translations[lang][key];
-    }
+    if (translations[currentLang][key]) element.textContent = translations[currentLang][key];
   });
 
   document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.lang === lang);
+    const isActive = button.dataset.lang === currentLang;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 
-  document.querySelectorAll("[data-category]").forEach((button) => {
-    const category = treatmentCategories[button.dataset.category];
-    button.textContent = category.labels[lang];
-  });
-
-  renderPrices();
+  localStorage.setItem("hailey-language", currentLang);
+  applyBookingDestination();
+  updateMenuLabel();
 }
 
-function renderPrices() {
-  if (!priceList) return;
+function applyBookingDestination() {
+  const destination = SITE_CONFIG.bookingUrl;
+  document.querySelectorAll("[data-booking-link]").forEach((link) => {
+    if (!destination) {
+      link.hidden = false;
+      link.removeAttribute("href");
+      link.removeAttribute("target");
+      link.removeAttribute("rel");
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("aria-label", translations[currentLang].bookNow);
+      return;
+    }
+    link.hidden = false;
+    link.href = destination;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.removeAttribute("aria-disabled");
+    link.setAttribute("aria-label", translations[currentLang].continueBooking);
+  });
 
-  const rows = treatmentCategories[activeCategory].treatments
-    .map((treatment) => {
-      return `
-        <article class="price-item">
-          <strong>${treatment.name[currentLang]}</strong>
-          <span>${treatment.duration}</span>
-          <span class="price">${treatment.price}</span>
-        </article>
-      `;
-    })
-    .join("");
+  document.querySelectorAll("[data-booking-label]").forEach((label) => {
+    if (!destination) label.textContent = translations[currentLang].bookNow;
+  });
 
-  priceList.innerHTML = rows;
+  if (bookingNote) bookingNote.hidden = !destination;
+}
+
+function applySiteConfig() {
+  const socialUrls = {
+    instagram: SITE_CONFIG.instagramUrl,
+    whatsapp: SITE_CONFIG.whatsappUrl,
+    facebook: SITE_CONFIG.facebookUrl
+  };
+
+  document.querySelectorAll("[data-social]").forEach((link) => {
+    const url = socialUrls[link.dataset.social];
+    link.hidden = !url;
+    if (url) link.href = url;
+  });
+
+  document.querySelectorAll("[data-price-open]").forEach((link) => {
+    link.href = SITE_CONFIG.treatmentPdf;
+  });
+
+  const pdfObject = document.querySelector("[data-pdf-object]");
+  if (pdfObject) pdfObject.data = `${SITE_CONFIG.treatmentPdf}#view=FitH&toolbar=1&navpanes=0`;
+
+  const canonical = document.querySelector("[data-canonical]");
+  if (SITE_CONFIG.canonicalUrl) {
+    canonical.href = SITE_CONFIG.canonicalUrl;
+  } else {
+    canonical.remove();
+  }
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    name: SITE_CONFIG.name,
+    description: document.querySelector('meta[name="description"]').content,
+    image: SITE_CONFIG.socialImage,
+    sameAs: [SITE_CONFIG.instagramUrl, SITE_CONFIG.facebookUrl].filter(Boolean)
+  };
+  if (SITE_CONFIG.canonicalUrl) structuredData.url = SITE_CONFIG.canonicalUrl;
+  if (SITE_CONFIG.phone) structuredData.telephone = SITE_CONFIG.phone;
+  if (SITE_CONFIG.address) structuredData.address = SITE_CONFIG.address;
+  if (SITE_CONFIG.openingHours.length) structuredData.openingHours = SITE_CONFIG.openingHours;
+  document.querySelector("[data-structured-data]").textContent = JSON.stringify(structuredData);
+}
+
+function setMenu(open) {
+  document.body.classList.toggle("menu-open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+  updateMenuLabel();
+  if (open) siteMenu.querySelector("a")?.focus();
+}
+
+function updateMenuLabel() {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-label", translations[currentLang][isOpen ? "menuClose" : "menuOpen"]);
 }
 
 document.querySelectorAll("[data-lang]").forEach((button) => {
   button.addEventListener("click", () => translatePage(button.dataset.lang));
 });
 
-document.querySelectorAll("[data-category]").forEach((button) => {
-  button.addEventListener("click", () => {
-    activeCategory = button.dataset.category;
-    document.querySelectorAll("[data-category]").forEach((tab) => {
-      tab.classList.toggle("is-active", tab === button);
+menuToggle.addEventListener("click", () => {
+  setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && document.body.classList.contains("menu-open")) {
+    setMenu(false);
+    menuToggle.focus();
+  }
+});
+
+document.querySelectorAll(".site-nav a").forEach((link) => {
+  link.addEventListener("click", () => setMenu(false));
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
     });
-    renderPrices();
+  },
+  { threshold: 0.01, rootMargin: "10% 0px 10%" }
+);
+
+document.querySelectorAll(".reveal").forEach((element, index) => {
+  element.style.transitionDelay = `${Math.min(index % 3, 2) * 70}ms`;
+  revealObserver.observe(element);
+});
+
+const sections = [...document.querySelectorAll("main section[id]")];
+const navLinks = [...document.querySelectorAll(".site-nav a")];
+const activeSectionObserver = new IntersectionObserver(
+  (entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    navLinks.forEach((link) => {
+      const isCurrent = link.getAttribute("href") === `#${visible.target.id}`;
+      if (isCurrent) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+  },
+  { threshold: [0.18, 0.45], rootMargin: "-18% 0px -55%" }
+);
+sections.forEach((section) => activeSectionObserver.observe(section));
+
+document.documentElement.classList.add("reveal-ready");
+
+const priceViewer = document.querySelector("[data-price-viewer]");
+const pdfObject = document.querySelector("[data-pdf-object]");
+if (pdfObject && priceViewer) {
+  const markPdfReady = () => priceViewer.classList.add("is-ready");
+  pdfObject.addEventListener("load", markPdfReady, { once: true });
+  window.setTimeout(markPdfReady, 1400);
+}
+
+let depthFrame;
+function updateDepth() {
+  depthFrame = undefined;
+  if (prefersReducedMotion.matches || window.innerWidth < 760) return;
+  document.querySelectorAll("[data-depth]").forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    const distance = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const offset = Math.max(-22, Math.min(22, -distance * Number(element.dataset.depth)));
+    element.style.setProperty("--depth-y", `${offset}px`);
   });
-});
+}
 
-document.querySelectorAll("[data-booking-link]").forEach((link) => {
-  link.href = BOOKING_URL;
-});
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!depthFrame) depthFrame = window.requestAnimationFrame(updateDepth);
+  },
+  { passive: true }
+);
+window.addEventListener("resize", updateDepth);
 
-document.querySelector("[data-menu-toggle]").addEventListener("click", () => {
-  document.body.classList.toggle("menu-open");
-});
-
-document.querySelectorAll(".site-nav a, .header-cta").forEach((link) => {
-  link.addEventListener("click", () => document.body.classList.remove("menu-open"));
-});
-
-translatePage("en");
+document.querySelector("[data-year]").textContent = new Date().getFullYear();
+applySiteConfig();
+translatePage(currentLang);
+updateDepth();
