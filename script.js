@@ -31,6 +31,9 @@ const translations = {
     pricesEyebrow: "Easy to compare",
     pricesTitle: "Treatments & prices",
     pricesCopy: "Targeted herbal facials, machine-assisted delivery and calm aftercare. No hidden price reveal: choose what fits your skin and your time.",
+    pdfNotice: "Browse the complete treatment menu below.",
+    openPriceList: "Open full price list",
+    pdfFallback: "Your browser cannot show the price list here.",
     priceTreatment: "Treatment",
     priceDuration: "Duration",
     pricePrice: "Price",
@@ -59,19 +62,23 @@ const translations = {
     certificateSlot: "Insert diploma / certification",
     galleryEyebrow: "Gallery & proof",
     galleryTitle: "Real care. Real results.",
-    galleryCopy: "A place for treatment photos, the flagship studio, diplomas and recent social media work.",
+    galleryCopy: "Treatment moments, visible skin results, diplomas and recent social media work.",
     followInstagram: "Follow Instagram",
     beforeSlot: "Before photo slot",
     afterSlot: "After photo slot",
     beforeLabel: "Before treatment",
-    afterLabel: "After 6 weeks",
-    studioLabel: "Flagship studio",
-    herbalPrepLabel: "Herbal preparation",
+    afterLabel: "After treatment",
+    studioLabel: "Treatment in progress",
+    herbalPrepLabel: "Herbal facial mask",
     diplomaWallLabel: "Diploma wall",
-    roomLabel: "Treatment room",
+    roomLabel: "Post-treatment skin",
     sendPhotos: "Send photos on WhatsApp",
     resultsNote: "Results vary; your practitioner will advise a treatment plan.",
-    bookingPanelTitle: "Book your appointment",
+    bookingPanelKicker: "Online booking",
+    bookingPanelTitle: "Choose your treatment and time.",
+    bookingPanelCopy: "See live availability and complete your booking with our booking partner.",
+    bookOnline: "Book online",
+    bookingPartnerNote: "Bookings, deposits and appointment changes are handled securely by our booking partner.",
     fieldTreatment: "Treatment",
     fieldPractitioner: "Skin practitioner",
     fieldDate: "Date",
@@ -88,10 +95,10 @@ const translations = {
     reserveNow: "Reserve appointment",
     bookingEyebrow: "Fast, clear booking",
     bookingTitle: "Book your skin treatment.",
-    bookingCopy: "Choose a treatment, hold your time with a deposit, and tell us about your skin before you arrive. Student and senior prices are available when you book.",
-    bookingBenefitOne: "No hidden prices",
-    bookingBenefitTwo: "English, Mandarin and Cantonese support",
-    bookingBenefitThree: "WhatsApp help before your visit",
+    bookingCopy: "Use our online booking page to view available treatments and times. Student and senior prices are available when you book.",
+    bookingBenefitOne: "Live appointment availability",
+    bookingBenefitTwo: "Secure online booking",
+    bookingBenefitThree: "Manage your appointment online",
     footerTagline: "Skin confidence, inside and out.",
     footerFlagship: "Flagship salon",
     footerAddressNote: "Replace with final studio address.",
@@ -136,6 +143,9 @@ const translations = {
     pricesEyebrow: "清楚比较",
     pricesTitle: "护理项目与价目",
     pricesCopy: "针对性草本面部护理、仪器辅助导入和舒缓护理。价目清晰，方便按肤况和时间选择。",
+    pdfNotice: "请在下方浏览完整护理价目。",
+    openPriceList: "打开完整价目表",
+    pdfFallback: "你的浏览器无法在此显示价目表。",
     priceTreatment: "护理项目",
     priceDuration: "时长",
     pricePrice: "价格",
@@ -164,19 +174,23 @@ const translations = {
     certificateSlot: "插入文凭 / 证书",
     galleryEyebrow: "相册与证明",
     galleryTitle: "真实护理。真实效果。",
-    galleryCopy: "这里用于展示护理前后、旗舰店、证书和社交媒体近况。",
+    galleryCopy: "这里展示护理过程、肌肤效果、证书和社交媒体近况。",
     followInstagram: "关注Instagram",
     beforeSlot: "护理前照片位置",
     afterSlot: "护理后照片位置",
     beforeLabel: "护理前",
-    afterLabel: "6周后",
-    studioLabel: "旗舰工作室",
-    herbalPrepLabel: "草本准备",
+    afterLabel: "护理后",
+    studioLabel: "护理进行中",
+    herbalPrepLabel: "草本面膜",
     diplomaWallLabel: "证书墙",
-    roomLabel: "护理房",
+    roomLabel: "护理后肌肤",
     sendPhotos: "WhatsApp发送照片",
     resultsNote: "效果因人而异；皮肤护理师会建议合适疗程计划。",
-    bookingPanelTitle: "预约时间",
+    bookingPanelKicker: "网上预约",
+    bookingPanelTitle: "选择护理项目和时间。",
+    bookingPanelCopy: "查看实时空档，并通过我们的预约平台完成预约。",
+    bookOnline: "网上预约",
+    bookingPartnerNote: "预约、订金和时间更改均由我们的预约平台安全处理。",
     fieldTreatment: "护理项目",
     fieldPractitioner: "皮肤护理师",
     fieldDate: "日期",
@@ -193,10 +207,10 @@ const translations = {
     reserveNow: "保留预约",
     bookingEyebrow: "快速清晰预约",
     bookingTitle: "预约你的皮肤护理。",
-    bookingCopy: "选择护理项目，支付订金保留时间，并在到店前告诉我们你的肤况。学生和长者优惠可在预约时咨询。",
-    bookingBenefitOne: "价目清晰",
-    bookingBenefitTwo: "英语、普通话和粤语支持",
-    bookingBenefitThree: "到店前可用WhatsApp咨询",
+    bookingCopy: "通过网上预约页面查看可选护理项目和时间。学生和长者优惠可在预约时咨询。",
+    bookingBenefitOne: "实时查看预约空档",
+    bookingBenefitTwo: "安全网上预约",
+    bookingBenefitThree: "网上管理预约",
     footerTagline: "由内到外，建立肌肤自信。",
     footerFlagship: "旗舰美容院",
     footerAddressNote: "请替换为最终工作室地址。",
@@ -241,6 +255,9 @@ const translations = {
     pricesEyebrow: "一眼比较",
     pricesTitle: "疗程同价目",
     pricesCopy: "针对性草本面部护理、仪器辅助导入同舒缓护理。价目清楚，方便按肤况同时间选择。",
+    pdfNotice: "请喺下面浏览完整疗程价目。",
+    openPriceList: "打开完整价目表",
+    pdfFallback: "你嘅浏览器无法喺呢度显示价目表。",
     priceTreatment: "疗程",
     priceDuration: "时间",
     pricePrice: "价钱",
@@ -269,19 +286,23 @@ const translations = {
     certificateSlot: "插入文凭 / 证书",
     galleryEyebrow: "相册同证明",
     galleryTitle: "真实护理。真实效果。",
-    galleryCopy: "用嚟展示护理前后、旗舰店、证书同社交媒体近况。",
+    galleryCopy: "用嚟展示护理过程、肌肤效果、证书同社交媒体近况。",
     followInstagram: "关注Instagram",
     beforeSlot: "护理前相片位置",
     afterSlot: "护理后相片位置",
     beforeLabel: "护理前",
-    afterLabel: "6星期后",
-    studioLabel: "旗舰工作室",
-    herbalPrepLabel: "草本准备",
+    afterLabel: "护理后",
+    studioLabel: "护理进行中",
+    herbalPrepLabel: "草本面膜",
     diplomaWallLabel: "证书墙",
-    roomLabel: "护理房",
+    roomLabel: "护理后肌肤",
     sendPhotos: "WhatsApp发送相片",
     resultsNote: "效果因人而异；皮肤护理师会建议合适疗程计划。",
-    bookingPanelTitle: "预约时间",
+    bookingPanelKicker: "网上预约",
+    bookingPanelTitle: "选择疗程同时间。",
+    bookingPanelCopy: "查看实时空档，并通过我哋嘅预约平台完成预约。",
+    bookOnline: "网上预约",
+    bookingPartnerNote: "预约、订金同时间更改都会由我哋嘅预约平台安全处理。",
     fieldTreatment: "疗程",
     fieldPractitioner: "皮肤护理师",
     fieldDate: "日期",
@@ -298,10 +319,10 @@ const translations = {
     reserveNow: "保留预约",
     bookingEyebrow: "快速清楚预约",
     bookingTitle: "预约你嘅皮肤护理。",
-    bookingCopy: "选择疗程，支付订金保留时间，并喺到店前话我哋知你嘅肤况。学生同长者优惠可预约时查询。",
-    bookingBenefitOne: "价目清晰",
-    bookingBenefitTwo: "英语、普通话同粤语支持",
-    bookingBenefitThree: "到店前可WhatsApp查询",
+    bookingCopy: "通过网上预约页面查看可选疗程同时间。学生同长者优惠可预约时查询。",
+    bookingBenefitOne: "实时查看预约空档",
+    bookingBenefitTwo: "安全网上预约",
+    bookingBenefitThree: "网上管理预约",
     footerTagline: "由内到外，建立肌肤自信。",
     footerFlagship: "旗舰美容院",
     footerAddressNote: "请换成最终工作室地址。",
@@ -355,14 +376,8 @@ let currentLang = "en";
 let activeCategory = "acne";
 
 const priceList = document.querySelector("[data-price-list]");
-const treatmentSelect = document.querySelector("[data-treatment-select]");
-const summaryTreatment = document.querySelector("[data-summary-treatment]");
-const summaryPrice = document.querySelector("[data-summary-price]");
-const confirmation = document.querySelector("[data-confirmation]");
-
-function allTreatments() {
-  return Object.values(treatmentCategories).flatMap((category) => category.treatments);
-}
+// Replace this with the studio's final Fresha (or other booking platform) profile URL.
+const BOOKING_URL = "https://www.fresha.com/";
 
 function translatePage(lang) {
   currentLang = lang;
@@ -385,11 +400,11 @@ function translatePage(lang) {
   });
 
   renderPrices();
-  populateTreatmentSelect();
-  updateBookingSummary();
 }
 
 function renderPrices() {
+  if (!priceList) return;
+
   const rows = treatmentCategories[activeCategory].treatments
     .map((treatment) => {
       return `
@@ -403,28 +418,6 @@ function renderPrices() {
     .join("");
 
   priceList.innerHTML = rows;
-}
-
-function populateTreatmentSelect() {
-  const selected = treatmentSelect.value;
-  treatmentSelect.innerHTML = allTreatments()
-    .map((treatment) => {
-      const value = treatment.name.en;
-      return `<option value="${value}" data-price="${treatment.price}">${treatment.name[currentLang]} - ${treatment.price}</option>`;
-    })
-    .join("");
-
-  if ([...treatmentSelect.options].some((option) => option.value === selected)) {
-    treatmentSelect.value = selected;
-  }
-}
-
-function updateBookingSummary() {
-  const selected = treatmentSelect.selectedOptions[0];
-  if (!selected) return;
-
-  summaryTreatment.textContent = selected.textContent.replace(/\s-\s\d+$/, "");
-  summaryPrice.textContent = selected.dataset.price;
 }
 
 document.querySelectorAll("[data-lang]").forEach((button) => {
@@ -441,24 +434,8 @@ document.querySelectorAll("[data-category]").forEach((button) => {
   });
 });
 
-document.querySelectorAll("[data-time-grid] button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll("[data-time-grid] button").forEach((time) => time.classList.remove("is-active"));
-    button.classList.add("is-active");
-  });
-});
-
-treatmentSelect.addEventListener("change", updateBookingSummary);
-
-document.querySelector("[data-booking-form]").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = document.querySelector("[data-name-input]").value.trim();
-  const contact = document.querySelector("[data-contact-input]").value.trim();
-  if (!name || !contact) {
-    confirmation.textContent = translations[currentLang].required;
-    return;
-  }
-  confirmation.textContent = translations[currentLang].confirmation;
+document.querySelectorAll("[data-booking-link]").forEach((link) => {
+  link.href = BOOKING_URL;
 });
 
 document.querySelector("[data-menu-toggle]").addEventListener("click", () => {
@@ -468,11 +445,5 @@ document.querySelector("[data-menu-toggle]").addEventListener("click", () => {
 document.querySelectorAll(".site-nav a, .header-cta").forEach((link) => {
   link.addEventListener("click", () => document.body.classList.remove("menu-open"));
 });
-
-const today = new Date();
-today.setDate(today.getDate() + 1);
-const dateInput = document.querySelector("[data-date-input]");
-dateInput.min = today.toISOString().split("T")[0];
-dateInput.value = today.toISOString().split("T")[0];
 
 translatePage("en");
