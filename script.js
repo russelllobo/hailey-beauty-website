@@ -1,6 +1,6 @@
 const SITE_CONFIG = {
   name: "Hailey Beauty",
-  bookingUrl: "",
+  bookingUrl: "https://www.sumupbookings.com/hailey-beauty-ltd",
   bookingProvider: "",
   instagramUrl: "https://www.instagram.com/haileybeautyldn/",
   tiktokUrl: "https://www.tiktok.com/@haileybeautyldn",
