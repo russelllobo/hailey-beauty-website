@@ -18,14 +18,14 @@
     <meta name="twitter:description" content="Hong Kong herbal facial practice, now in London." />
     <meta name="twitter:image" content="./assets/hero-treatment.webp" />
     <link data-canonical rel="canonical" />
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon.png?v=2" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
     <script data-structured-data type="application/ld+json"></script>
   </head>
   <body>
@@ -45,6 +45,17 @@
         <circle cx="12" cy="12" r="4" />
         <path d="M17.5 6.5h.01" />
       </symbol>
+      <symbol id="icon-tiktok" viewBox="0 0 24 24">
+        <path d="M15 4v10.5a4.5 4.5 0 1 1-4.5-4.5" />
+        <path d="M15 4c.8 2.4 2.5 3.8 5 4" />
+      </symbol>
+      <symbol id="icon-rednote" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="3" />
+        <path d="m8 9 3 3-3 3M13 15h3" />
+      </symbol>
+      <symbol id="icon-facebook" viewBox="0 0 24 24">
+        <path d="M14 21v-8h3l.5-4H14V7c0-1.2.6-2 2.3-2H18V1.5c-.8-.1-1.7-.2-2.5-.2C12 1.3 10 3.4 10 6.8V9H7v4h3v8" />
+      </symbol>
       <symbol id="icon-globe" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" />
         <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
@@ -57,11 +68,13 @@
     <header class="site-header" data-header>
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="Hailey Beauty home">
-          <span class="brand-mark" aria-hidden="true">H</span>
-          <span class="brand-copy">
-            <strong>Hailey Beauty</strong>
-            <span data-i18n="brandLine">London · Hong Kong roots</span>
-          </span>
+          <img
+            class="brand-logo"
+            src="./assets/hailey-beauty-wordmark.png?v=3"
+            alt=""
+            width="208"
+            height="40"
+          />
         </a>
 
         <button
@@ -106,7 +119,7 @@
         <div class="hero-wash" aria-hidden="true"></div>
         <div class="hero-inner">
           <div class="hero-copy">
-            <p class="hero-announcement" data-i18n="heroAnnouncement">Now open in Oxford Circus</p>
+            <p class="hero-announcement" data-i18n="heroAnnouncement">Now open in Oxford Circus — free skin analysis for our grand opening</p>
             <h1 id="hero-title" data-i18n="heroTitle">Tailored Herbal Treatments</h1>
             <p class="hero-lead" data-i18n="heroCopy">
               Thirty years of Hong Kong facial practice, now tailoring herbal care for London skin.
@@ -169,27 +182,340 @@
 
       <section class="prices section-bone" id="prices" aria-labelledby="prices-title">
         <header class="editorial-head reveal">
-          <h2 id="prices-title">Treatments &amp; Price List</h2>
+          <div>
+            <h2 id="prices-title">Treatments &amp; Price List</h2>
+            <p>
+              A complimentary skin consultation is included before every facial so that each treatment can be tailored to your
+              skin concerns, comfort level and goals.
+            </p>
+          </div>
+          <a class="button price-pdf-link" data-price-open target="_blank" rel="noopener noreferrer">
+            <span data-i18n="openPdf">Open PDF</span>
+            <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
+          </a>
         </header>
 
-        <div class="price-viewer reveal" data-price-viewer>
-          <div class="pdf-loading" data-pdf-loading><span></span><span data-i18n="pdfLoading">Preparing the menu…</span></div>
-          <a class="price-mobile-preview" data-price-open target="_blank" rel="noreferrer">
-            <img src="./assets/price-menu-preview.webp" alt="Preview of the Hailey Beauty treatments and price list" loading="lazy" />
-            <span class="price-mobile-action">
-              <span data-i18n="openPdf">Open full menu</span>
-              <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-            </span>
-          </a>
-          <object class="pdf-embed" data-pdf-object type="application/pdf" aria-label="Hailey Beauty treatments and prices">
-            <div class="pdf-fallback">
-              <p data-i18n="pdfFallback">Your browser opens price guides in a new tab.</p>
-              <a class="button button-primary" data-price-open target="_blank" rel="noreferrer">
-                <span data-i18n="openPdf">Open full menu</span>
-                <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-              </a>
+        <div class="native-price-list">
+          <div class="price-tabs reveal" role="tablist" aria-label="Treatment categories">
+            <button
+              class="price-tab is-active"
+              id="advanced-treatments-tab"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="advanced-treatments-panel"
+              tabindex="0"
+            >
+              Advanced Treatments
+            </button>
+            <button
+              class="price-tab"
+              id="signature-facials-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="signature-facials-panel"
+              tabindex="-1"
+            >
+              Signature Facials
+            </button>
+            <button
+              class="price-tab"
+              id="waxing-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="waxing-panel"
+              tabindex="-1"
+            >
+              Waxing
+            </button>
+          </div>
+
+          <section
+            class="price-category price-panel is-active"
+            id="advanced-treatments-panel"
+            role="tabpanel"
+            aria-labelledby="advanced-treatments-tab"
+          >
+            <h3 id="advanced-treatments-title">Advanced Treatments</h3>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>HIFU Skin Tightening &amp; Lifting</h4>
+                <div class="treatment-meta treatment-meta-stack">
+                  <span>40–60 mins</span>
+                  <span>Full face £399 <b aria-hidden="true">|</b> Add neck £450</span>
+                  <span>Lower abdomen £399 <b aria-hidden="true">|</b> Upper abdomen £399</span>
+                  <span>Full abdomen £499</span>
+                </div>
+              </header>
+              <p>
+                A non-invasive treatment designed to lift, firm and support collagen renewal. Suitable treatment areas, session
+                length and final pricing are confirmed during consultation.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Full consultation, cleanse, ultrasound gel application, HIFU treatment and a soothing finishing mask.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>DNA Renewal Facial</h4>
+                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £120</p>
+              </header>
+              <p>
+                A results-led rejuvenating facial designed to refine the look of enlarged pores, support skin renewal, soften the
+                appearance of fine lines and restore vitality to tired or sun-exposed skin.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Cleanse, exfoliation, relaxing facial massage, targeted serum infusion, regenerative cell serum infusion
+                and a restorative mask.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Blue Crystal Lift &amp; Hydrate Facial</h4>
+                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £88</p>
+              </header>
+              <p>
+                A firming and intensely hydrating facial created to improve skin comfort, softness and radiance while supporting
+                a smoother, lifted appearance.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Rose water cleanse, exfoliation, facial lifting massage, skin tightening serum infusion, rose water
+                collagen mask and rose water finishing cream.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Needle-Free MesoSkin Infusion Facial</h4>
+                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £150</p>
+              </header>
+              <p>
+                A needle-free hydro-infusion treatment that gently resurfaces the skin and enhances the delivery of active serums
+                for visible hydration, smoother texture and a firmer-looking finish.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Consultation, cleanse, exfoliation, anti-inflammatory essence, MesoSkin infusion, cooling sheet mask
+                and finishing cream.
+              </p>
+            </article>
+          </section>
+
+          <section
+            class="price-category price-panel"
+            id="signature-facials-panel"
+            role="tabpanel"
+            aria-labelledby="signature-facials-tab"
+            hidden
+          >
+            <h3 id="signature-facials-title">Signature Facials</h3>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Herbal Clarity &amp; Brightening Facial</h4>
+                <p class="treatment-meta">90 mins <b aria-hidden="true">|</b> £78</p>
+              </header>
+              <p>
+                A herbal-based treatment designed for congestion, post-breakout marks, uneven tone, hormonal acne and the
+                appearance of pigmentation while remaining gentle on younger or more sensitive skin.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Cleanse, exfoliation, extractions, brightening or acne serum infusion, herbal treatment mask and
+                finishing cream.
+              </p>
+              <p class="treatment-note">
+                <strong>Student offer:</strong> 20% off with valid student ID. Especially suitable for teen and hormonal acne concerns.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Lift &amp; Glow Gua Sha Facial</h4>
+                <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £55</p>
+              </header>
+              <p>
+                A machine-free sculpting facial using expert hand massage and gua sha to support lymphatic drainage, reduce
+                puffiness and leave the skin looking fresher, lifted and radiant.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Cleanse, exfoliation, massage cream, pressure-point massage, gua sha sculpting and finishing products.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Essential Relaxation Facial</h4>
+                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £88</p>
+              </header>
+              <p>
+                A deeply relaxing maintenance facial created to release facial tension, replenish hydration and keep skin looking
+                fresh between more intensive treatments.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Cleanse, extended facial massage and nourishing finishing products.
+              </p>
+              <p class="treatment-note"><em>Ideal as a regular monthly maintenance facial or part of an ongoing skin plan.</em></p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Brightening Milk Glow Facial</h4>
+                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £68</p>
+              </header>
+              <p>
+                A glow-boosting facial for dull or tired-looking skin that combines gentle resurfacing, brightening actives and
+                comforting hydration for a fresher, more luminous finish.
+              </p>
+              <p class="treatment-includes">
+                <em>Includes:</em> Cleanse, exfoliation, massage, brightening serum, brightening mask, rose water and finishing cream.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Express Glow Facial</h4>
+                <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £38</p>
+              </header>
+              <p>A quick refresh for clearer, smoother and lighter-feeling skin when you want an on-the-day skin boost.</p>
+              <p class="treatment-includes"><em>Includes:</em> Cleanse, exfoliation, mask and finishing cream.</p>
+            </article>
+          </section>
+
+          <section
+            class="price-category price-panel"
+            id="waxing-panel"
+            role="tabpanel"
+            aria-labelledby="waxing-tab"
+            hidden
+          >
+            <h3 id="waxing-title">Waxing</h3>
+            <p class="price-category-intro">Professional hair removal using hot wax and strip wax.</p>
+
+            <div class="waxing-group">
+              <h4>Female Waxing</h4>
+              <h5>Hot Wax</h5>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Upper Lip / Chin</h6>
+                  <p class="treatment-meta">10 mins each <b aria-hidden="true">|</b> £10 each</p>
+                </header>
+                <p>Precise hot wax treatment for smaller facial areas.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Underarm</h6>
+                  <p class="treatment-meta">15 mins <b aria-hidden="true">|</b> £18</p>
+                </header>
+                <p>A comfortable option for a sensitive area with a smooth finish.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Bikini Line</h6>
+                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £25</p>
+                </header>
+                <p>Bikini line only for female intimate waxing. Brazilian and Hollywood waxing are not offered.</p>
+              </article>
+
+              <h5>Strip Wax</h5>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Half Leg</h6>
+                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £25</p>
+                </header>
+                <p>Efficient strip wax treatment for lower or upper legs.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Full Leg</h6>
+                  <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £40</p>
+                </header>
+                <p>Smooth full-leg hair removal using strip wax.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Half Arm</h6>
+                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £20</p>
+                </header>
+                <p>Quick hair removal for the lower or upper arms.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Full Arm</h6>
+                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £30</p>
+                </header>
+                <p>Full-arm strip wax for a clean, smooth finish.</p>
+              </article>
             </div>
-          </object>
+
+            <div class="waxing-group">
+              <h4>Male Waxing</h4>
+              <h5>Strip Wax</h5>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Back</h6>
+                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £35</p>
+                </header>
+                <p>Effective hair removal across the back.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Back &amp; Shoulders</h6>
+                  <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £45</p>
+                </header>
+                <p>A fuller upper-body treatment for the back and shoulder area.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Chest</h6>
+                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £35</p>
+                </header>
+                <p>Chest hair removal using strip wax.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Chest &amp; Abdomen</h6>
+                  <p class="treatment-meta">45 mins <b aria-hidden="true">|</b> £45</p>
+                </header>
+                <p>Combined front-body waxing for a smoother finish.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Half Leg</h6>
+                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £30</p>
+                </header>
+                <p>Efficient strip wax treatment for lower or upper legs.</p>
+              </article>
+
+              <article class="treatment treatment-compact">
+                <header class="treatment-head">
+                  <h6>Full Leg</h6>
+                  <p class="treatment-meta">50 mins <b aria-hidden="true">|</b> £50</p>
+                </header>
+                <p>Full-leg hair removal using strip wax.</p>
+              </article>
+            </div>
+          </section>
+
+          <aside class="price-booking-note reveal" aria-labelledby="price-booking-title">
+            <h3 id="price-booking-title">Booking Notes</h3>
+            <p><strong>Consultations:</strong> Complimentary with every facial.</p>
+          </aside>
         </div>
       </section>
 
@@ -214,8 +540,8 @@
         </figure>
         <figure class="about-map reveal">
           <iframe
-            title="Google Maps showing Margaret Street near Oxford Street, London"
-            src="https://www.google.com/maps?q=Margaret%20Street%2C%20London%20W1W%2C%20United%20Kingdom&amp;output=embed"
+            title="Google Maps showing Hailey Beauty, London"
+            src="https://www.google.com/maps?q=Hailey%20Beauty&amp;ll=51.5164826%2C-0.1414829&amp;z=17&amp;output=embed"
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
@@ -224,7 +550,7 @@
             <span data-i18n="locationLabel">London studio</span>
             <strong data-i18n="locationAddress">Margaret Street · near Oxford Street</strong>
             <a
-              href="https://www.google.com/maps/search/?api=1&amp;query=Margaret%20Street%2C%20London%20W1W%2C%20United%20Kingdom"
+              href="https://www.google.com/maps/place/Hailey+Beauty/@51.5164826,-0.1440578,17z/data=!3m1!4b1!4m6!3m5!1s0x48761bc30414e63f:0x4374372912733540!8m2!3d51.5164826!4d-0.1414829!16s%2Fg%2F11zh1z67wd?entry=ttu&amp;g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -267,7 +593,7 @@
         </div>
         <div class="gallery-foot reveal">
           <p data-i18n="resultsNote">Photographs show individual treatment moments. Results vary by skin and treatment plan.</p>
-          <a class="text-link" data-social="instagram" target="_blank" rel="noreferrer">
+          <a class="text-link" data-social="instagram" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
             <span data-i18n="followInstagram">See recent work on Instagram</span>
           </a>
@@ -295,15 +621,32 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="brand-mark" aria-hidden="true">H</span>
-          <strong>Hailey Beauty</strong>
+          <img
+            class="footer-logo"
+            src="./assets/hailey-beauty-logo.png?v=2"
+            alt="Hailey Beauty"
+            width="240"
+            height="123"
+          />
           <p data-i18n="footerTagline">Herbal facial practice with Hong Kong roots.</p>
         </div>
         <div class="footer-contact">
           <p class="footer-label" data-i18n="footerVisit">London appointments</p>
-          <a data-social="instagram" target="_blank" rel="noreferrer">
+          <a data-social="instagram" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
-            @haileyskinstudio
+            Instagram · @haileybeautyldn
+          </a>
+          <a data-social="tiktok" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#icon-tiktok"></use></svg>
+            TikTok · @haileybeautyldn
+          </a>
+          <a data-social="rednote" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#icon-rednote"></use></svg>
+            Rednote · hk_beauty
+          </a>
+          <a data-social="facebook" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#icon-facebook"></use></svg>
+            Facebook · Hailey Beauty
           </a>
           <a aria-disabled="true" data-booking-link><span data-booking-label data-i18n="bookNow">Book now</span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
         </div>
@@ -322,6 +665,6 @@
       </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=4"></script>
   </body>
 </html>

@@ -2,9 +2,11 @@ const SITE_CONFIG = {
   name: "Hailey Beauty",
   bookingUrl: "",
   bookingProvider: "",
-  instagramUrl: "https://www.instagram.com/haileyskinstudio",
+  instagramUrl: "https://www.instagram.com/haileybeautyldn/",
+  tiktokUrl: "https://www.tiktok.com/@haileybeautyldn",
+  rednoteUrl: "https://www.xiaohongshu.com/search_result?keyword=hk_beauty",
   whatsappUrl: "",
-  facebookUrl: "",
+  facebookUrl: "https://www.facebook.com/search/top?q=Hailey%20Beauty",
   phone: "",
   email: "",
   address: "",
@@ -25,7 +27,7 @@ const translations = {
     bookNow: "Book now",
     bookConsultation: "Book a consultation",
     enquireInstagram: "Enquire on Instagram",
-    heroAnnouncement: "Now open in Oxford Circus",
+    heroAnnouncement: "Now open in Oxford Circus — free skin analysis for our grand opening",
     heroKicker: "Herbal facial practice",
     heroTitle: "Tailored Herbal Treatments",
     heroCopy: "Thirty years of Hong Kong facial practice, now tailoring herbal care for London skin.",
@@ -44,9 +46,7 @@ const translations = {
     stepTreat: "Treat",
     stepTreatCopy: "Measured application, thoughtful technique and clear aftercare.",
     ritualQuote: "Care shaped by personal acne experience and three decades in the salon.",
-    openPdf: "Open full menu",
-    pdfLoading: "Preparing the menu…",
-    pdfFallback: "Your browser opens price guides in a new tab.",
+    openPdf: "Open PDF",
     aboutKicker: "Our point of view",
     aboutTitle: "Hong Kong practice, made personal in London.",
     aboutLead: "Hailey Beauty grew from two Hong Kong salons and a personal understanding of persistent acne.",
@@ -95,7 +95,7 @@ const translations = {
     bookNow: "立即预约",
     bookConsultation: "预约皮肤咨询",
     enquireInstagram: "Instagram 咨询",
-    heroAnnouncement: "现已于 Oxford Circus 开业",
+    heroAnnouncement: "现已于 Oxford Circus 开业 — 盛大开业期间免费皮肤分析",
     heroKicker: "草本面部护理",
     heroTitle: "草本修护，让肌肤看起来更平静。",
     heroCopy: "三十年香港面部护理经验，如今在伦敦为每一种肤况定制草本护理。",
@@ -114,9 +114,7 @@ const translations = {
     stepTreat: "护理",
     stepTreatCopy: "细致操作、合适技术和清晰的护理后建议。",
     ritualQuote: "源于亲身痘痘经历，也经过三十年美容院实践。",
-    openPdf: "打开完整价目",
-    pdfLoading: "正在准备价目表…",
-    pdfFallback: "你的浏览器会在新标签页打开价目表。",
+    openPdf: "打开 PDF",
     aboutKicker: "我们的理念",
     aboutTitle: "香港经验，在伦敦用心延续。",
     aboutLead: "Hailey Beauty 从香港两间美容院和对顽固痘痘的亲身理解中成长。",
@@ -165,7 +163,7 @@ const translations = {
     bookNow: "立即預約",
     bookConsultation: "預約皮膚諮詢",
     enquireInstagram: "Instagram 查詢",
-    heroAnnouncement: "現已於 Oxford Circus 開業",
+    heroAnnouncement: "現已於 Oxford Circus 開業 — 盛大開業期間免費皮膚分析",
     heroKicker: "草本面部護理",
     heroTitle: "草本修護，令肌膚望落更平靜。",
     heroCopy: "三十年香港面部護理經驗，依家喺倫敦為每種膚況度身定制草本護理。",
@@ -184,9 +182,7 @@ const translations = {
     stepTreat: "護理",
     stepTreatCopy: "細緻操作、合適技術同清晰嘅護理後建議。",
     ritualQuote: "源於親身暗瘡經歷，亦經過三十年美容院實踐。",
-    openPdf: "打開完整價目",
-    pdfLoading: "正在準備價目表…",
-    pdfFallback: "你嘅瀏覽器會喺新分頁打開價目表。",
+    openPdf: "打開 PDF",
     aboutKicker: "我哋嘅理念",
     aboutTitle: "香港經驗，喺倫敦用心延續。",
     aboutLead: "Hailey Beauty 由香港兩間美容院同對頑固暗瘡嘅親身理解中成長。",
@@ -286,6 +282,8 @@ function applyBookingDestination() {
 function applySiteConfig() {
   const socialUrls = {
     instagram: SITE_CONFIG.instagramUrl,
+    tiktok: SITE_CONFIG.tiktokUrl,
+    rednote: SITE_CONFIG.rednoteUrl,
     whatsapp: SITE_CONFIG.whatsappUrl,
     facebook: SITE_CONFIG.facebookUrl
   };
@@ -300,9 +298,6 @@ function applySiteConfig() {
     link.href = SITE_CONFIG.treatmentPdf;
   });
 
-  const pdfObject = document.querySelector("[data-pdf-object]");
-  if (pdfObject) pdfObject.data = `${SITE_CONFIG.treatmentPdf}#view=FitH&toolbar=1&navpanes=0`;
-
   const canonical = document.querySelector("[data-canonical]");
   if (SITE_CONFIG.canonicalUrl) {
     canonical.href = SITE_CONFIG.canonicalUrl;
@@ -316,7 +311,12 @@ function applySiteConfig() {
     name: SITE_CONFIG.name,
     description: document.querySelector('meta[name="description"]').content,
     image: SITE_CONFIG.socialImage,
-    sameAs: [SITE_CONFIG.instagramUrl, SITE_CONFIG.facebookUrl].filter(Boolean)
+    sameAs: [
+      SITE_CONFIG.instagramUrl,
+      SITE_CONFIG.tiktokUrl,
+      SITE_CONFIG.rednoteUrl,
+      SITE_CONFIG.facebookUrl
+    ].filter(Boolean)
   };
   if (SITE_CONFIG.canonicalUrl) structuredData.url = SITE_CONFIG.canonicalUrl;
   if (SITE_CONFIG.phone) structuredData.telephone = SITE_CONFIG.phone;
@@ -356,6 +356,38 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
   link.addEventListener("click", () => setMenu(false));
 });
 
+const priceTabs = [...document.querySelectorAll(".price-tab")];
+
+function activatePriceTab(tab, moveFocus = false) {
+  priceTabs.forEach((item) => {
+    const isActive = item === tab;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-selected", String(isActive));
+    item.tabIndex = isActive ? 0 : -1;
+
+    const itemPanel = document.getElementById(item.getAttribute("aria-controls"));
+    itemPanel.hidden = !isActive;
+    itemPanel.classList.toggle("is-active", isActive);
+  });
+
+  if (moveFocus) tab.focus();
+  tab.scrollIntoView({ behavior: prefersReducedMotion.matches ? "auto" : "smooth", block: "nearest", inline: "center" });
+}
+
+priceTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => activatePriceTab(tab));
+  tab.addEventListener("keydown", (event) => {
+    let nextIndex;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % priceTabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (index - 1 + priceTabs.length) % priceTabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = priceTabs.length - 1;
+    if (nextIndex === undefined) return;
+    event.preventDefault();
+    activatePriceTab(priceTabs[nextIndex], true);
+  });
+});
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -372,7 +404,7 @@ document.querySelectorAll(".reveal").forEach((element, index) => {
   revealObserver.observe(element);
 });
 
-const sections = [...document.querySelectorAll("main section[id]")];
+const sections = [...document.querySelectorAll("main > section[id]")];
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 const activeSectionObserver = new IntersectionObserver(
   (entries) => {
@@ -389,14 +421,6 @@ const activeSectionObserver = new IntersectionObserver(
 sections.forEach((section) => activeSectionObserver.observe(section));
 
 document.documentElement.classList.add("reveal-ready");
-
-const priceViewer = document.querySelector("[data-price-viewer]");
-const pdfObject = document.querySelector("[data-pdf-object]");
-if (pdfObject && priceViewer) {
-  const markPdfReady = () => priceViewer.classList.add("is-ready");
-  pdfObject.addEventListener("load", markPdfReady, { once: true });
-  window.setTimeout(markPdfReady, 1400);
-}
 
 let depthFrame;
 function updateDepth() {
