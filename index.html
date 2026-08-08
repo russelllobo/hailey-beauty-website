@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=4" />
+    <link rel="stylesheet" href="./styles.css?v=17" />
     <script data-structured-data type="application/ld+json"></script>
   </head>
   <body>
@@ -149,12 +149,12 @@
       <section class="ritual section-dark" id="treatments" aria-labelledby="ritual-title">
         <div class="ritual-visual reveal" data-depth="0.035">
           <figure class="ritual-image ritual-image-main">
-            <img src="./assets/client-herbal-mask.webp" alt="A fresh herbal mask applied during a facial" loading="lazy" />
+            <img src="./assets/facial-process.webp" alt="Nine stages of a Hailey Beauty facial, from cleansing to finishing cream" loading="lazy" />
           </figure>
           <figure class="ritual-image ritual-image-detail">
-            <img src="./assets/client-treatment-rest.webp" alt="A client resting during a careful facial treatment" loading="lazy" />
+            <img src="./assets/skin-analysis-session.webp" alt="A client receiving a digital skin analysis at Hailey Beauty" loading="lazy" />
           </figure>
-          <p class="vertical-note" aria-hidden="true">HERBAL · CARE · PRACTICE</p>
+          <p class="vertical-note" aria-hidden="true">ANALYSE · TAILOR · TREAT</p>
         </div>
 
         <div class="ritual-copy reveal">
@@ -184,16 +184,27 @@
         <header class="editorial-head reveal">
           <div>
             <h2 id="prices-title">Treatments &amp; Price List</h2>
-            <p>
-              A complimentary skin consultation is included before every facial so that each treatment can be tailored to your
-              skin concerns, comfort level and goals.
-            </p>
+            <p>Consultation complimentary with every facial.</p>
           </div>
-          <a class="button price-pdf-link" data-price-open target="_blank" rel="noopener noreferrer">
-            <span data-i18n="openPdf">Open PDF</span>
-            <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-          </a>
         </header>
+
+        <aside class="price-offer reveal" aria-labelledby="glow-bundle-title">
+          <div class="price-offer-heading">
+            <p class="price-offer-label">Opening offer</p>
+            <div>
+              <h3 id="glow-bundle-title">Glow Skin Bundle</h3>
+              <p>Introductory offer · Herbal Clarity &amp; Brightening Facial</p>
+            </div>
+            <p class="price-offer-price" aria-label="78 pounds">£78</p>
+          </div>
+          <ul class="price-offer-includes" aria-label="Glow Skin Bundle includes">
+            <li>Free skin analysis</li>
+            <li>Herbal Clarity &amp; Brightening Facial</li>
+            <li>Targeted custom serum add-on</li>
+            <li>Lip mask</li>
+          </ul>
+          <p class="price-offer-note">20% opening discount applied in store.</p>
+        </aside>
 
         <div class="native-price-list">
           <div class="price-tabs reveal" role="tablist" aria-label="Treatment categories">
@@ -289,20 +300,6 @@
               </p>
             </article>
 
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>Needle-Free MesoSkin Infusion Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £150</p>
-              </header>
-              <p>
-                A needle-free hydro-infusion treatment that gently resurfaces the skin and enhances the delivery of active serums
-                for visible hydration, smoother texture and a firmer-looking finish.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Consultation, cleanse, exfoliation, anti-inflammatory essence, MesoSkin infusion, cooling sheet mask
-                and finishing cream.
-              </p>
-            </article>
           </section>
 
           <section
@@ -512,10 +509,6 @@
             </div>
           </section>
 
-          <aside class="price-booking-note reveal" aria-labelledby="price-booking-title">
-            <h3 id="price-booking-title">Booking Notes</h3>
-            <p><strong>Consultations:</strong> Complimentary with every facial.</p>
-          </aside>
         </div>
       </section>
 
@@ -535,9 +528,23 @@
           </dl>
         </div>
         <figure class="about-portrait reveal" data-depth="0.025">
-          <img src="./assets/client-herbal-profile.webp" alt="A detailed profile view of a herbal facial treatment" loading="lazy" />
-          <figcaption><span>HAILEY BEAUTY</span><strong data-i18n="aboutCaption">Herbal knowledge · careful technique</strong></figcaption>
+          <img src="./assets/studio-overview.webp" alt="The private treatment area inside Hailey Beauty London" loading="lazy" />
+          <figcaption><span>HAILEY BEAUTY LONDON</span><strong data-i18n="aboutCaption">Herbal knowledge · careful technique</strong></figcaption>
         </figure>
+        <div class="studio-journal" aria-label="Inside the Hailey Beauty studio">
+          <figure class="studio-journal-room reveal">
+            <img src="./assets/studio-treatment-room.webp" alt="A prepared treatment bed and facial equipment at Hailey Beauty" loading="lazy" />
+            <figcaption data-i18n="studioTreatmentCaption">Prepared for each appointment</figcaption>
+          </figure>
+          <figure class="studio-journal-technology reveal">
+            <img src="./assets/skin-analysis-device.webp" alt="Digital skin analysis equipment inside the London studio" loading="lazy" />
+            <figcaption data-i18n="studioTechnologyCaption">Technology chosen around your skin</figcaption>
+          </figure>
+          <figure class="studio-journal-result reveal">
+            <img src="./assets/client-aftercare-glow.webp" alt="A client resting after a facial treatment" loading="lazy" />
+            <figcaption data-i18n="studioAftercareCaption">The immediate treatment finish</figcaption>
+          </figure>
+        </div>
         <figure class="about-map reveal">
           <iframe
             title="Google Maps showing Hailey Beauty, London"
@@ -546,9 +553,28 @@
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
+          <img class="about-entrance" src="./assets/studio-entrance.webp" alt="The entrance to Hailey Beauty at 52–53 Margaret Street" loading="lazy" />
           <figcaption>
-            <span data-i18n="locationLabel">London studio</span>
-            <strong data-i18n="locationAddress">Margaret Street · near Oxford Street</strong>
+            <div class="location-summary">
+              <img class="about-entrance-mobile" src="./assets/studio-entrance.webp" alt="" aria-hidden="true" loading="lazy" />
+              <div class="location-address">
+                <span data-i18n="locationLabel">London studio</span>
+                <strong data-i18n="locationAddress">52–53 Margaret Street</strong>
+                <small class="location-distance" data-i18n="locationDistance">2 min walk from Oxford Circus station</small>
+              </div>
+            </div>
+            <div class="opening-hours">
+              <p data-i18n="openingHoursTitle">Opening hours</p>
+              <dl>
+                <div><dt data-i18n="monday">Monday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="tuesday">Tuesday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="wednesday">Wednesday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="thursday">Thursday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="friday">Friday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="saturday">Saturday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="20:00">8 pm</time></dd></div>
+                <div><dt data-i18n="sunday">Sunday</dt><dd><time datetime="11:00">11 am</time>–<time datetime="18:00">6 pm</time></dd></div>
+              </dl>
+            </div>
             <a
               href="https://www.google.com/maps/place/Hailey+Beauty/@51.5164826,-0.1440578,17z/data=!3m1!4b1!4m6!3m5!1s0x48761bc30414e63f:0x4374372912733540!8m2!3d51.5164826!4d-0.1414829!16s%2Fg%2F11zh1z67wd?entry=ttu&amp;g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
@@ -564,39 +590,117 @@
       <section class="gallery section-bone" id="gallery" aria-labelledby="gallery-title">
         <header class="gallery-head reveal">
           <div>
-            <h2 id="gallery-title" data-i18n="galleryTitle">Real skin. Real treatment moments.</h2>
+            <h2 id="gallery-title" data-i18n="galleryTitle">Treatment stories, shown honestly.</h2>
           </div>
-          <p data-i18n="galleryCopy">A closer look at the process and the skin immediately before and after care.</p>
+          <p data-i18n="galleryCopy">Real treatment moments and immediate results, grouped by the facial performed.</p>
         </header>
 
-        <div class="gallery-grid">
-          <figure class="gallery-item gallery-before reveal">
-            <img src="./assets/client-before.webp" alt="Client skin before treatment" loading="lazy" />
-            <figcaption data-i18n="beforeLabel">Before treatment</figcaption>
+        <aside class="skin-finish-journal women-lead reveal" aria-labelledby="skin-finish-title">
+          <header>
+            <p data-i18n="skinFinishLabel">Treatment detail</p>
+            <h3 id="skin-finish-title" data-i18n="skinFinishTitle">A closer look at the finish</h3>
+            <span data-i18n="skinFinishCopy">Unretouched close-up views photographed in the studio.</span>
+          </header>
+          <figure>
+            <img src="./assets/client-progress-01.webp" alt="Close-up view of a woman's natural skin texture" loading="lazy" />
+            <figcaption data-i18n="comparisonBeforeLabel">Before</figcaption>
           </figure>
-          <figure class="gallery-item gallery-after reveal">
-            <img src="./assets/client-after.webp" alt="The same client's skin after treatment" loading="lazy" />
-            <figcaption data-i18n="afterLabel">After treatment</figcaption>
+          <figure>
+            <img src="./assets/client-result-right.webp" alt="Close-up view of a woman's skin after care" loading="lazy" />
+            <figcaption data-i18n="comparisonAfterLabel">After</figcaption>
           </figure>
-          <figure class="gallery-item gallery-process reveal">
-            <img src="./assets/client-treatment-rest.webp" alt="Client resting during a facial" loading="lazy" />
-            <figcaption data-i18n="processLabel">A quiet treatment moment</figcaption>
-          </figure>
-          <figure class="gallery-item gallery-herbs reveal">
-            <img src="./assets/client-herbal-mask.webp" alt="Fresh herbal facial preparation on the skin" loading="lazy" />
-            <figcaption data-i18n="herbsLabel">Fresh herbal preparation</figcaption>
-          </figure>
-          <figure class="gallery-item gallery-finish reveal">
-            <img src="./assets/client-post-treatment.webp" alt="Client skin immediately after treatment" loading="lazy" />
-            <figcaption data-i18n="finishLabel">Immediately after care</figcaption>
-          </figure>
-        </div>
+        </aside>
+
+        <article class="skin-analysis-story reveal" aria-labelledby="skin-analysis-story-title">
+          <header class="treatment-story-head">
+            <p data-i18n="analysisStoryLabel">Digital consultation</p>
+            <h3 id="skin-analysis-story-title" data-i18n="analysisStoryTitle">A detailed view beneath the surface</h3>
+            <span data-i18n="analysisStoryCopy">The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.</span>
+          </header>
+          <div class="analysis-report-grid">
+            <figure>
+              <img src="./assets/skin-analysis-overview.webp" alt="Digital skin analysis overview report" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="./assets/skin-analysis-metrics.webp" alt="Digital skin analysis charts and measured indicators" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="./assets/skin-analysis-advice.webp" alt="Digital skin analysis care advice" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+
+        <article class="treatment-story treatment-story-herbal" aria-labelledby="herbal-story-title">
+          <header class="treatment-story-head reveal">
+            <p data-i18n="treatmentStoryLabel">Treatment story 01</p>
+            <h3 id="herbal-story-title" data-i18n="herbalStoryTitle">Herbal Clarity and Brightening Facial</h3>
+            <span data-i18n="herbalStoryCopy">The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.</span>
+          </header>
+          <div class="herbal-story-grid">
+            <figure class="treatment-photo herbal-before reveal">
+              <img src="./assets/client-before.webp" alt="Client skin before the Herbal Clarity and Brightening Facial" loading="lazy" />
+              <figcaption data-i18n="beforeLabel">Before treatment</figcaption>
+            </figure>
+            <figure class="treatment-photo herbal-after reveal">
+              <img src="./assets/client-after.webp" alt="Client skin after the Herbal Clarity and Brightening Facial" loading="lazy" />
+              <figcaption data-i18n="afterLabel">After treatment</figcaption>
+            </figure>
+            <figure class="treatment-photo herbal-rest reveal">
+              <img src="./assets/client-treatment-rest.webp" alt="Client resting during the Herbal Clarity and Brightening Facial" loading="lazy" />
+              <figcaption data-i18n="processLabel">A quiet treatment moment</figcaption>
+            </figure>
+            <figure class="treatment-photo herbal-mask reveal">
+              <img src="./assets/client-herbal-mask.webp" alt="Fresh herbal mask applied during the facial" loading="lazy" />
+              <figcaption data-i18n="herbsLabel">Fresh herbal preparation</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="treatment-story treatment-story-blue reveal" aria-labelledby="blue-crystal-story-title">
+          <header class="treatment-story-head">
+            <p data-i18n="treatmentStoryLabelTwo">Treatment story 02</p>
+            <h3 id="blue-crystal-story-title" data-i18n="blueCrystalStoryTitle">Blue Crystal Brightening Treatment</h3>
+            <span data-i18n="blueCrystalStoryCopy">Two moments from one tailored brightening appointment.</span>
+          </header>
+          <div class="treatment-pair">
+            <figure class="treatment-photo">
+              <img src="./assets/blue-crystal-before.webp" alt="Client before the Blue Crystal Brightening Treatment" loading="lazy" />
+              <figcaption data-i18n="beforeLabel">Before treatment</figcaption>
+            </figure>
+            <figure class="treatment-photo">
+              <img src="./assets/blue-crystal-after.webp" alt="Client immediately after the Blue Crystal Brightening Treatment" loading="lazy" />
+              <figcaption data-i18n="finishLabel">Immediately after care</figcaption>
+            </figure>
+          </div>
+        </article>
         <div class="gallery-foot reveal">
           <p data-i18n="resultsNote">Photographs show individual treatment moments. Results vary by skin and treatment plan.</p>
           <a class="text-link" data-social="instagram" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
             <span data-i18n="followInstagram">See recent work on Instagram</span>
           </a>
+        </div>
+      </section>
+
+      <section class="tiktok-showcase" aria-label="TikTok">
+        <div class="tiktok-showcase-inner">
+          <div class="tiktok-embed-frame reveal">
+            <blockquote
+              class="tiktok-embed"
+              cite="https://www.tiktok.com/@haileybeautyldn"
+              data-unique-id="haileybeautyldn"
+              data-embed-from="oembed"
+              data-embed-type="creator"
+            >
+              <section>
+                <a
+                  href="https://www.tiktok.com/@haileybeautyldn?refer=creator_embed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >@haileybeautyldn on TikTok</a>
+              </section>
+            </blockquote>
+          </div>
         </div>
       </section>
 
@@ -613,7 +717,6 @@
             <span data-booking-label data-i18n="bookNow">Book now</span>
             <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
           </a>
-          <p class="booking-note" data-i18n="bookingNote">The booking page opens in a new tab.</p>
         </div>
       </section>
     </main>
@@ -623,18 +726,17 @@
         <div class="footer-brand">
           <img
             class="footer-logo"
-            src="./assets/hailey-beauty-logo.png?v=2"
+            src="./assets/hailey-beauty-wordmark.png?v=3"
             alt="Hailey Beauty"
-            width="240"
-            height="123"
+            width="208"
+            height="40"
           />
-          <p data-i18n="footerTagline">Herbal facial practice with Hong Kong roots.</p>
         </div>
         <div class="footer-contact">
-          <p class="footer-label" data-i18n="footerVisit">London appointments</p>
+          <p class="footer-label" data-i18n="footerVisit">Social media</p>
           <a data-social="instagram" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
-            Instagram · @haileybeautyldn
+            Instagram · @haileybeauty.studio
           </a>
           <a data-social="tiktok" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-tiktok"></use></svg>
@@ -648,10 +750,8 @@
             <svg aria-hidden="true"><use href="#icon-facebook"></use></svg>
             Facebook · Hailey Beauty
           </a>
-          <a aria-disabled="true" data-booking-link><span data-booking-label data-i18n="bookNow">Book now</span><svg aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
         </div>
         <div class="footer-legal">
-          <p class="footer-label" data-i18n="footerDetails">Studio details</p>
           <details>
             <summary data-i18n="privacyTitle">Privacy</summary>
             <p data-i18n="privacyCopy">This website does not collect personal information. External booking and social platforms apply their own privacy terms.</p>
@@ -665,6 +765,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=4"></script>
+    <script src="./script.js?v=12"></script>
   </body>
 </html>

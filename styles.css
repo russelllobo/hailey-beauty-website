@@ -673,16 +673,123 @@ html:lang(en) .hero-copy h1 {
   line-height: 1.4;
 }
 
-.price-pdf-link {
-  min-width: 10rem;
-  margin-bottom: 0.25rem;
-  border-color: var(--lacquer);
-  color: var(--lacquer);
+.price-offer {
+  position: relative;
+  max-width: 72rem;
+  margin: 0 auto 3.25rem;
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  overflow: hidden;
+  border: 1px solid rgba(143, 93, 32, 0.38);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184, 132, 65, 0.16), transparent 35%),
+    rgba(251, 247, 240, 0.72);
+  box-shadow: inset 4px 0 0 var(--brass);
 }
 
-.price-pdf-link:hover {
-  background: var(--lacquer);
-  color: var(--paper);
+.price-offer::after {
+  position: absolute;
+  top: -4.5rem;
+  right: -3rem;
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid rgba(143, 93, 32, 0.2);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.price-offer-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.35fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 1rem clamp(1.5rem, 4vw, 4rem);
+}
+
+.price-offer-label,
+.price-offer-note {
+  margin: 0;
+  color: var(--brass);
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.price-offer-heading h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4.2vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+}
+
+.price-offer-heading div > p {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.price-offer-price {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.78;
+}
+
+.price-offer-includes {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 2rem 0 0;
+  padding: 1.35rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.price-offer-includes li {
+  position: relative;
+  padding: 0 1.25rem 0 1.1rem;
+  color: var(--ink);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.price-offer-includes li:first-child {
+  padding-left: 1.1rem;
+}
+
+.price-offer-includes li::before {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--brass);
+  content: "";
+}
+
+.price-offer-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  color: #78585a;
+  letter-spacing: 0.08em;
 }
 
 .native-price-list {
@@ -786,15 +893,35 @@ html:lang(en) .hero-copy h1 {
 }
 
 .treatment {
-  padding: 0.95rem 0 1.05rem;
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+  gap: 0.45rem clamp(2rem, 4vw, 4rem);
+  margin-top: 0.9rem;
+  padding: clamp(1.35rem, 2.2vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid rgba(23, 58, 42, 0.16);
+  background: rgba(251, 247, 240, 0.58);
+  box-shadow: inset 3px 0 0 rgba(143, 93, 32, 0.62);
+  transition: border-color 220ms ease, background-color 220ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .treatment:hover {
+    border-color: rgba(143, 93, 32, 0.42);
+    background: rgba(251, 247, 240, 0.82);
+    transform: translateY(-2px);
+  }
 }
 
 .treatment-head {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .treatment h4,
@@ -812,11 +939,44 @@ html:lang(en) .hero-copy h1 {
   margin: 0;
 }
 
+.treatment-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--lacquer);
+  background: var(--lacquer);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.treatment-book:hover {
+  background: var(--brass);
+  border-color: var(--brass);
+}
+
+.treatment-book:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.treatment-book[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.5;
+}
+
 .treatment-meta {
-  color: var(--ink);
+  color: #78585a;
   font-family: var(--display);
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.28;
   text-align: right;
   white-space: nowrap;
@@ -831,11 +991,12 @@ html:lang(en) .hero-copy h1 {
 .treatment-meta-stack {
   display: grid;
   justify-items: end;
+  gap: 0.08rem;
 }
 
 .treatment > p {
   max-width: 67rem;
-  margin: 0.35rem 0 0;
+  margin: 0.75rem 0 0;
   color: var(--muted);
   font-family: var(--display);
   font-size: 0.96rem;
@@ -844,7 +1005,17 @@ html:lang(en) .hero-copy h1 {
 
 .treatment > .treatment-includes,
 .treatment > .treatment-note {
+  padding-left: clamp(1.25rem, 2.6vw, 2.5rem);
+  border-left: 1px solid var(--line);
   color: var(--ink);
+}
+
+.treatment > .treatment-note {
+  grid-column: 1 / -1;
+  margin-top: 0.35rem;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--line);
+  border-left: 0;
 }
 
 .treatment-includes em {
@@ -873,7 +1044,10 @@ html:lang(en) .hero-copy h1 {
 }
 
 .treatment-compact {
-  padding-block: 0.65rem 0.7rem;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 0.65rem;
+  padding: 1rem 1.15rem;
 }
 
 .treatment-compact h6 {
@@ -881,7 +1055,7 @@ html:lang(en) .hero-copy h1 {
 }
 
 .treatment-compact > p {
-  margin-top: 0.2rem;
+  margin-top: 0.55rem;
   font-size: 0.92rem;
 }
 
@@ -1001,10 +1175,76 @@ html:lang(en) .hero-copy h1 {
   font-weight: 400;
 }
 
+.studio-journal {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1.2fr 0.72fr 0.95fr;
+  gap: 0.85rem;
+  height: 28rem;
+}
+
+.studio-journal figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.studio-journal figure::after,
+.treatment-photo::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(8, 29, 20, 0.58));
+  pointer-events: none;
+  content: "";
+}
+
+.studio-journal img,
+.treatment-photo img,
+.skin-finish-journal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease;
+}
+
+.studio-journal figure:hover img,
+.treatment-photo:hover img,
+.skin-finish-journal figure:hover img {
+  filter: saturate(0.92);
+  transform: scale(1.025);
+}
+
+.studio-journal-room img {
+  object-position: 50% 45%;
+}
+
+.studio-journal-technology img {
+  object-position: 50% 58%;
+}
+
+.studio-journal-result img {
+  object-position: 50% 37%;
+}
+
+.studio-journal figcaption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--brass-light);
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+
 .about-map {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.38fr);
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.28fr) minmax(18rem, 0.42fr);
   min-height: 30rem;
   margin: 1rem 0 0;
   border-top: 1px solid var(--line);
@@ -1019,6 +1259,14 @@ html:lang(en) .hero-copy h1 {
   filter: saturate(0.7) contrast(0.94);
 }
 
+.about-entrance {
+  width: 100%;
+  height: 100%;
+  min-height: 30rem;
+  object-fit: cover;
+  object-position: 50% 48%;
+}
+
 .about-map figcaption {
   display: flex;
   flex-direction: column;
@@ -1027,7 +1275,20 @@ html:lang(en) .hero-copy h1 {
   background: var(--paper);
 }
 
-.about-map figcaption > span {
+.location-summary {
+  display: block;
+}
+
+.about-entrance-mobile {
+  display: none;
+}
+
+.location-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-address > span {
   margin-bottom: 0.85rem;
   color: var(--brass);
   font-size: 0.64rem;
@@ -1036,7 +1297,7 @@ html:lang(en) .hero-copy h1 {
   text-transform: uppercase;
 }
 
-.about-map figcaption strong {
+.location-address strong {
   color: var(--lacquer);
   font-family: var(--display);
   font-size: clamp(1.8rem, 2.5vw, 2.6rem);
@@ -1044,12 +1305,63 @@ html:lang(en) .hero-copy h1 {
   line-height: 1.05;
 }
 
+.location-distance {
+  margin-top: 0.65rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.opening-hours {
+  width: 100%;
+  max-width: 19rem;
+  margin-top: 1.8rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.opening-hours > p {
+  margin: 0 0 0.75rem;
+  color: var(--brass);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.opening-hours dl,
+.opening-hours dd {
+  margin: 0;
+}
+
+.opening-hours dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  padding: 0.27rem 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
+.opening-hours dt {
+  font-weight: 500;
+}
+
+.opening-hours dd {
+  color: var(--lacquer);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
 .about-map figcaption a {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
   gap: 0.7rem;
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--brass);
   color: var(--lacquer);
@@ -1100,84 +1412,252 @@ html:lang(en) .hero-copy h1 {
   color: var(--muted);
 }
 
-.gallery-grid {
+.treatment-story {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 18rem 22rem;
-  gap: 0.85rem;
+  grid-template-columns: minmax(16rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
   margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
 }
 
-.gallery-item {
+.treatment-story-head {
+  align-self: start;
+  max-width: 26rem;
+}
+
+.treatment-story-head p,
+.skin-finish-journal header p {
+  margin: 0 0 0.8rem;
+  color: var(--brass);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.treatment-story-head h3,
+.skin-finish-journal h3 {
+  margin: 0;
+  color: var(--lacquer);
+  font-family: var(--display);
+  font-size: clamp(2.35rem, 3.3vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.treatment-story-head > span,
+.skin-finish-journal header > span {
+  display: block;
+  margin-top: 1.35rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.treatment-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  height: 35rem;
+}
+
+.treatment-photo {
   position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #e9dfd2;
+}
+
+.treatment-story-blue .treatment-photo img {
+  object-position: 50% 30%;
+}
+
+.treatment-story-herbal {
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: clamp(5rem, 8vw, 8rem);
+}
+
+.treatment-story-herbal .treatment-story-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.56fr);
+  column-gap: 4rem;
+  max-width: none;
+}
+
+.treatment-story-herbal .treatment-story-head p,
+.treatment-story-herbal .treatment-story-head h3 {
+  grid-column: 1;
+}
+
+.treatment-story-herbal .treatment-story-head > span {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin-top: 0;
+}
+
+.herbal-story-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 16rem 18rem;
+  gap: 0.85rem;
+}
+
+.herbal-before { grid-column: 1 / span 4; }
+.herbal-after { grid-column: 5 / span 4; }
+.herbal-rest { grid-column: 9 / -1; grid-row: 1 / span 2; }
+.herbal-mask { grid-column: 1 / span 8; }
+
+.herbal-before img,
+.herbal-after img {
+  object-position: 50% 25%;
+}
+
+.herbal-rest img { object-position: 48% 45%; }
+.herbal-mask img { object-position: 50% 36%; }
+
+.skin-finish-journal {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.78fr) repeat(2, minmax(0, 1fr));
+  min-height: 28rem;
+  margin-top: clamp(5rem, 8vw, 8rem);
+  background: var(--lacquer);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.skin-finish-journal header {
+  align-self: center;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.skin-finish-journal h3 {
+  color: var(--paper);
+}
+
+.skin-finish-journal header > span {
+  color: rgba(246, 239, 228, 0.68);
+}
+
+.skin-finish-journal figure {
+  position: relative;
+  min-height: 28rem;
   margin: 0;
   overflow: hidden;
 }
 
-.gallery-item::after {
+.treatment-photo figcaption,
+.skin-finish-journal figcaption {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 62%, rgba(8, 29, 20, 0.48));
-  pointer-events: none;
-  content: "";
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.035);
-  filter: saturate(0.9);
-}
-
-.gallery-item figcaption {
-  position: absolute;
-  bottom: 1.1rem;
-  left: 1.1rem;
+  top: auto;
+  right: auto;
+  bottom: 1rem;
+  left: 1rem;
   z-index: 2;
-  padding-left: 0.8rem;
-  border-left: 1px solid var(--brass-light);
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(246, 239, 228, 0.45);
+  background: rgba(8, 29, 20, 0.72);
   color: var(--paper);
-  font-family: var(--display);
-  font-size: 1.05rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.gallery-before {
-  grid-column: 1 / span 4;
+.skin-finish-journal figure + figure {
+  border-left: 1px solid rgba(246, 239, 228, 0.2);
 }
 
-.gallery-after {
-  grid-column: 5 / span 4;
+.skin-finish-journal img {
+  object-position: 50% 34%;
 }
 
-.gallery-process {
-  grid-column: 9 / -1;
+.women-lead {
+  margin-top: 4rem;
+}
+
+.women-progress-story,
+.skin-analysis-story {
+  margin-top: clamp(5rem, 8vw, 8rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.women-progress-story > .treatment-story-head,
+.skin-analysis-story > .treatment-story-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.5fr);
+  column-gap: 4rem;
+  max-width: none;
+  margin-bottom: 2.5rem;
+}
+
+.women-progress-story > .treatment-story-head p,
+.women-progress-story > .treatment-story-head h3,
+.skin-analysis-story > .treatment-story-head p,
+.skin-analysis-story > .treatment-story-head h3 {
+  grid-column: 1;
+}
+
+.women-progress-story > .treatment-story-head > span,
+.skin-analysis-story > .treatment-story-head > span {
+  grid-column: 2;
   grid-row: 1 / span 2;
+  align-self: end;
+  margin-top: 0;
 }
 
-.gallery-herbs {
-  grid-column: 1 / span 5;
+.women-progress-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 1fr;
+  gap: 0.85rem;
+  height: 36rem;
 }
 
-.gallery-finish {
-  grid-column: 6 / span 3;
+.women-progress-grid .treatment-photo:nth-child(2) {
+  margin-top: 4rem;
 }
 
-.gallery-before img,
-.gallery-after img {
-  object-position: 50% 24%;
+.women-progress-grid .treatment-photo:nth-child(3) {
+  margin-bottom: 3rem;
 }
 
-.gallery-process img {
-  object-position: 48% 45%;
+.women-progress-grid img {
+  object-position: 50% 38%;
 }
 
-.gallery-herbs img {
-  object-position: 50% 35%;
+.skin-analysis-story {
+  padding: clamp(2rem, 4vw, 4rem);
+  border-top: 0;
+  background: var(--paper);
+}
+
+.analysis-report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+
+.analysis-report-grid figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 1.4rem 3.5rem rgba(21, 47, 34, 0.08);
+  overflow: hidden;
+}
+
+.analysis-report-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .gallery-foot {
@@ -1195,6 +1675,34 @@ html:lang(en) .hero-copy h1 {
   margin: 0;
   color: var(--muted);
   font-size: 0.78rem;
+}
+
+.tiktok-showcase {
+  padding: var(--section-space) max(3rem, calc((100vw - 88rem) / 2));
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.tiktok-showcase-inner {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.tiktok-embed-frame {
+  width: 100%;
+  min-width: 0;
+  min-height: 31rem;
+  padding: clamp(0.7rem, 1.5vw, 1.25rem);
+  border: 1px solid rgba(143, 93, 32, 0.24);
+  background: var(--bone);
+  box-shadow: var(--shadow);
+}
+
+.tiktok-embed-frame .tiktok-embed {
+  width: 100%;
+  max-width: 780px;
+  min-width: 288px;
+  margin: 0 auto !important;
 }
 
 .booking {
@@ -1260,17 +1768,11 @@ html:lang(en) .hero-copy h1 {
   font-size: clamp(4.5rem, 8vw, 8.5rem);
 }
 
-.booking-inner > p:not(.micro-label, .booking-note) {
+.booking-inner > p:not(.micro-label) {
   max-width: 39rem;
   margin: 2rem 0;
   color: rgba(246, 239, 228, 0.7);
   font-size: 1.05rem;
-}
-
-.booking-note {
-  margin: 0.9rem 0 0;
-  color: rgba(246, 239, 228, 0.5);
-  font-size: 0.7rem;
 }
 
 .site-footer {
@@ -1299,14 +1801,6 @@ html:lang(en) .hero-copy h1 {
   margin-bottom: 0.85rem;
 }
 
-.footer-brand p {
-  max-width: 20rem;
-  margin: 0.25rem 0 0;
-  color: rgba(246, 239, 228, 0.55);
-  font-family: var(--display);
-  font-size: 1.05rem;
-}
-
 .footer-label {
   margin: 0 0 1rem;
   color: var(--brass-light);
@@ -1332,10 +1826,6 @@ html:lang(en) .hero-copy h1 {
 
 .footer-legal details {
   border-top: 1px solid var(--line-light);
-}
-
-.footer-legal details:last-child {
-  border-bottom: 1px solid var(--line-light);
 }
 
 .footer-legal summary {
@@ -1541,8 +2031,52 @@ html:lang(en) .hero-copy h1 {
     grid-template-columns: 1fr;
   }
 
-  .about-map iframe {
+  .about-map iframe,
+  .about-entrance {
     min-height: 25rem;
+  }
+
+  .studio-journal {
+    height: 24rem;
+  }
+
+  .treatment-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .treatment-story-head {
+    max-width: 40rem;
+  }
+
+  .treatment-story-herbal .treatment-story-head {
+    grid-template-columns: 1fr;
+  }
+
+  .treatment-story-herbal .treatment-story-head > span {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 1.25rem;
+  }
+
+  .skin-finish-journal {
+    grid-template-columns: minmax(15rem, 0.72fr) repeat(2, minmax(0, 1fr));
+  }
+
+  .women-progress-story > .treatment-story-head,
+  .skin-analysis-story > .treatment-story-head {
+    grid-template-columns: 1fr;
+  }
+
+  .women-progress-story > .treatment-story-head > span,
+  .skin-analysis-story > .treatment-story-head > span {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 1.25rem;
+  }
+
+  .women-progress-grid {
+    height: 31rem;
   }
 
   .gallery-grid {
@@ -1569,6 +2103,7 @@ html:lang(en) .hero-copy h1 {
   .gallery-finish {
     grid-column: 6 / -1;
   }
+
 }
 
 main {
@@ -1584,8 +2119,160 @@ main > .gallery {
   order: 1;
 }
 
-main > :not(.hero):not(.gallery) {
+main > .tiktok-showcase {
+  order: 1;
+}
+
+main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   order: 2;
+}
+
+.proof-line {
+  display: none;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery > .women-lead {
+  order: 1;
+}
+
+.gallery > .treatment-story-herbal {
+  order: 2;
+}
+
+.gallery > .treatment-story-blue {
+  order: 3;
+}
+
+.gallery > .skin-analysis-story {
+  order: 4;
+}
+
+.gallery > .gallery-foot {
+  order: 5;
+}
+
+@media (min-width: 641px) {
+  .gallery {
+    padding-top: clamp(3.5rem, 5vw, 5.5rem);
+  }
+
+  .gallery-head,
+  .skin-finish-journal header,
+  .gallery-foot {
+    display: none;
+  }
+
+  .skin-finish-journal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 0;
+    max-width: 68rem;
+    margin: 0 auto;
+    background: transparent;
+  }
+
+  .skin-finish-journal figure {
+    min-height: 0;
+    aspect-ratio: 0.86 / 1;
+  }
+
+  .skin-finish-journal figure + figure {
+    border-left-color: var(--bone);
+  }
+
+  .treatment-story {
+    display: block;
+    max-width: 68rem;
+    margin: 0.8rem auto 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .treatment-story > .treatment-story-head {
+    display: block;
+    max-width: none;
+    margin: 1.7rem 0 0.9rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .treatment-story > .treatment-story-head p,
+  .treatment-story > .treatment-story-head > span {
+    display: none;
+  }
+
+  .treatment-story > .treatment-story-head h3 {
+    color: var(--brass);
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .herbal-story-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: 0.75rem;
+  }
+
+  .herbal-story-grid .treatment-photo {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 0.82 / 1;
+  }
+
+  .treatment-pair {
+    gap: 0.75rem;
+    height: auto;
+  }
+
+  .treatment-pair .treatment-photo {
+    aspect-ratio: 0.86 / 1;
+  }
+
+  .skin-analysis-story {
+    max-width: 68rem;
+    margin: 2.25rem auto 0;
+    padding: 2.25rem 0 0;
+    border-top: 1px solid var(--line);
+    background: transparent;
+  }
+
+  .skin-analysis-story > .treatment-story-head {
+    display: block;
+    max-width: 42rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skin-analysis-story > .treatment-story-head p {
+    display: none;
+  }
+
+  .skin-analysis-story > .treatment-story-head > span {
+    margin-top: 0.8rem;
+  }
+
+  .analysis-report-grid {
+    display: flex;
+    gap: 0.9rem;
+    padding-bottom: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: var(--brass) transparent;
+    scrollbar-width: thin;
+  }
+
+  .analysis-report-grid figure {
+    flex: 0 0 min(30rem, 48%);
+    scroll-snap-align: start;
+  }
 }
 
 @media (min-width: 1161px) {
@@ -1665,17 +2352,13 @@ main > :not(.hero):not(.gallery) {
   }
 
   .about-map,
-  .about-map iframe {
+  .about-map iframe,
+  .about-entrance {
     min-height: 24rem;
   }
 
   .about-map {
     margin-top: 0;
-  }
-
-  .gallery-grid {
-    grid-template-rows: 16rem 19rem;
-    margin-top: 3rem;
   }
 
   .gallery-foot {
@@ -1688,7 +2371,7 @@ main > :not(.hero):not(.gallery) {
     padding-block: 4rem;
   }
 
-  .booking-inner > p:not(.micro-label, .booking-note) {
+  .booking-inner > p:not(.micro-label) {
     margin: 1.6rem 0 1.8rem;
   }
 
@@ -1704,8 +2387,8 @@ main > :not(.hero):not(.gallery) {
     --header-height: 4.25rem;
   }
 
-  .proof-line {
-    display: none;
+  main > :not(.hero):not(.gallery).tiktok-showcase {
+    order: 1;
   }
 
   h2 {
@@ -1828,7 +2511,7 @@ main > :not(.hero):not(.gallery) {
     aspect-ratio: 2.15 / 1;
     margin-inline: auto;
     object-fit: cover;
-    object-position: 68% 50%;
+    object-position: 50% 50%;
   }
 
   .hero-wash {
@@ -1838,7 +2521,7 @@ main > :not(.hero):not(.gallery) {
   .hero-inner {
     align-items: start;
     min-height: 0;
-    padding: 1.15rem 0 2rem;
+    padding: 1.4rem 0 2.6rem;
   }
 
   .hero-copy {
@@ -1850,50 +2533,65 @@ main > :not(.hero):not(.gallery) {
   }
 
   .hero-announcement {
-    margin-bottom: 0.75rem;
-    padding: 0.48rem 0.6rem;
+    gap: 0.6rem;
+    max-width: 34rem;
+    margin-bottom: 1.15rem;
+    padding: 0.15rem 0 0.15rem 0.85rem;
+    border: 0;
+    border-left: 2px solid var(--brass-fill);
+    background: transparent;
     font-size: 0.62rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.115em;
+    line-height: 1.35;
+    backdrop-filter: none;
+  }
+
+  .hero-announcement::before {
+    width: 0.36rem;
+    height: 0.36rem;
+    box-shadow: none;
   }
 
   .hero-copy h1 {
     max-width: 100%;
-    font-size: clamp(3rem, 12vw, 4rem);
-    letter-spacing: -0.018em;
-    line-height: 0.92;
+    font-size: clamp(3.15rem, 13.5vw, 4rem);
+    letter-spacing: -0.026em;
+    line-height: 0.88;
     text-wrap: balance;
   }
 
   .hero-lead {
     width: min(100%, 34rem);
-    margin: 0.8rem 0 0;
-    font-size: 0.94rem;
-    line-height: 1.55;
+    margin: 1.15rem 0 0;
+    font-size: 0.96rem;
+    line-height: 1.62;
   }
 
   .hero-actions {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     align-items: stretch;
-    gap: 0.65rem;
+    gap: 0.45rem;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1.35rem;
   }
 
   .hero-actions .button {
-    min-height: 3rem;
-    padding-inline: 0.7rem;
-    gap: 0.55rem;
+    min-height: 3.35rem;
+    padding-inline: 1.1rem;
+    gap: 0.8rem;
   }
 
   .hero-actions .text-link {
     justify-content: center;
-    min-height: 3rem;
-    padding: 0.7rem 0.55rem;
-    border: 1px solid var(--lacquer);
-    gap: 0.45rem;
-    font-size: 0.68rem;
-    line-height: 1.1;
+    justify-self: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 0 0.4rem;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    gap: 0.65rem;
+    font-size: 0.7rem;
+    line-height: 1.2;
     text-align: center;
   }
 
@@ -1941,48 +2639,82 @@ main > :not(.hero):not(.gallery) {
   }
 
   .ritual {
-    display: none;
+    display: grid;
+    gap: 0;
+    min-height: 0;
+    padding-top: 2.75rem;
+    padding-bottom: 3.25rem;
   }
 
   .ritual-visual {
-    display: none;
+    display: block;
+    min-height: 0;
+    margin-bottom: 2rem;
+    transform: none;
   }
 
   .ritual-copy h2 {
     max-width: 100%;
-    font-size: clamp(2.4rem, 9vw, 3.25rem);
+    font-size: clamp(2.35rem, 10.5vw, 3.15rem);
     letter-spacing: -0.025em;
-    line-height: 0.98;
+    line-height: 0.96;
     text-wrap: pretty;
   }
 
-  .ritual-visual {
-    min-height: 31rem;
+  .ritual-copy .section-lead {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.62;
   }
 
   .ritual-visual::before {
-    top: -1rem;
-    right: 3%;
-    width: 73%;
+    display: none;
   }
 
   .ritual-image-main {
-    width: 84%;
-    height: 25rem;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 0.84;
   }
 
   .ritual-image-detail {
-    width: 61%;
-    height: 12rem;
+    display: none;
   }
 
   .vertical-note {
-    left: -0.65rem;
+    display: none;
+  }
+
+  .ritual-steps {
+    margin-top: 1.6rem;
   }
 
   .ritual-steps li {
-    grid-template-columns: 1fr;
-    gap: 0.3rem;
+    grid-template-columns: 5.75rem minmax(0, 1fr);
+    align-items: start;
+    gap: 0.8rem;
+    padding-block: 0.95rem;
+  }
+
+  .ritual-steps li > span {
+    gap: 0.48rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .ritual-steps li > span::before {
+    font-size: 0.52rem;
+  }
+
+  .ritual-steps p {
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+
+  .ritual blockquote {
+    display: none;
   }
 
   .editorial-head,
@@ -2009,8 +2741,58 @@ main > :not(.hero):not(.gallery) {
     margin: 0;
   }
 
-  .price-pdf-link {
-    width: 100%;
+  .price-offer {
+    margin-bottom: 2.25rem;
+    padding: 1.35rem 1rem 1.4rem;
+    box-shadow: inset 2px 0 0 var(--brass);
+  }
+
+  .price-offer::after {
+    top: -5.5rem;
+    right: -5.5rem;
+  }
+
+  .price-offer-heading {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.85rem 1rem;
+  }
+
+  .price-offer-label {
+    grid-column: 1 / -1;
+  }
+
+  .price-offer-heading h3 {
+    font-size: clamp(2.35rem, 11vw, 3.2rem);
+    line-height: 0.92;
+  }
+
+  .price-offer-heading div > p {
+    margin-top: 0.65rem;
+    font-size: 0.66rem;
+  }
+
+  .price-offer-price {
+    padding-top: 0.15rem;
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .price-offer-includes {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+  }
+
+  .price-offer-includes li {
+    padding-right: 0;
+    font-size: 0.8rem;
+  }
+
+  .price-offer-note {
+    margin-top: 1.15rem;
+    font-size: 0.62rem;
+    line-height: 1.5;
   }
 
   .price-tabs {
@@ -2037,6 +2819,10 @@ main > :not(.hero):not(.gallery) {
     margin-top: 2.25rem;
   }
 
+  .price-category > h3 {
+    display: none;
+  }
+
   .price-category > h3,
   .price-booking-note h3 {
     margin-bottom: 0.75rem;
@@ -2044,12 +2830,30 @@ main > :not(.hero):not(.gallery) {
   }
 
   .treatment {
-    padding-block: 0.8rem 0.9rem;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 0.75rem;
+    padding: 1.15rem 1rem 1.2rem;
+    box-shadow: inset 2px 0 0 rgba(143, 93, 32, 0.68);
   }
 
   .treatment-head {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem 0.75rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .treatment-head .treatment-meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .treatment-book {
+    grid-column: 1 / -1;
+    align-self: center;
+    min-height: 2.25rem;
+    padding: 0.55rem 0.72rem;
+    font-size: 0.58rem;
   }
 
   .treatment h4,
@@ -2068,13 +2872,21 @@ main > :not(.hero):not(.gallery) {
   }
 
   .treatment > p {
-    margin-top: 0.3rem;
+    margin-top: 0.8rem;
     font-size: 0.92rem;
     line-height: 1.4;
   }
 
+  .treatment > .treatment-includes,
+  .treatment > .treatment-note {
+    margin-top: 0.75rem;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
   .treatment-compact {
-    padding-block: 0.55rem 0.65rem;
+    padding: 0.9rem 0.95rem;
   }
 
   .treatment-compact h6 {
@@ -2124,59 +2936,231 @@ main > :not(.hero):not(.gallery) {
     display: none;
   }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 11.5rem 14rem 12.5rem;
+  .studio-journal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.55rem;
-    margin-top: 0.75rem;
+    height: auto;
   }
 
-  .gallery-before,
-  .gallery-after {
-    grid-row: 1;
+  .studio-journal-room {
+    grid-column: 1 / -1;
+    aspect-ratio: 1.5 / 1;
   }
 
-  .gallery-before {
-    grid-column: 1;
+  .studio-journal-technology,
+  .studio-journal-result {
+    aspect-ratio: 0.82 / 1;
   }
 
-  .gallery-after {
-    grid-column: 2;
-  }
-
-  .gallery-process {
-    grid-column: 1;
-    grid-row: 2 / span 2;
-  }
-
-  .gallery-herbs {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .gallery-finish {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  .gallery-item figcaption {
+  .studio-journal figcaption {
+    right: 0.65rem;
     bottom: 0.65rem;
     left: 0.65rem;
-    max-width: calc(100% - 1rem);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
+  }
+
+  .treatment-photo figcaption,
+  .skin-finish-journal figcaption {
+    top: auto;
+    right: auto;
+    bottom: 0.65rem;
+    left: 0.65rem;
+    font-size: 0.58rem;
+  }
+
+  .about-entrance {
+    display: none;
+  }
+
+  .location-summary {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 0.8fr) minmax(0, 1.2fr);
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .about-entrance-mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 8.75rem;
+    object-fit: cover;
+    object-position: 50% 46%;
+  }
+
+  .location-address {
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .location-address > span {
+    margin-bottom: 0.55rem;
+  }
+
+  .location-address strong {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+  }
+
+  .treatment-story {
+    gap: 0;
+    margin-top: 0.55rem;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .treatment-story > .treatment-story-head {
+    display: block;
+    margin: 1.25rem 0 0.7rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .treatment-story > .treatment-story-head p,
+  .treatment-story > .treatment-story-head > span {
+    display: none;
+  }
+
+  .treatment-story > .treatment-story-head h3 {
+    color: var(--brass);
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .treatment-story-head h3,
+  .skin-finish-journal h3 {
+    font-size: clamp(2.15rem, 10vw, 3rem);
+  }
+
+  .treatment-story-head > span,
+  .skin-finish-journal header > span {
+    margin-top: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .treatment-pair {
+    gap: 0.55rem;
+    height: auto;
+  }
+
+  .treatment-pair .treatment-photo {
+    aspect-ratio: 0.76 / 1;
+  }
+
+  .treatment-story-herbal {
+    margin-top: 0.55rem;
+  }
+
+  .herbal-story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: 0.55rem;
+  }
+
+  .herbal-story-grid .treatment-photo {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 0.9 / 1;
+  }
+
+  .skin-finish-journal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 0;
+    margin-top: 4rem;
+  }
+
+  .women-lead {
+    margin-top: 2.5rem;
+  }
+
+  .women-progress-story,
+  .skin-analysis-story {
+    margin-top: 4rem;
+    padding-top: 1.35rem;
+  }
+
+  .women-progress-story > .treatment-story-head,
+  .skin-analysis-story > .treatment-story-head {
+    margin-bottom: 1.4rem;
+  }
+
+  .women-progress-grid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    height: auto;
+  }
+
+  .women-progress-grid .treatment-photo,
+  .women-progress-grid .treatment-photo:nth-child(2),
+  .women-progress-grid .treatment-photo:nth-child(3) {
+    aspect-ratio: 1 / 1.05;
+    margin: 0;
+  }
+
+  .skin-analysis-story {
+    order: 4;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding: 2.5rem 1rem 2.75rem;
+  }
+
+  .skin-analysis-story > .treatment-story-head {
+    display: block;
+    margin-bottom: 1.4rem;
+  }
+
+  .skin-analysis-story > .treatment-story-head p {
+    display: none;
+  }
+
+  .analysis-report-grid {
+    display: flex;
+    gap: 0.75rem;
+    margin-right: -1rem;
+    padding-right: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .analysis-report-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .analysis-report-grid figure {
+    flex: 0 0 min(82vw, 20rem);
+    scroll-snap-align: start;
+  }
+
+  .skin-finish-journal header {
+    display: none;
+  }
+
+  .skin-finish-journal figure {
+    min-height: 0;
+    aspect-ratio: 0.78 / 1;
   }
 
   .gallery-foot {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.25rem;
-    padding-top: 1rem;
+    display: none;
   }
 
   .gallery-foot p {
     display: none;
+  }
+
+  .tiktok-showcase {
+    padding: var(--section-space) 1rem;
+  }
+
+  .tiktok-embed-frame {
+    min-height: 27rem;
+    padding: 0.4rem;
+    box-shadow: 0 1.2rem 3rem rgba(21, 47, 34, 0.12);
   }
 
   .booking {
@@ -2193,7 +3177,7 @@ main > :not(.hero):not(.gallery) {
     font-size: clamp(3.75rem, 16vw, 5rem);
   }
 
-  .booking-inner > p:not(.micro-label, .booking-note) {
+  .booking-inner > p:not(.micro-label) {
     margin: 1.35rem 0 1.6rem;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -2220,6 +3204,14 @@ main > :not(.hero):not(.gallery) {
 }
 
 @media (max-width: 380px) {
+  .tiktok-showcase {
+    padding-inline: 0.5rem;
+  }
+
+  .tiktok-embed-frame {
+    padding: 0;
+  }
+
   .hero-copy h1 {
     font-size: clamp(2.8rem, 15vw, 3.3rem);
   }
@@ -2228,8 +3220,12 @@ main > :not(.hero):not(.gallery) {
     grid-template-columns: 1fr;
   }
 
-  .gallery-grid {
-    grid-template-rows: 10.5rem 12.5rem 11.5rem;
+  .treatment-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .treatment-pair .treatment-photo {
+    aspect-ratio: 1 / 1.1;
   }
 }
 

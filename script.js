@@ -2,17 +2,24 @@ const SITE_CONFIG = {
   name: "Hailey Beauty",
   bookingUrl: "https://www.sumupbookings.com/hailey-beauty-ltd",
   bookingProvider: "",
-  instagramUrl: "https://www.instagram.com/haileybeautyldn/",
+  instagramUrl: "https://www.instagram.com/haileybeauty.studio/",
   tiktokUrl: "https://www.tiktok.com/@haileybeautyldn",
   rednoteUrl: "https://www.xiaohongshu.com/search_result?keyword=hk_beauty",
   whatsappUrl: "",
   facebookUrl: "https://www.facebook.com/search/top?q=Hailey%20Beauty",
   phone: "",
   email: "",
-  address: "",
-  openingHours: [],
+  address: "52-53 Margaret Street, London",
+  openingHours: [
+    "Mo 11:00-20:00",
+    "Tu 11:00-20:00",
+    "We 11:00-20:00",
+    "Th 11:00-20:00",
+    "Fr 11:00-20:00",
+    "Sa 11:00-20:00",
+    "Su 11:00-18:00"
+  ],
   canonicalUrl: "",
-  treatmentPdf: "./assets/hailey-beauty-treatments-prices.pdf",
   socialImage: "./assets/hero-treatment.webp"
 };
 
@@ -46,7 +53,6 @@ const translations = {
     stepTreat: "Treat",
     stepTreatCopy: "Measured application, thoughtful technique and clear aftercare.",
     ritualQuote: "Care shaped by personal acne experience and three decades in the salon.",
-    openPdf: "Open PDF",
     aboutKicker: "Our point of view",
     aboutTitle: "Hong Kong practice, made personal in London.",
     aboutLead: "Hailey Beauty grew from two Hong Kong salons and a personal understanding of persistent acne.",
@@ -55,27 +61,61 @@ const translations = {
     hongKongSalons: "Hong Kong salons",
     consultLanguages: "consultation languages",
     aboutCaption: "Herbal knowledge · careful technique",
+    studioTreatmentCaption: "Prepared for each appointment",
+    studioTechnologyCaption: "Technology chosen around your skin",
+    studioAftercareCaption: "The immediate treatment finish",
     locationLabel: "London studio",
-    locationAddress: "Margaret Street · near Oxford Street",
+    locationAddress: "52–53 Margaret Street",
+    locationDistance: "2 min walk from Oxford Circus station",
+    openingHoursTitle: "Opening hours",
+    saturday: "Saturday",
+    sunday: "Sunday",
+    monday: "Monday",
+    tuesday: "Tuesday",
+    wednesday: "Wednesday",
+    thursday: "Thursday",
+    friday: "Friday",
     viewMap: "View in Google Maps",
     galleryKicker: "Treatment journal",
-    galleryTitle: "Real skin. Real treatment moments.",
-    galleryCopy: "A closer look at the process and the skin immediately before and after care.",
+    galleryTitle: "Treatment stories, shown honestly.",
+    galleryCopy: "Real treatment moments and immediate results, grouped by the facial performed.",
+    treatmentStoryLabel: "Treatment story 01",
+    treatmentStoryLabelTwo: "Treatment story 02",
+    blueCrystalStoryTitle: "Blue Crystal Brightening Treatment",
+    blueCrystalStoryCopy: "Two moments from one tailored brightening appointment.",
+    herbalStoryTitle: "Herbal Clarity and Brightening Facial",
+    herbalStoryCopy: "The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.",
     beforeLabel: "Before treatment",
     afterLabel: "After treatment",
     processLabel: "A quiet treatment moment",
     herbsLabel: "Fresh herbal preparation",
+    herbalApplicationLabel: "Herbal mask application",
     finishLabel: "Immediately after care",
+    skinFinishLabel: "Treatment detail",
+    skinFinishTitle: "A closer look at the finish",
+    skinFinishCopy: "Unretouched close-up views photographed in the studio.",
+    comparisonBeforeLabel: "Before",
+    comparisonAfterLabel: "After",
+    skinProgressLabel: "Skin progress",
+    skinProgressTitle: "Real skin, photographed up close",
+    skinProgressCopy: "Three natural views showing texture, tone and the skin’s changing appearance.",
+    skinViewOne: "Skin view 01",
+    skinViewTwo: "Skin view 02",
+    skinViewThree: "Skin view 03",
+    analysisStoryLabel: "Digital consultation",
+    analysisStoryTitle: "A detailed view beneath the surface",
+    analysisStoryCopy: "The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.",
     resultsNote: "Photographs show individual treatment moments. Results vary by skin and treatment plan.",
     followInstagram: "See recent work on Instagram",
+    tiktokKicker: "Inside the studio",
+    tiktokTitle: "Follow the work as it happens.",
+    tiktokCopy: "Recent treatments, skin education and quiet moments from the studio—updated directly from TikTok.",
+    followTikTok: "Follow @haileybeautyldn",
     bookingKicker: "Your next appointment",
     bookingTitle: "Let’s begin",
     bookingCopy: "View live availability and choose your treatment through our booking destination. You can discuss sensitivities and goals during consultation.",
     continueBooking: "Continue to booking",
-    bookingNote: "The booking page opens in a new tab.",
-    footerTagline: "Herbal facial practice with Hong Kong roots.",
-    footerVisit: "London appointments",
-    footerDetails: "Studio details",
+    footerVisit: "Social media",
     privacyTitle: "Privacy",
     privacyCopy: "This website does not collect personal information. External booking and social platforms apply their own privacy terms.",
     termsTitle: "Treatment information",
@@ -114,7 +154,6 @@ const translations = {
     stepTreat: "护理",
     stepTreatCopy: "细致操作、合适技术和清晰的护理后建议。",
     ritualQuote: "源于亲身痘痘经历，也经过三十年美容院实践。",
-    openPdf: "打开 PDF",
     aboutKicker: "我们的理念",
     aboutTitle: "香港经验，在伦敦用心延续。",
     aboutLead: "Hailey Beauty 从香港两间美容院和对顽固痘痘的亲身理解中成长。",
@@ -123,27 +162,61 @@ const translations = {
     hongKongSalons: "间香港美容院",
     consultLanguages: "种咨询语言",
     aboutCaption: "草本知识 · 细致技术",
+    studioTreatmentCaption: "为每次预约细心准备",
+    studioTechnologyCaption: "按你的肤况选择仪器",
+    studioAftercareCaption: "护理后的即时肤况",
     locationLabel: "伦敦工作室",
-    locationAddress: "Margaret Street · Oxford Street 附近",
+    locationAddress: "52–53 Margaret Street",
+    locationDistance: "步行 2 分钟到 Oxford Circus 站",
+    openingHoursTitle: "营业时间",
+    saturday: "星期六",
+    sunday: "星期日",
+    monday: "星期一",
+    tuesday: "星期二",
+    wednesday: "星期三",
+    thursday: "星期四",
+    friday: "星期五",
     viewMap: "在 Google 地图中查看",
     galleryKicker: "护理记录",
-    galleryTitle: "真实肌肤，真实护理时刻。",
-    galleryCopy: "近距离了解护理过程，以及护理前后的即时肤况。",
+    galleryTitle: "护理故事，真实呈现。",
+    galleryCopy: "按护理项目整理真实护理过程和护理后的即时肤况。",
+    treatmentStoryLabel: "护理记录 01",
+    treatmentStoryLabelTwo: "护理记录 02",
+    blueCrystalStoryTitle: "蓝水晶亮肤护理",
+    blueCrystalStoryCopy: "同一次定制亮肤护理的两个真实时刻。",
+    herbalStoryTitle: "草本净肤亮白面部护理",
+    herbalStoryCopy: "从肤况分析、草本护理到护理完成后的完整过程。",
     beforeLabel: "护理前",
     afterLabel: "护理后",
     processLabel: "安静的护理时刻",
     herbsLabel: "新鲜草本护理",
+    herbalApplicationLabel: "草本面膜护理",
     finishLabel: "护理后即时肤况",
+    skinFinishLabel: "护理细节",
+    skinFinishTitle: "近距离看护理后的肤况",
+    skinFinishCopy: "在工作室拍摄、未经修饰的肌肤特写。",
+    comparisonBeforeLabel: "护理前",
+    comparisonAfterLabel: "护理后",
+    skinProgressLabel: "肌肤记录",
+    skinProgressTitle: "近距离记录真实肌肤",
+    skinProgressCopy: "三个自然角度，呈现肌肤纹理、肤色和变化。",
+    skinViewOne: "肌肤角度 01",
+    skinViewTwo: "肌肤角度 02",
+    skinViewThree: "肌肤角度 03",
+    analysisStoryLabel: "数码皮肤咨询",
+    analysisStoryTitle: "深入了解肌肤状态",
+    analysisStoryCopy: "工作室的皮肤分析会查看可见问题、测量指标，并提供针对性的护理建议。",
     resultsNote: "照片记录个人护理时刻。效果会因肤况和护理计划而异。",
     followInstagram: "在 Instagram 查看近期作品",
+    tiktokKicker: "工作室日常",
+    tiktokTitle: "关注每一个护理时刻。",
+    tiktokCopy: "查看近期护理、护肤知识和工作室日常，内容直接由 TikTok 更新。",
+    followTikTok: "关注 @haileybeautyldn",
     bookingKicker: "下一次预约",
     bookingTitle: "让我们先了解你的肌肤。",
     bookingCopy: "通过预约平台查看实时空位并选择护理项目。咨询时可以说明敏感情况和护理目标。",
     continueBooking: "前往预约",
-    bookingNote: "预约页面将在新标签页打开。",
-    footerTagline: "源自香港的草本面部护理。",
-    footerVisit: "伦敦预约",
-    footerDetails: "工作室资料",
+    footerVisit: "社交媒体",
     privacyTitle: "隐私",
     privacyCopy: "本网站不收集个人资料。外部预约和社交平台适用其各自的隐私条款。",
     termsTitle: "护理资料",
@@ -182,7 +255,6 @@ const translations = {
     stepTreat: "護理",
     stepTreatCopy: "細緻操作、合適技術同清晰嘅護理後建議。",
     ritualQuote: "源於親身暗瘡經歷，亦經過三十年美容院實踐。",
-    openPdf: "打開 PDF",
     aboutKicker: "我哋嘅理念",
     aboutTitle: "香港經驗，喺倫敦用心延續。",
     aboutLead: "Hailey Beauty 由香港兩間美容院同對頑固暗瘡嘅親身理解中成長。",
@@ -191,27 +263,61 @@ const translations = {
     hongKongSalons: "間香港美容院",
     consultLanguages: "種諮詢語言",
     aboutCaption: "草本知識 · 細緻技術",
+    studioTreatmentCaption: "為每次預約細心準備",
+    studioTechnologyCaption: "按你嘅膚況選擇儀器",
+    studioAftercareCaption: "護理後嘅即時膚況",
     locationLabel: "倫敦工作室",
-    locationAddress: "Margaret Street · Oxford Street 附近",
+    locationAddress: "52–53 Margaret Street",
+    locationDistance: "步行 2 分鐘到 Oxford Circus 站",
+    openingHoursTitle: "營業時間",
+    saturday: "星期六",
+    sunday: "星期日",
+    monday: "星期一",
+    tuesday: "星期二",
+    wednesday: "星期三",
+    thursday: "星期四",
+    friday: "星期五",
     viewMap: "喺 Google 地圖查看",
     galleryKicker: "護理記錄",
-    galleryTitle: "真實肌膚，真實護理時刻。",
-    galleryCopy: "近距離了解護理過程，同護理前後嘅即時膚況。",
+    galleryTitle: "護理故事，真實呈現。",
+    galleryCopy: "按護理項目整理真實護理過程同護理後嘅即時膚況。",
+    treatmentStoryLabel: "護理記錄 01",
+    treatmentStoryLabelTwo: "護理記錄 02",
+    blueCrystalStoryTitle: "藍水晶亮膚護理",
+    blueCrystalStoryCopy: "同一次度身亮膚護理嘅兩個真實時刻。",
+    herbalStoryTitle: "草本淨膚亮白面部護理",
+    herbalStoryCopy: "由膚況分析、草本護理到完成護理後嘅完整過程。",
     beforeLabel: "護理前",
     afterLabel: "護理後",
     processLabel: "安靜嘅護理時刻",
     herbsLabel: "新鮮草本護理",
+    herbalApplicationLabel: "草本面膜護理",
     finishLabel: "護理後即時膚況",
+    skinFinishLabel: "護理細節",
+    skinFinishTitle: "近距離睇護理後嘅膚況",
+    skinFinishCopy: "喺工作室拍攝、未經修飾嘅肌膚特寫。",
+    comparisonBeforeLabel: "護理前",
+    comparisonAfterLabel: "護理後",
+    skinProgressLabel: "肌膚記錄",
+    skinProgressTitle: "近距離記錄真實肌膚",
+    skinProgressCopy: "三個自然角度，呈現肌膚紋理、膚色同變化。",
+    skinViewOne: "肌膚角度 01",
+    skinViewTwo: "肌膚角度 02",
+    skinViewThree: "肌膚角度 03",
+    analysisStoryLabel: "數碼皮膚諮詢",
+    analysisStoryTitle: "深入了解肌膚狀態",
+    analysisStoryCopy: "工作室嘅皮膚分析會查看可見問題、量度指標，並提供針對性護理建議。",
     resultsNote: "相片記錄個人護理時刻。效果會因膚況同護理計劃而異。",
     followInstagram: "喺 Instagram 睇近期作品",
+    tiktokKicker: "工作室日常",
+    tiktokTitle: "留意每一個護理時刻。",
+    tiktokCopy: "睇近期護理、護膚知識同工作室日常，內容直接由 TikTok 更新。",
+    followTikTok: "關注 @haileybeautyldn",
     bookingKicker: "下一次預約",
     bookingTitle: "等我哋先了解你嘅肌膚。",
     bookingCopy: "透過預約平台睇即時空位同選擇護理項目。諮詢時可以講低敏感情況同護理目標。",
     continueBooking: "前往預約",
-    bookingNote: "預約頁面會喺新分頁打開。",
-    footerTagline: "源自香港嘅草本面部護理。",
-    footerVisit: "倫敦預約",
-    footerDetails: "工作室資料",
+    footerVisit: "社交媒體",
     privacyTitle: "私隱",
     privacyCopy: "本網站唔會收集個人資料。外部預約同社交平台適用各自嘅私隱條款。",
     termsTitle: "護理資料",
@@ -228,8 +334,20 @@ if (!translations[currentLang]) currentLang = "en";
 
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const siteMenu = document.querySelector("[data-site-menu]");
-const bookingNote = document.querySelector(".booking-note");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function addTreatmentBookingLinks() {
+  document.querySelectorAll(".price-panel .treatment-head").forEach((header) => {
+    if (header.querySelector(".treatment-book")) return;
+
+    const bookingLink = document.createElement("a");
+    bookingLink.className = "treatment-book";
+    bookingLink.dataset.bookingLink = "";
+    bookingLink.dataset.i18n = "bookNow";
+    bookingLink.textContent = translations.en.bookNow;
+    header.append(bookingLink);
+  });
+}
 
 function translatePage(lang) {
   currentLang = translations[lang] ? lang : "en";
@@ -275,8 +393,6 @@ function applyBookingDestination() {
   document.querySelectorAll("[data-booking-label]").forEach((label) => {
     if (!destination) label.textContent = translations[currentLang].bookNow;
   });
-
-  if (bookingNote) bookingNote.hidden = !destination;
 }
 
 function applySiteConfig() {
@@ -292,10 +408,6 @@ function applySiteConfig() {
     const url = socialUrls[link.dataset.social];
     link.hidden = !url;
     if (url) link.href = url;
-  });
-
-  document.querySelectorAll("[data-price-open]").forEach((link) => {
-    link.href = SITE_CONFIG.treatmentPdf;
   });
 
   const canonical = document.querySelector("[data-canonical]");
@@ -420,6 +532,31 @@ const activeSectionObserver = new IntersectionObserver(
 );
 sections.forEach((section) => activeSectionObserver.observe(section));
 
+const tiktokEmbed = document.querySelector(".tiktok-embed");
+
+function loadTikTokEmbed() {
+  if (!tiktokEmbed || document.querySelector("script[data-tiktok-embed-script]")) return;
+  const embedScript = document.createElement("script");
+  embedScript.src = "https://www.tiktok.com/embed.js";
+  embedScript.async = true;
+  embedScript.dataset.tiktokEmbedScript = "";
+  document.body.append(embedScript);
+}
+
+if (tiktokEmbed && "IntersectionObserver" in window) {
+  const tiktokObserver = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      loadTikTokEmbed();
+      tiktokObserver.disconnect();
+    },
+    { rootMargin: "500px 0px" }
+  );
+  tiktokObserver.observe(tiktokEmbed);
+} else {
+  loadTikTokEmbed();
+}
+
 document.documentElement.classList.add("reveal-ready");
 
 let depthFrame;
@@ -444,6 +581,7 @@ window.addEventListener(
 window.addEventListener("resize", updateDepth);
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
+addTreatmentBookingLinks();
 applySiteConfig();
 translatePage(currentLang);
 updateDepth();
