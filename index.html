@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=19" />
+    <link rel="stylesheet" href="./styles.css?v=20" />
     <script data-structured-data type="application/ld+json"></script>
   </head>
   <body>
@@ -109,14 +109,7 @@
     </header>
 
     <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <img
-          class="hero-image"
-          src="./assets/hero-treatment.webp"
-          alt="A client receiving a herbal facial treatment at Hailey Beauty"
-          fetchpriority="high"
-        />
-        <div class="hero-wash" aria-hidden="true"></div>
+      <section class="hero hero-condensed" id="top" aria-labelledby="hero-title">
         <div class="hero-inner">
           <div class="hero-copy">
             <p class="hero-announcement" data-i18n="heroAnnouncement">Now open in Oxford Circus — free skin analysis for our grand opening</p>
@@ -135,6 +128,10 @@
               </a>
             </div>
           </div>
+          <figure class="hero-visual" role="presentation">
+            <img class="hero-visual-main" src="./assets/hero-treatment.webp" alt="" fetchpriority="high" />
+            <img class="hero-visual-accent" src="./assets/skin-analysis-session.webp" alt="" loading="lazy" />
+          </figure>
         </div>
       </section>
 
