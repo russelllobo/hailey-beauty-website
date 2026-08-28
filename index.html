@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20" />
+    <link rel="stylesheet" href="./styles.css?v=25" />
     <script data-structured-data type="application/ld+json"></script>
   </head>
   <body>
@@ -128,10 +128,25 @@
               </a>
             </div>
           </div>
-          <figure class="hero-visual" role="presentation">
-            <img class="hero-visual-main" src="./assets/hero-treatment.webp" alt="" fetchpriority="high" />
-            <img class="hero-visual-accent" src="./assets/skin-analysis-session.webp" alt="" loading="lazy" />
-          </figure>
+          <aside class="hero-tiktok" aria-label="Hailey Beauty on TikTok" aria-busy="true">
+            <div class="tiktok-embed-frame">
+              <blockquote
+                class="tiktok-embed"
+                cite="https://www.tiktok.com/@haileybeautyldn"
+                data-unique-id="haileybeautyldn"
+                data-embed-from="oembed"
+                data-embed-type="creator"
+              >
+                <section>
+                  <a
+                    href="https://www.tiktok.com/@haileybeautyldn?refer=creator_embed"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >@haileybeautyldn on TikTok</a>
+                </section>
+              </blockquote>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -145,10 +160,7 @@
 
       <section class="ritual section-dark" id="treatments" aria-labelledby="ritual-title">
         <div class="ritual-visual reveal" data-depth="0.035">
-          <figure class="ritual-image ritual-image-main">
-            <img src="./assets/facial-process.webp" alt="Nine stages of a Hailey Beauty facial, from cleansing to finishing cream" loading="lazy" />
-          </figure>
-          <figure class="ritual-image ritual-image-detail">
+          <figure class="ritual-image ritual-image-feature">
             <img src="./assets/skin-analysis-session.webp" alt="A client receiving a digital skin analysis at Hailey Beauty" loading="lazy" />
           </figure>
           <p class="vertical-note" aria-hidden="true">ANALYSE · TAILOR · TREAT</p>
@@ -180,73 +192,46 @@
       <section class="prices section-bone" id="prices" aria-labelledby="prices-title">
         <header class="editorial-head reveal">
           <div>
-            <h2 id="prices-title">Treatments &amp; Price List</h2>
-            <p>Consultation complimentary with every facial.</p>
+            <p class="micro-label" aria-hidden="true"><span>01</span><span data-i18n="pricesKicker">Treatments &amp; prices</span></p>
+            <h2 id="prices-title">Services</h2>
+            <p data-i18n="pricesLead">Browse every facial, package and waxing service by category — treatment lengths and prices are always shown up front.</p>
           </div>
         </header>
 
-        <aside class="price-offer reveal" aria-labelledby="glow-bundle-title">
-          <div class="price-offer-heading">
-            <p class="price-offer-label">Opening offer</p>
-            <div>
-              <h3 id="glow-bundle-title">Glow Skin Bundle</h3>
-              <p>Introductory offer · Herbal Clarity &amp; Brightening Facial</p>
-            </div>
-            <p class="price-offer-price" aria-label="78 pounds">£78</p>
-          </div>
-          <ul class="price-offer-includes" aria-label="Glow Skin Bundle includes">
-            <li>Free skin analysis</li>
-            <li>Herbal Clarity &amp; Brightening Facial</li>
-            <li>Targeted custom serum add-on</li>
-            <li>Lip mask</li>
-          </ul>
-          <p class="price-offer-note">20% opening discount applied in store.</p>
-        </aside>
-
-        <aside class="price-offer price-offer--b2g1 reveal" aria-labelledby="b2g1-title">
-          <div class="price-offer-heading">
-            <p class="price-offer-label">Facial offer · Limited time</p>
-            <div>
-              <h3 id="b2g1-title">Book 2, Get 1 Free</h3>
-              <p>On all facials — mix &amp; match your favourites</p>
-            </div>
-            <p class="price-offer-price price-offer-price--b2g1" aria-label="3 for the price of 2">3 <em>for</em> 2</p>
-          </div>
-          <ul class="price-offer-includes" aria-label="Book 2 Get 1 Free details">
-            <li>All facials included</li>
-          </ul>
-          <div class="price-offer-footer">
-            <p class="price-offer-note">Book 2 facials at full price — the 3rd is free. In-store &amp; online.</p>
-            <a class="button button-brass price-offer-cta" data-booking-link aria-label="Book now - Book 2 Get 1 Free">
-              <span>Book now</span>
-              <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
-            </a>
-          </div>
-        </aside>
-
         <div class="native-price-list">
-          <div class="price-tabs reveal" role="tablist" aria-label="Treatment categories">
+          <div class="price-tabs reveal" role="tablist" aria-label="Service categories">
             <button
               class="price-tab is-active"
-              id="advanced-treatments-tab"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="advanced-treatments-panel"
-              tabindex="0"
-            >
-              Advanced Treatments
-            </button>
-            <button
-              class="price-tab"
               id="signature-facials-tab"
               type="button"
               role="tab"
-              aria-selected="false"
+              aria-selected="true"
               aria-controls="signature-facials-panel"
-              tabindex="-1"
+              tabindex="0"
             >
               Signature Facials
+            </button>
+            <button
+              class="price-tab"
+              id="advanced-treatment-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="advanced-treatment-panel"
+              tabindex="-1"
+            >
+              Advanced Treatment
+            </button>
+            <button
+              class="price-tab"
+              id="packages-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="packages-panel"
+              tabindex="-1"
+            >
+              Packages
             </button>
             <button
               class="price-tab"
@@ -259,147 +244,195 @@
             >
               Waxing
             </button>
+            <button
+              class="price-tab"
+              id="male-waxing-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="male-waxing-panel"
+              tabindex="-1"
+            >
+              Male Waxing
+            </button>
           </div>
 
           <section
             class="price-category price-panel is-active"
-            id="advanced-treatments-panel"
-            role="tabpanel"
-            aria-labelledby="advanced-treatments-tab"
-          >
-            <h3 id="advanced-treatments-title">Advanced Treatments</h3>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>HIFU Skin Tightening &amp; Lifting</h4>
-                <div class="treatment-meta treatment-meta-stack">
-                  <span>40–60 mins</span>
-                  <span>Forehead £250 <b aria-hidden="true">|</b> Cheeks £500</span>
-                  <span>Full Face and Neck — £900 (includes a mask and a massage)</span>
-                </div>
-              </header>
-              <p>
-                A non-invasive treatment designed to lift, firm and support collagen renewal. Suitable treatment areas, session
-                length and final pricing are confirmed during consultation.
-              </p>
-            </article>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>DNA Renewal Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £120</p>
-              </header>
-              <p>
-                A results-led rejuvenating facial designed to refine the look of enlarged pores, support skin renewal, soften the
-                appearance of fine lines and restore vitality to tired or sun-exposed skin.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Cleanse, exfoliation, relaxing facial massage, targeted serum infusion, regenerative cell serum infusion
-                and a restorative mask.
-              </p>
-            </article>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>Needle-Free MesoSkin Infusion Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £150</p>
-              </header>
-            </article>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>Blue Crystal Lift &amp; Hydrate Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £88</p>
-              </header>
-              <p>
-                A firming and intensely hydrating facial created to improve skin comfort, softness and radiance while supporting
-                a smoother, lifted appearance.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Rose water cleanse, exfoliation, facial lifting massage, skin tightening serum infusion, rose water
-                collagen mask and rose water finishing cream.
-              </p>
-            </article>
-
-          </section>
-
-          <section
-            class="price-category price-panel"
             id="signature-facials-panel"
             role="tabpanel"
             aria-labelledby="signature-facials-tab"
-            hidden
           >
             <h3 id="signature-facials-title">Signature Facials</h3>
 
             <article class="treatment">
               <header class="treatment-head">
-                <h4>Herbal Clarity &amp; Brightening Facial</h4>
-                <p class="treatment-meta">90 mins <b aria-hidden="true">|</b> £78</p>
+                <h4>Bespoke Glow Facial Express</h4>
+                <p class="treatment-meta"><span class="treatment-duration">30min</span><span class="treatment-price">£38.00</span></p>
               </header>
               <p>
-                A herbal-based treatment designed for congestion, post-breakout marks, uneven tone, hormonal acne and the
-                appearance of pigmentation while remaining gentle on younger or more sensitive skin.
+                A quick refresh for clearer, smoother and lighter-feeling skin when you want an on-the-day skin boost. The facial massage will relax all your muscles, leaving you feeling relaxed and ready for the rest of the day.
               </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Cleanse, exfoliation, extractions, brightening or acne serum infusion, herbal treatment mask and
-                finishing cream.
-              </p>
-              <p class="treatment-note">
-                <strong>Student offer:</strong> 20% off with valid student ID. Especially suitable for teen and hormonal acne concerns.
-              </p>
-            </article>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>Lift &amp; Glow Gua Sha Facial</h4>
-                <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £55</p>
-              </header>
-              <p>
-                A machine-free sculpting facial using expert hand massage and gua sha to support lymphatic drainage, reduce
-                puffiness and leave the skin looking fresher, lifted and radiant.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Cleanse, exfoliation, massage cream, pressure-point massage, gua sha sculpting and finishing products.
-              </p>
-            </article>
-
-            <article class="treatment">
-              <header class="treatment-head">
-                <h4>Essential Relaxation Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £88</p>
-              </header>
-              <p>
-                A deeply relaxing maintenance facial created to release facial tension, replenish hydration and keep skin looking
-                fresh between more intensive treatments.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Cleanse, extended facial massage and nourishing finishing products.
-              </p>
-              <p class="treatment-note"><em>Ideal as a regular monthly maintenance facial or part of an ongoing skin plan.</em></p>
             </article>
 
             <article class="treatment">
               <header class="treatment-head">
                 <h4>Brightening Milk Glow Facial</h4>
-                <p class="treatment-meta">75 mins <b aria-hidden="true">|</b> £68</p>
+                <p class="treatment-meta"><span class="treatment-duration">1h 15min</span><span class="treatment-price">£88.00</span></p>
               </header>
               <p>
-                A glow-boosting facial for dull or tired-looking skin that combines gentle resurfacing, brightening actives and
-                comforting hydration for a fresher, more luminous finish.
-              </p>
-              <p class="treatment-includes">
-                <em>Includes:</em> Cleanse, exfoliation, massage, brightening serum, brightening mask, rose water and finishing cream.
+                A glow-boosting facial for dull or tired-looking skin that combines gentle resurfacing, brightening actives and comforting hydration for a fresher, more luminous finish.
               </p>
             </article>
 
             <article class="treatment">
               <header class="treatment-head">
-                <h4>Express Glow Facial</h4>
-                <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £38</p>
+                <h4>Gua Sha Lift Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">40min</span><span class="treatment-price">£55.00</span></p>
               </header>
-              <p>A quick refresh for clearer, smoother and lighter-feeling skin when you want an on-the-day skin boost.</p>
-              <p class="treatment-includes"><em>Includes:</em> Cleanse, exfoliation, mask and finishing cream.</p>
+              <p>
+                A machine-free sculpting facial using expert hand massage and Gua Sha to support lymphatic drainage, reduce puffiness and leave the skin looking fresher, lifted and radiant.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Herbal Congestion and Brightening Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h 30min</span><span class="treatment-price">£78.00</span></p>
+              </header>
+              <p>
+                A herbal-based treatment designed for congestion, post-breakout marks, uneven tone, hormonal acne and the appearance of pigmentation while remaining gentle on younger or more sensitive skin.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Relaxation Massage Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">40min</span><span class="treatment-price">£55.00</span></p>
+              </header>
+              <p>
+                Relax all your muscles with this relaxation facial that will remove all tension from your face and reset your nervous system. This long facial massage will open your lymph nodes, making each movement feel even better.
+              </p>
+            </article>
+          </section>
+
+          <section
+            class="price-category price-panel"
+            id="advanced-treatment-panel"
+            role="tabpanel"
+            aria-labelledby="advanced-treatment-tab"
+            hidden
+          >
+            <h3 id="advanced-treatment-title">Advanced Treatment</h3>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Blue Crystal Collagen Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h 15min</span><span class="treatment-price">£88.00</span></p>
+              </header>
+              <p>
+                A firming and intensely hydrating facial created to improve skin comfort, softness and radiance while supporting a smoother, lifted appearance. This includes a highly effective collagen mask that is suitable for all skin types.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>DNA Booster Renewal Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h 15min</span><span class="treatment-price">£120.00</span></p>
+              </header>
+              <p>
+                A results-led treatment that uses stem cells, which are growing in popularity, to stimulate cells to repair and regenerate the skin, improve texture and plump fine lines and lost volume. It helps minimise the appearance of fine lines, counteract dryness and redness, and improve skin tone and radiance.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>HIFU Skin Tightening &amp; Lifting Cheeks</h4>
+                <p class="treatment-meta"><span class="treatment-duration">40min</span><span class="treatment-price">£500.00</span></p>
+              </header>
+              <p>
+                High-intensity focused ultrasound, also known as HIFU, achieves impressive skin-tightening and lifting effects. This treatment targets fat cells under the skin to shrink them, creating a more toned and slender appearance.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>HIFU Skin Tightening &amp; Lifting Forehead</h4>
+                <p class="treatment-meta"><span class="treatment-duration">40min</span><span class="treatment-price">£250.00</span></p>
+              </header>
+              <p>
+                High-intensity focused ultrasound, also known as HIFU, achieves impressive skin-tightening and lifting effects. This treatment targets fat cells under the skin to shrink them, creating a more toned and slender appearance.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>HIFU Skin Tightening &amp; Lifting Full Face And Neck</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£900.00</span></p>
+              </header>
+              <p>
+                High-intensity focused ultrasound, also known as HIFU, achieves impressive skin-tightening and lifting effects. This treatment targets fat cells under the skin to shrink them, creating a more toned and slender appearance.
+              </p>
+            </article>
+          </section>
+
+          <section
+            class="price-category price-panel"
+            id="packages-panel"
+            role="tabpanel"
+            aria-labelledby="packages-tab"
+            hidden
+          >
+            <h3 id="packages-title">Packages</h3>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>3 for 2 Blue Crystal Collagen Treatment</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£176.00</span></p>
+              </header>
+              <p>
+                Book a package of 3 Blue Crystal Collagen facials and your first session is completely free. Enjoy three professional treatments designed to refresh and restore your skin — pay for facials 2 and 3, and facial 1 is on us. Best facial treatment for dehydrated, dull, wrinkled skin.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>3 for 2 Gua Sha Lift Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£110.00</span></p>
+              </header>
+              <p>
+                Book a package of 3 Gua Sha Lift facials and your first session is completely free. Enjoy three professional treatments designed to hydrate and sculpt your face — pay for facials 2 and 3, and facial 1 is on us. Best facial treatment for sculpting, lifting and facial slimming. We use Lymphatic Drainage techniques and traditional Gua Sha to create visible slimming without damaging procedures.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>3 for 2 Herbal Acne Package</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£156.00</span></p>
+              </header>
+              <p>
+                Book a package of 3 Herbal Congestion and Brightening facials and your first session is completely free. Enjoy three professional treatments designed to refresh and restore your skin — pay for facials 2 and 3, and facial 1 is on us. Best facial treatment for acne-prone skin, scarring and hyperpigmentation.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>3 for 2 Relaxation Massage Facial</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£110.00</span></p>
+              </header>
+              <p>
+                Book a package of 3 Relaxation Massage facials and your first session is completely free. Enjoy three professional treatments designed to refresh and restore your skin — pay for facials 2 and 3, and facial 1 is on us. Best facial treatment for tired, dull or stressed skin. Great for a treat to yourself for complete relaxation.
+              </p>
+            </article>
+
+            <article class="treatment">
+              <header class="treatment-head">
+                <h4>Free Skin Analysis and Skin Plan</h4>
+                <p class="treatment-meta"><span class="treatment-duration">1h</span><span class="treatment-price">£0.00</span></p>
+              </header>
+              <p>
+                Book your free skin analysis now — limited spaces available. This includes a skin analysis using the latest technology to tell you your skin type and uncover deeper skin issues. Using this analysis, a 7-day Skin Transformation Plan is created and tailored to your results. An additional £20 store credit will be given with every analysis to give your skin that boost that it needs.
+              </p>
             </article>
           </section>
 
@@ -411,125 +444,96 @@
             hidden
           >
             <h3 id="waxing-title">Waxing</h3>
-            <p class="price-category-intro">Professional hair removal using hot wax and strip wax.</p>
 
-            <div class="waxing-group">
-              <h4>Female Waxing</h4>
-              <h5>Hot Wax</h5>
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Back</h6>
+                <p class="treatment-meta"><span class="treatment-duration">30min</span><span class="treatment-price">£35.00</span></p>
+              </header>
+            </article>
 
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Upper Lip / Chin</h6>
-                  <p class="treatment-meta">10 mins each <b aria-hidden="true">|</b> £10 each</p>
-                </header>
-                <p>Precise hot wax treatment for smaller facial areas.</p>
-              </article>
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Bikini Line</h6>
+                <p class="treatment-meta"><span class="treatment-duration">20min</span><span class="treatment-price">£25.00</span></p>
+              </header>
+              <p>Bikini line only for female intimate waxing. Brazilian and Hollywood waxing are not offered.</p>
+            </article>
 
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Underarm</h6>
-                  <p class="treatment-meta">15 mins <b aria-hidden="true">|</b> £18</p>
-                </header>
-                <p>A comfortable option for a sensitive area with a smooth finish.</p>
-              </article>
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Full Leg</h6>
+                <p class="treatment-meta"><span class="treatment-duration">45min</span><span class="treatment-price">£40.00</span></p>
+              </header>
+              <p>Smooth full-leg hair removal using strip wax.</p>
+            </article>
 
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Bikini Line</h6>
-                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £25</p>
-                </header>
-                <p>Bikini line only for female intimate waxing. Brazilian and Hollywood waxing are not offered.</p>
-              </article>
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Half Leg</h6>
+                <p class="treatment-meta"><span class="treatment-duration">20min</span><span class="treatment-price">£25.00</span></p>
+              </header>
+              <p>Efficient strip wax treatment for lower or upper legs.</p>
+            </article>
 
-              <h5>Strip Wax</h5>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Half Leg</h6>
-                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £25</p>
-                </header>
-                <p>Efficient strip wax treatment for lower or upper legs.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Full Leg</h6>
-                  <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £40</p>
-                </header>
-                <p>Smooth full-leg hair removal using strip wax.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Half Arm</h6>
-                  <p class="treatment-meta">20 mins <b aria-hidden="true">|</b> £20</p>
-                </header>
-                <p>Quick hair removal for the lower or upper arms.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Full Arm</h6>
-                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £30</p>
-                </header>
-                <p>Full-arm strip wax for a clean, smooth finish.</p>
-              </article>
-            </div>
-
-            <div class="waxing-group">
-              <h4>Male Waxing</h4>
-              <h5>Strip Wax</h5>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Back</h6>
-                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £35</p>
-                </header>
-                <p>Effective hair removal across the back.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Back &amp; Shoulders</h6>
-                  <p class="treatment-meta">40 mins <b aria-hidden="true">|</b> £45</p>
-                </header>
-                <p>A fuller upper-body treatment for the back and shoulder area.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Chest</h6>
-                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £35</p>
-                </header>
-                <p>Chest hair removal using strip wax.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Chest &amp; Abdomen</h6>
-                  <p class="treatment-meta">45 mins <b aria-hidden="true">|</b> £45</p>
-                </header>
-                <p>Combined front-body waxing for a smoother finish.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Half Leg</h6>
-                  <p class="treatment-meta">30 mins <b aria-hidden="true">|</b> £30</p>
-                </header>
-                <p>Efficient strip wax treatment for lower or upper legs.</p>
-              </article>
-
-              <article class="treatment treatment-compact">
-                <header class="treatment-head">
-                  <h6>Full Leg</h6>
-                  <p class="treatment-meta">50 mins <b aria-hidden="true">|</b> £50</p>
-                </header>
-                <p>Full-leg hair removal using strip wax.</p>
-              </article>
-            </div>
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Underarm</h6>
+                <p class="treatment-meta"><span class="treatment-duration">15min</span><span class="treatment-price">£18.00</span></p>
+              </header>
+              <p>A comfortable option for a sensitive area with a smooth finish.</p>
+            </article>
           </section>
 
+          <section
+            class="price-category price-panel"
+            id="male-waxing-panel"
+            role="tabpanel"
+            aria-labelledby="male-waxing-tab"
+            hidden
+          >
+            <h3 id="male-waxing-title">Male Waxing</h3>
+
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Back and Shoulder</h6>
+                <p class="treatment-meta"><span class="treatment-duration">40min</span><span class="treatment-price">£35.00</span></p>
+              </header>
+              <p>A fuller upper-body treatment for the back and shoulder area.</p>
+            </article>
+
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Chest</h6>
+                <p class="treatment-meta"><span class="treatment-duration">35min</span><span class="treatment-price">£35.00</span></p>
+              </header>
+              <p>Chest hair removal using strip wax.</p>
+            </article>
+
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Chest and Abdomen</h6>
+                <p class="treatment-meta"><span class="treatment-duration">45min</span><span class="treatment-price">£45.00</span></p>
+              </header>
+              <p>Combined front-body waxing for a smoother finish.</p>
+            </article>
+
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Full Leg</h6>
+                <p class="treatment-meta"><span class="treatment-duration">50min</span><span class="treatment-price">£50.00</span></p>
+              </header>
+              <p>Full-leg hair removal using strip wax.</p>
+            </article>
+
+            <article class="treatment treatment-compact">
+              <header class="treatment-head">
+                <h6>Half Leg</h6>
+                <p class="treatment-meta"><span class="treatment-duration">30min</span><span class="treatment-price">£30.00</span></p>
+              </header>
+              <p>Efficient strip wax treatment for lower or upper legs.</p>
+            </article>
+          </section>
         </div>
       </section>
 
@@ -562,7 +566,7 @@
             <figcaption data-i18n="studioTechnologyCaption">Technology chosen around your skin</figcaption>
           </figure>
           <figure class="studio-journal-result reveal">
-            <img src="./assets/client-aftercare-glow.webp" alt="A client resting after a facial treatment" loading="lazy" />
+            <img src="./assets/blue-crystal-after.webp" alt="A client immediately after the Blue Crystal Collagen Facial" loading="lazy" />
             <figcaption data-i18n="studioAftercareCaption">The immediate treatment finish</figcaption>
           </figure>
         </div>
@@ -616,110 +620,106 @@
           <p data-i18n="galleryCopy">Real treatment moments and immediate results, grouped by the facial performed.</p>
         </header>
 
-        <aside class="skin-finish-journal women-lead reveal" aria-labelledby="skin-finish-title">
-          <header>
-            <p data-i18n="skinFinishLabel">Treatment detail</p>
-            <h3 id="skin-finish-title" data-i18n="skinFinishTitle">A closer look at the finish</h3>
-            <span data-i18n="skinFinishCopy">Unretouched close-up views photographed in the studio.</span>
-          </header>
-          <figure>
-            <img src="./assets/client-progress-01.webp" alt="Close-up view of a woman's natural skin texture" loading="lazy" />
-            <figcaption data-i18n="comparisonBeforeLabel">Before</figcaption>
-          </figure>
-          <figure>
-            <img src="./assets/client-result-right.webp" alt="Close-up view of a woman's skin after care" loading="lazy" />
-            <figcaption data-i18n="comparisonAfterLabel">After</figcaption>
-          </figure>
-        </aside>
-
-        <article class="skin-analysis-story reveal" aria-labelledby="skin-analysis-story-title">
-          <header class="treatment-story-head">
-            <p data-i18n="analysisStoryLabel">Digital consultation</p>
-            <h3 id="skin-analysis-story-title" data-i18n="analysisStoryTitle">A detailed view beneath the surface</h3>
-            <span data-i18n="analysisStoryCopy">The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.</span>
-          </header>
-          <div class="analysis-report-grid">
-            <figure>
-              <img src="./assets/skin-analysis-overview.webp" alt="Digital skin analysis overview report" loading="lazy" />
-            </figure>
-            <figure>
-              <img src="./assets/skin-analysis-metrics.webp" alt="Digital skin analysis charts and measured indicators" loading="lazy" />
-            </figure>
-            <figure>
-              <img src="./assets/skin-analysis-advice.webp" alt="Digital skin analysis care advice" loading="lazy" />
-            </figure>
+        <!-- Before/After infinite scrolling reel -->
+        <div class="ba-reel reveal">
+          <div class="ba-reel-viewport" data-ba-viewport tabindex="0" aria-label="Before and after scrolling reel">
+            <div class="ba-reel-track" data-ba-track>
+              <!-- first set -->
+              <figure class="ba-reel-card">
+                <picture
+                  ><source srcset="./assets/before-after/ba-01.webp" type="image/webp" /><img src="./assets/before-after/ba-01.jpg" alt="Before and after of male client — cheek redness and texture improved after Herbal Congestion and Brightening Facial" loading="eager" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card">
+                <picture
+                  ><source srcset="./assets/before-after/ba-02.webp" type="image/webp" /><img src="./assets/before-after/ba-02.jpg" alt="Before and after of female client — acne and redness significantly reduced after treatment" loading="eager" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card">
+                <picture
+                  ><source srcset="./assets/before-after/ba-03.webp" type="image/webp" /><img src="./assets/before-after/ba-03.jpg" alt="Before and after of male forehead — congestion and inflammation cleared after herbal treatment" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card">
+                <picture
+                  ><source srcset="./assets/before-after/ba-04.webp" type="image/webp" /><img src="./assets/before-after/ba-04.jpg" alt="Before and after of cheek close-up — pigmentation and redness evened after treatment" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card ba-reel-card--wide">
+                <picture
+                  ><source srcset="./assets/before-after/ba-05.webp" type="image/webp" /><img src="./assets/before-after/ba-05.jpg" alt="Before and after side-by-side — cheek acne and texture smoothed after six months of herbal treatment" loading="lazy" width="1092" height="629"
+                /></picture>
+              </figure>
+              <!-- duplicate set for seamless loop (aria-hidden) -->
+              <figure class="ba-reel-card" aria-hidden="true">
+                <picture
+                  ><source srcset="./assets/before-after/ba-01.webp" type="image/webp" /><img src="./assets/before-after/ba-01.jpg" alt="" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card" aria-hidden="true">
+                <picture
+                  ><source srcset="./assets/before-after/ba-02.webp" type="image/webp" /><img src="./assets/before-after/ba-02.jpg" alt="" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card" aria-hidden="true">
+                <picture
+                  ><source srcset="./assets/before-after/ba-03.webp" type="image/webp" /><img src="./assets/before-after/ba-03.jpg" alt="" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card" aria-hidden="true">
+                <picture
+                  ><source srcset="./assets/before-after/ba-04.webp" type="image/webp" /><img src="./assets/before-after/ba-04.jpg" alt="" loading="lazy" width="1080" height="1350"
+                /></picture>
+              </figure>
+              <figure class="ba-reel-card ba-reel-card--wide" aria-hidden="true">
+                <picture
+                  ><source srcset="./assets/before-after/ba-05.webp" type="image/webp" /><img src="./assets/before-after/ba-05.jpg" alt="" loading="lazy" width="1092" height="629"
+                /></picture>
+              </figure>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article class="treatment-story treatment-story-herbal" aria-labelledby="herbal-story-title">
-          <header class="treatment-story-head reveal">
-            <p data-i18n="treatmentStoryLabel">Treatment story 01</p>
-            <h3 id="herbal-story-title" data-i18n="herbalStoryTitle">Herbal Clarity and Brightening Facial</h3>
-            <span data-i18n="herbalStoryCopy">The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.</span>
-          </header>
-          <div class="herbal-story-grid">
-            <figure class="treatment-photo herbal-before reveal">
-              <img src="./assets/client-before.webp" alt="Client skin before the Herbal Clarity and Brightening Facial" loading="lazy" />
-              <figcaption data-i18n="beforeLabel">Before treatment</figcaption>
-            </figure>
-            <figure class="treatment-photo herbal-after reveal">
-              <img src="./assets/client-after.webp" alt="Client skin after the Herbal Clarity and Brightening Facial" loading="lazy" />
-              <figcaption data-i18n="afterLabel">After treatment</figcaption>
-            </figure>
-            <figure class="treatment-photo herbal-rest reveal">
-              <img src="./assets/client-treatment-rest.webp" alt="Client resting during the Herbal Clarity and Brightening Facial" loading="lazy" />
-              <figcaption data-i18n="processLabel">A quiet treatment moment</figcaption>
-            </figure>
-            <figure class="treatment-photo herbal-mask reveal">
-              <img src="./assets/client-herbal-mask.webp" alt="Fresh herbal mask applied during the facial" loading="lazy" />
-              <figcaption data-i18n="herbsLabel">Fresh herbal preparation</figcaption>
-            </figure>
-          </div>
-        </article>
+        <div class="story-duo">
+          <article class="skin-analysis-story reveal" aria-labelledby="skin-analysis-story-title">
+            <header class="treatment-story-head">
+              <p data-i18n="analysisStoryLabel">Digital consultation</p>
+              <h3 id="skin-analysis-story-title" data-i18n="analysisStoryTitle">Free skin analysis</h3>
+              <span data-i18n="analysisStoryCopy">The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.</span>
+            </header>
+            <div class="analysis-report-grid">
+              <figure>
+                <img src="./assets/skin-analysis-overview.webp" alt="Digital skin analysis overview report" loading="lazy" />
+              </figure>
+              <figure>
+                <img src="./assets/skin-analysis-metrics.webp" alt="Digital skin analysis charts and measured indicators" loading="lazy" />
+              </figure>
+              <figure>
+                <img src="./assets/skin-analysis-advice.webp" alt="Digital skin analysis care advice" loading="lazy" />
+              </figure>
+            </div>
+          </article>
 
-        <article class="treatment-story treatment-story-blue reveal" aria-labelledby="blue-crystal-story-title">
-          <header class="treatment-story-head">
-            <p data-i18n="treatmentStoryLabelTwo">Treatment story 02</p>
-            <h3 id="blue-crystal-story-title" data-i18n="blueCrystalStoryTitle">Blue Crystal Brightening Treatment</h3>
-            <span data-i18n="blueCrystalStoryCopy">Two moments from one tailored brightening appointment.</span>
-          </header>
-          <div class="treatment-pair">
-            <figure class="treatment-photo">
-              <img src="./assets/blue-crystal-before.webp" alt="Client before the Blue Crystal Brightening Treatment" loading="lazy" />
-            </figure>
-            <figure class="treatment-photo">
-              <img src="./assets/blue-crystal-after.webp" alt="Client immediately after the Blue Crystal Brightening Treatment" loading="lazy" />
-            </figure>
-          </div>
-        </article>
+          <article class="treatment-story treatment-story-herbal" aria-labelledby="herbal-story-title">
+            <header class="treatment-story-head reveal">
+              <p data-i18n="treatmentStoryLabel">Treatment story 01</p>
+              <h3 id="herbal-story-title" data-i18n="herbalStoryTitle">Herbal Congestion and Brightening Facial</h3>
+              <span data-i18n="herbalStoryCopy">The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.</span>
+            </header>
+            <div class="herbal-story-grid">
+              <figure class="herbal-treatment-collage reveal">
+                <img src="./assets/facial-process.webp" alt="Nine-step facial treatment collage showing cleansing, peeling gel, calming toner, extractions, essence infusion, facial massage, herbal face mask, milk essence infusion and finishing creams" loading="lazy" width="1254" height="1254" />
+              </figure>
+            </div>
+          </article>
+        </div>
+
         <div class="gallery-foot reveal">
           <p data-i18n="resultsNote">Photographs show individual treatment moments. Results vary by skin and treatment plan.</p>
           <a class="text-link" data-social="instagram" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
             <span data-i18n="followInstagram">See recent work on Instagram</span>
           </a>
-        </div>
-      </section>
-
-      <section class="tiktok-showcase" aria-label="TikTok">
-        <div class="tiktok-showcase-inner">
-          <div class="tiktok-embed-frame reveal">
-            <blockquote
-              class="tiktok-embed"
-              cite="https://www.tiktok.com/@haileybeautyldn"
-              data-unique-id="haileybeautyldn"
-              data-embed-from="oembed"
-              data-embed-type="creator"
-            >
-              <section>
-                <a
-                  href="https://www.tiktok.com/@haileybeautyldn?refer=creator_embed"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >@haileybeautyldn on TikTok</a>
-              </section>
-            </blockquote>
-          </div>
         </div>
       </section>
 
@@ -784,6 +784,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=12"></script>
+    <script src="./script.js?v=15"></script>
   </body>
 </html>

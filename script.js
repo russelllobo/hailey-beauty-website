@@ -6,7 +6,7 @@ const SITE_CONFIG = {
   tiktokUrl: "https://www.tiktok.com/@haileybeautyldn",
   rednoteUrl: "https://www.xiaohongshu.com/search_result?keyword=hk_beauty",
   whatsappUrl: "",
-  facebookUrl: "https://www.facebook.com/search/top?q=Hailey%20Beauty",
+  facebookUrl: "https://facebook.com/Hailey-Beauty-61592080256705",
   phone: "",
   email: "",
   address: "52-53 Margaret Street, London",
@@ -53,6 +53,8 @@ const translations = {
     stepTreat: "Treat",
     stepTreatCopy: "Measured application, thoughtful technique and clear aftercare.",
     ritualQuote: "Care shaped by personal acne experience and three decades in the salon.",
+    pricesKicker: "Treatments & prices",
+    pricesLead: "Browse every facial, package and waxing service by category — treatment lengths and prices are always shown up front.",
     aboutKicker: "Our point of view",
     aboutTitle: "Hong Kong practice, made personal in London.",
     aboutLead: "Hailey Beauty grew from two Hong Kong salons and a personal understanding of persistent acne.",
@@ -81,21 +83,21 @@ const translations = {
     galleryCopy: "Real treatment moments and immediate results, grouped by the facial performed.",
     treatmentStoryLabel: "Treatment story 01",
     treatmentStoryLabelTwo: "Treatment story 02",
-    blueCrystalStoryTitle: "Blue Crystal Brightening Treatment",
+    blueCrystalStoryTitle: "Blue Crystal Collagen Facial",
     blueCrystalStoryCopy: "Two moments from one tailored brightening appointment.",
-    herbalStoryTitle: "Herbal Clarity and Brightening Facial",
+    herbalStoryTitle: "Herbal Congestion and Brightening Facial",
     herbalStoryCopy: "The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.",
     beforeLabel: "Before treatment",
-    afterLabel: "After treatment",
+    afterLabel: "After 6 months of treatment",
     processLabel: "A quiet treatment moment",
     herbsLabel: "Fresh herbal preparation",
     herbalApplicationLabel: "Herbal mask application",
-    finishLabel: "Immediately after care",
+    finishLabel: "Immediate afterglow",
     skinFinishLabel: "Treatment detail",
     skinFinishTitle: "A closer look at the finish",
     skinFinishCopy: "Unretouched close-up views photographed in the studio.",
     comparisonBeforeLabel: "Before",
-    comparisonAfterLabel: "After",
+    comparisonAfterLabel: "After 6 months of treatment",
     skinProgressLabel: "Skin progress",
     skinProgressTitle: "Real skin, photographed up close",
     skinProgressCopy: "Three natural views showing texture, tone and the skin’s changing appearance.",
@@ -103,7 +105,7 @@ const translations = {
     skinViewTwo: "Skin view 02",
     skinViewThree: "Skin view 03",
     analysisStoryLabel: "Digital consultation",
-    analysisStoryTitle: "A detailed view beneath the surface",
+    analysisStoryTitle: "Free skin analysis",
     analysisStoryCopy: "The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.",
     resultsNote: "Photographs show individual treatment moments. Results vary by skin and treatment plan.",
     followInstagram: "See recent work on Instagram",
@@ -154,6 +156,8 @@ const translations = {
     stepTreat: "护理",
     stepTreatCopy: "细致操作、合适技术和清晰的护理后建议。",
     ritualQuote: "源于亲身痘痘经历，也经过三十年美容院实践。",
+    pricesKicker: "护理与价目",
+    pricesLead: "按类别浏览全部面部护理、套餐及脱毛服务，护理时长与价格一目了然。",
     aboutKicker: "我们的理念",
     aboutTitle: "香港经验，在伦敦用心延续。",
     aboutLead: "Hailey Beauty 从香港两间美容院和对顽固痘痘的亲身理解中成长。",
@@ -187,16 +191,16 @@ const translations = {
     herbalStoryTitle: "草本净肤亮白面部护理",
     herbalStoryCopy: "从肤况分析、草本护理到护理完成后的完整过程。",
     beforeLabel: "护理前",
-    afterLabel: "护理后",
+    afterLabel: "护理后 6 个月",
     processLabel: "安静的护理时刻",
     herbsLabel: "新鲜草本护理",
     herbalApplicationLabel: "草本面膜护理",
-    finishLabel: "护理后即时肤况",
+    finishLabel: "护理后即时光泽",
     skinFinishLabel: "护理细节",
     skinFinishTitle: "近距离看护理后的肤况",
     skinFinishCopy: "在工作室拍摄、未经修饰的肌肤特写。",
     comparisonBeforeLabel: "护理前",
-    comparisonAfterLabel: "护理后",
+    comparisonAfterLabel: "护理后 6 个月",
     skinProgressLabel: "肌肤记录",
     skinProgressTitle: "近距离记录真实肌肤",
     skinProgressCopy: "三个自然角度，呈现肌肤纹理、肤色和变化。",
@@ -204,7 +208,7 @@ const translations = {
     skinViewTwo: "肌肤角度 02",
     skinViewThree: "肌肤角度 03",
     analysisStoryLabel: "数码皮肤咨询",
-    analysisStoryTitle: "深入了解肌肤状态",
+    analysisStoryTitle: "免费皮肤分析",
     analysisStoryCopy: "工作室的皮肤分析会查看可见问题、测量指标，并提供针对性的护理建议。",
     resultsNote: "照片记录个人护理时刻。效果会因肤况和护理计划而异。",
     followInstagram: "在 Instagram 查看近期作品",
@@ -255,6 +259,8 @@ const translations = {
     stepTreat: "護理",
     stepTreatCopy: "細緻操作、合適技術同清晰嘅護理後建議。",
     ritualQuote: "源於親身暗瘡經歷，亦經過三十年美容院實踐。",
+    pricesKicker: "護理同價目",
+    pricesLead: "按類別睇晒所有面部護理、套餐同脫毛服務，時長同價格一清二楚。",
     aboutKicker: "我哋嘅理念",
     aboutTitle: "香港經驗，喺倫敦用心延續。",
     aboutLead: "Hailey Beauty 由香港兩間美容院同對頑固暗瘡嘅親身理解中成長。",
@@ -288,16 +294,16 @@ const translations = {
     herbalStoryTitle: "草本淨膚亮白面部護理",
     herbalStoryCopy: "由膚況分析、草本護理到完成護理後嘅完整過程。",
     beforeLabel: "護理前",
-    afterLabel: "護理後",
+    afterLabel: "護理後 6 個月",
     processLabel: "安靜嘅護理時刻",
     herbsLabel: "新鮮草本護理",
     herbalApplicationLabel: "草本面膜護理",
-    finishLabel: "護理後即時膚況",
+    finishLabel: "護理後即時光澤",
     skinFinishLabel: "護理細節",
     skinFinishTitle: "近距離睇護理後嘅膚況",
     skinFinishCopy: "喺工作室拍攝、未經修飾嘅肌膚特寫。",
     comparisonBeforeLabel: "護理前",
-    comparisonAfterLabel: "護理後",
+    comparisonAfterLabel: "護理後 6 個月",
     skinProgressLabel: "肌膚記錄",
     skinProgressTitle: "近距離記錄真實肌膚",
     skinProgressCopy: "三個自然角度，呈現肌膚紋理、膚色同變化。",
@@ -305,7 +311,7 @@ const translations = {
     skinViewTwo: "肌膚角度 02",
     skinViewThree: "肌膚角度 03",
     analysisStoryLabel: "數碼皮膚諮詢",
-    analysisStoryTitle: "深入了解肌膚狀態",
+    analysisStoryTitle: "免費皮膚分析",
     analysisStoryCopy: "工作室嘅皮膚分析會查看可見問題、量度指標，並提供針對性護理建議。",
     resultsNote: "相片記錄個人護理時刻。效果會因膚況同護理計劃而異。",
     followInstagram: "喺 Instagram 睇近期作品",
@@ -533,6 +539,40 @@ const activeSectionObserver = new IntersectionObserver(
 sections.forEach((section) => activeSectionObserver.observe(section));
 
 const tiktokEmbed = document.querySelector(".tiktok-embed");
+const heroTiktok = document.querySelector(".hero-tiktok");
+let tiktokLoadObserver;
+
+function revealTikTok() {
+  if (!heroTiktok) return;
+  heroTiktok.classList.add("is-loaded");
+  heroTiktok.setAttribute("aria-busy", "false");
+  tiktokLoadObserver?.disconnect();
+}
+
+function watchTikTokLoad() {
+  if (!heroTiktok || !tiktokEmbed || !("MutationObserver" in window)) return;
+
+  let observedIframe;
+  const attachIframeListener = () => {
+    const iframe = heroTiktok.querySelector("iframe");
+    if (!iframe) return false;
+    if (observedIframe === iframe) return true;
+
+    observedIframe = iframe;
+    iframe.addEventListener("load", revealTikTok, { once: true });
+    if (iframe.contentDocument?.readyState === "complete") revealTikTok();
+    return true;
+  };
+
+  if (attachIframeListener() && heroTiktok.classList.contains("is-loaded")) return;
+
+  tiktokLoadObserver = new MutationObserver(() => {
+    if (attachIframeListener() && heroTiktok.classList.contains("is-loaded")) {
+      tiktokLoadObserver.disconnect();
+    }
+  });
+  tiktokLoadObserver.observe(heroTiktok, { childList: true, subtree: true });
+}
 
 function loadTikTokEmbed() {
   if (!tiktokEmbed || document.querySelector("script[data-tiktok-embed-script]")) return;
@@ -542,6 +582,8 @@ function loadTikTokEmbed() {
   embedScript.dataset.tiktokEmbedScript = "";
   document.body.append(embedScript);
 }
+
+watchTikTokLoad();
 
 if (tiktokEmbed && "IntersectionObserver" in window) {
   const tiktokObserver = new IntersectionObserver(
@@ -585,3 +627,126 @@ addTreatmentBookingLinks();
 applySiteConfig();
 translatePage(currentLang);
 updateDepth();
+
+/* Before/After reel — drag, wheel, keys, pause */
+(() => {
+  const viewport = document.querySelector("[data-ba-viewport]");
+  const track = document.querySelector("[data-ba-track]");
+  if (!viewport || !track) return;
+
+  // Respect reduced-motion: disable auto-scroll, enable native scroll
+  if (prefersReducedMotion.matches) {
+    track.style.animation = "none";
+    viewport.style.overflowX = "auto";
+    viewport.style.cursor = "grab";
+    return;
+  }
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let resumeTimer;
+
+  let manualMode = false;
+  function pauseAuto() {
+    viewport.classList.add("is-paused");
+    clearTimeout(resumeTimer);
+  }
+  function resumeAuto() {
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      viewport.classList.remove("is-paused");
+      // if user barely scrolled, restore seamless auto loop
+      if (manualMode && viewport.scrollLeft <= 16) {
+        viewport.scrollLeft = 0;
+        viewport.style.overflowX = "hidden";
+        track.style.animation = "";
+        manualMode = false;
+      }
+    }, 2600);
+  }
+  function enterManualMode() {
+    if (!manualMode) {
+      manualMode = true;
+      track.style.animation = "none";
+      viewport.style.overflowX = "auto";
+    }
+  }
+
+  viewport.addEventListener("mousedown", (e) => {
+    isDown = true;
+    pauseAuto();
+    viewport.style.cursor = "grabbing";
+    startX = e.pageX - viewport.offsetLeft;
+    scrollLeft = viewport.scrollLeft;
+    e.preventDefault();
+  });
+  viewport.addEventListener("mouseleave", () => {
+    isDown = false;
+    viewport.style.cursor = "grab";
+    resumeAuto();
+  });
+  viewport.addEventListener("mouseup", () => {
+    isDown = false;
+    viewport.style.cursor = "grab";
+    resumeAuto();
+  });
+  viewport.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    // If user is dragging, switch from CSS animation to manual scroll
+    // Freeze animation by keeping is-paused and using scrollLeft
+    const x = e.pageX - viewport.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    // Only switch to scroll mode once drag is meaningful
+    if (Math.abs(walk) > 4) {
+      enterManualMode();
+      viewport.scrollLeft = scrollLeft - walk;
+    }
+  });
+
+  // Touch
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+  viewport.addEventListener("touchstart", (e) => {
+    pauseAuto();
+    touchStartX = e.touches[0].pageX - viewport.offsetLeft;
+    touchScrollLeft = viewport.scrollLeft;
+    enterManualMode();
+  }, { passive: true });
+  viewport.addEventListener("touchmove", (e) => {
+    const x = e.touches[0].pageX - viewport.offsetLeft;
+    viewport.scrollLeft = touchScrollLeft - (x - touchStartX);
+  }, { passive: true });
+  viewport.addEventListener("touchend", resumeAuto, { passive: true });
+
+  // Wheel: horizontal scroll support
+  viewport.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY) && Math.abs(e.deltaY) > 6) return;
+    enterManualMode();
+    pauseAuto();
+    resumeAuto();
+  }, { passive: true });
+
+  // Keyboard
+  viewport.addEventListener("keydown", (e) => {
+    const step = viewport.clientWidth * 0.85;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      pauseAuto();
+      enterManualMode();
+      viewport.scrollBy({ left: step, behavior: "smooth" });
+      resumeAuto();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      pauseAuto();
+      enterManualMode();
+      viewport.scrollBy({ left: -step, behavior: "smooth" });
+      resumeAuto();
+    }
+  });
+
+  // Pause on visibility change
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) viewport.classList.add("is-paused");
+  });
+})();

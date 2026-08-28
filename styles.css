@@ -378,33 +378,32 @@ h2 {
   padding: clamp(2.6rem, 5.5vw, 4rem) 0 clamp(2.6rem, 5vw, 3.75rem);
 }
 
-.hero-visual {
+.hero-tiktok {
   position: relative;
-  flex: none;
-  width: clamp(17rem, 24vw, 25rem);
-  height: clamp(13.5rem, 19vw, 19.5rem);
+  flex: 0 1 clamp(20rem, 35vw, 38rem);
+  width: clamp(20rem, 35vw, 38rem);
+  min-width: 0;
   margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.hero-visual-main {
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 60% 45%;
+.hero-tiktok.is-loaded {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   animation: hero-copy-in 1s cubic-bezier(0.22, 0.78, 0.22, 1) 120ms both;
 }
 
-.hero-visual-accent {
-  position: absolute;
-  right: 0;
-  bottom: -1.6rem;
-  width: 55%;
-  height: 52%;
-  border: 0.5rem solid var(--paper);
-  box-shadow: var(--shadow);
-  object-fit: cover;
-  object-position: 50% 42%;
-  animation: hero-copy-in 1s cubic-bezier(0.22, 0.78, 0.22, 1) 260ms both;
+.hero-tiktok .tiktok-embed-frame {
+  min-height: clamp(27rem, 38vw, 34rem);
+  padding: clamp(0.55rem, 1vw, 0.85rem);
+}
+
+.hero-tiktok .tiktok-embed {
+  min-width: min(288px, 100%);
+  margin: 0 auto !important;
 }
 
 .hero-copy {
@@ -583,28 +582,17 @@ html:lang(en) .hero-copy h1 {
   transform: scale(1.035);
 }
 
-.ritual-image-main {
-  top: 0;
-  left: 0;
-  width: 76%;
-  height: 39rem;
-}
-
-.ritual-image-main img {
-  object-position: 50% 38%;
-}
-
-.ritual-image-detail {
-  right: 0;
-  bottom: 0;
+.ritual-image-feature {
+  top: 1rem;
+  right: 4%;
   z-index: 2;
-  width: 56%;
-  height: 19rem;
+  width: 84%;
+  height: 40rem;
   border: 0.65rem solid var(--lacquer);
   box-shadow: var(--shadow);
 }
 
-.ritual-image-detail img {
+.ritual-image-feature img {
   object-position: 50% 43%;
 }
 
@@ -686,6 +674,28 @@ html:lang(en) .hero-copy h1 {
 
 .prices {
   padding: var(--section-space) max(3rem, calc((100vw - 88rem) / 2));
+  background:
+    radial-gradient(circle at 10% 0%, rgba(185, 139, 69, 0.11), transparent 30%),
+    radial-gradient(circle at 92% 100%, rgba(143, 150, 118, 0.1), transparent 32%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.prices .editorial-head {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.prices .editorial-head h2 {
+  font-size: clamp(2.7rem, 3.6vw, 3.5rem);
+}
+
+.prices-lead {
+  max-width: 38rem;
+}
+
+.prices .micro-label span:last-child {
+  font-family: var(--sans);
 }
 
 .editorial-head {
@@ -702,7 +712,7 @@ html:lang(en) .hero-copy h1 {
   line-height: 1.02;
 }
 
-.editorial-head > div > p {
+.editorial-head > div > p:not(.micro-label) {
   max-width: 34rem;
   margin: 1rem 0 0;
   color: var(--muted);
@@ -922,55 +932,59 @@ html:lang(en) .hero-copy h1 {
 
 .price-tabs {
   display: flex;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding-bottom: 1.6rem;
   border-bottom: 1px solid var(--line);
 }
 
 .price-tab {
   position: relative;
-  min-height: 3.25rem;
-  padding: 0 0 0.8rem;
-  border: 0;
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.85rem;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid rgba(23, 58, 42, 0.26);
+  border-radius: 999px;
+  background: rgba(251, 247, 240, 0.66);
   color: var(--muted);
   font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
   line-height: 1.25;
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color 180ms ease;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.price-tab::after {
-  position: absolute;
-  right: 0;
-  bottom: -1px;
-  left: 0;
-  height: 2px;
-  background: var(--brass);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 220ms ease;
-}
-
-.price-tab:hover,
-.price-tab:focus-visible,
-.price-tab.is-active {
-  color: var(--ink);
+@media (hover: hover) {
+  .price-tab:hover {
+    border-color: var(--brass);
+    background: var(--paper);
+    color: var(--brass);
+    transform: translateY(-1px);
+  }
 }
 
 .price-tab:focus-visible {
-  outline: 1px solid var(--brass);
-  outline-offset: 0.35rem;
+  outline: 2px solid var(--brass);
+  outline-offset: 0.2rem;
 }
 
-.price-tab.is-active::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.price-tab.is-active,
+.price-tab[aria-selected="true"] {
+  border-color: var(--lacquer);
+  background: var(--lacquer);
+  color: var(--paper);
+  box-shadow: 0 0.55rem 1.4rem rgba(23, 58, 42, 0.24);
+}
+
+.price-tab.is-active:focus-visible,
+.price-tab[aria-selected="true"]:focus-visible {
+  outline-color: var(--brass-light);
 }
 
 .price-category {
@@ -1021,19 +1035,24 @@ html:lang(en) .hero-copy h1 {
   grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
   gap: 0.45rem clamp(2rem, 4vw, 4rem);
   margin-top: 0.9rem;
-  padding: clamp(1.35rem, 2.2vw, 1.8rem);
+  padding: clamp(1.5rem, 2.4vw, 2rem);
   overflow: hidden;
-  border: 1px solid rgba(23, 58, 42, 0.16);
-  background: rgba(251, 247, 240, 0.58);
-  box-shadow: inset 3px 0 0 rgba(143, 93, 32, 0.62);
-  transition: border-color 220ms ease, background-color 220ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(23, 58, 42, 0.14);
+  border-radius: 0.3rem;
+  background: var(--paper);
+  box-shadow:
+    0 0.7rem 1.8rem rgba(21, 47, 34, 0.07),
+    inset 3px 0 0 var(--brass-fill);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (hover: hover) {
   .treatment:hover {
     border-color: rgba(143, 93, 32, 0.42);
-    background: rgba(251, 247, 240, 0.82);
-    transform: translateY(-2px);
+    box-shadow:
+      0 1.1rem 2.6rem rgba(21, 47, 34, 0.13),
+      inset 3px 0 0 var(--brass);
+    transform: translateY(-3px);
   }
 }
 
@@ -1096,19 +1115,33 @@ html:lang(en) .hero-copy h1 {
 }
 
 .treatment-meta {
-  color: #78585a;
-  font-family: var(--display);
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  font-weight: 500;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1.28;
   text-align: right;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
-.treatment-meta b {
-  margin-inline: 0.25rem;
+.treatment-duration {
+  color: var(--muted);
+}
+
+.treatment-price {
   color: var(--brass);
-  font-weight: 400;
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 1.9vw, 1.75rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: none;
 }
 
 .treatment-meta-stack {
@@ -1119,11 +1152,11 @@ html:lang(en) .hero-copy h1 {
 
 .treatment > p {
   max-width: 67rem;
-  margin: 0.75rem 0 0;
-  color: var(--muted);
+  margin: 0.85rem 0 0;
+  color: #4f5a51;
   font-family: var(--display);
-  font-size: 0.96rem;
-  line-height: 1.38;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .treatment > .treatment-includes,
@@ -1595,10 +1628,6 @@ html:lang(en) .hero-copy h1 {
   background: #e9dfd2;
 }
 
-.treatment-story-blue .treatment-photo img {
-  object-position: 50% 30%;
-}
-
 .treatment-story-herbal {
   grid-template-columns: 1fr;
   gap: 2.5rem;
@@ -1643,6 +1672,27 @@ html:lang(en) .hero-copy h1 {
 
 .herbal-rest img { object-position: 48% 45%; }
 .herbal-mask img { object-position: 50% 36%; }
+
+.herbal-story-grid {
+  display: flex;
+  grid-template-columns: none;
+  grid-template-rows: none;
+  justify-content: center;
+  gap: 0;
+}
+
+.herbal-treatment-collage {
+  width: min(100%, 34rem);
+  margin: 0;
+  overflow: hidden;
+  background: var(--lacquer);
+}
+
+.herbal-treatment-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 .skin-finish-journal {
   display: grid;
@@ -1770,6 +1820,7 @@ html:lang(en) .hero-copy h1 {
 }
 
 .analysis-report-grid figure {
+  min-width: 0;
   margin: 0;
   border: 1px solid var(--line);
   background: #fff;
@@ -1800,16 +1851,110 @@ html:lang(en) .hero-copy h1 {
   font-size: 0.78rem;
 }
 
-.tiktok-showcase {
-  padding: var(--section-space) max(3rem, calc((100vw - 88rem) / 2));
+/* ── Before/After infinite scrolling reel ───────────────────── */
+.ba-reel {
+  margin-top: 0;
+  padding: 0;
   border-top: 1px solid var(--line);
-  background: var(--paper);
+  overflow: hidden;
 }
 
-.tiktok-showcase-inner {
-  max-width: 52rem;
-  margin: 0 auto;
+.ba-reel-viewport {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.5rem;
+  cursor: grab;
+  user-select: none;
+  /* soft fade on edges */
+  mask-image: linear-gradient(to right, transparent 0, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 3%, black 97%, transparent 100%);
 }
+
+.ba-reel-viewport:active {
+  cursor: grabbing;
+}
+
+.ba-reel-viewport:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.ba-reel-track {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  animation: ba-scroll 44s linear infinite;
+  will-change: transform;
+}
+
+.ba-reel-viewport:hover .ba-reel-track,
+.ba-reel-viewport:focus-within .ba-reel-track,
+.ba-reel-viewport.is-paused .ba-reel-track {
+  animation-play-state: paused;
+}
+
+.ba-reel-card {
+  flex: 0 0 clamp(18rem, 28vw, 22rem);
+  aspect-ratio: 1080 / 1350;
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid rgba(23, 58, 42, 0.12);
+  box-shadow: 0 1rem 2.5rem rgba(21, 47, 34, 0.12);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.ba-reel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1.25rem 3rem rgba(21, 47, 34, 0.16);
+}
+
+.ba-reel-card picture,
+.ba-reel-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ba-reel-card img {
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.ba-reel-card--wide {
+  flex: 0 0 clamp(26rem, 38vw, 32rem);
+  aspect-ratio: 1092 / 629;
+  align-self: center;
+}
+
+.ba-reel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 68rem;
+  margin: 0.9rem auto 0;
+  padding: 0 max(0rem, calc((100vw - 88rem) / 2));
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ba-reel-controls .ba-reel-pause-hint {
+  color: var(--brass);
+}
+
+@keyframes ba-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* make reel first in gallery visual order */
+.gallery > .ba-reel { order: 0; }
 
 .tiktok-embed-frame {
   width: 100%;
@@ -2124,8 +2269,9 @@ html:lang(en) .hero-copy h1 {
     padding-block: 2.4rem 2.8rem;
   }
 
-  .hero-visual {
-    display: none;
+  .hero-tiktok {
+    width: min(100%, 38rem);
+    margin: 2.25rem auto 0;
   }
 
   .hero-copy {
@@ -2247,11 +2393,7 @@ main > .gallery {
   order: 1;
 }
 
-main > .tiktok-showcase {
-  order: 1;
-}
-
-main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
+main > :not(.hero):not(.gallery) {
   order: 2;
 }
 
@@ -2270,10 +2412,6 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
 
 .gallery > .treatment-story-herbal {
   order: 2;
-}
-
-.gallery > .treatment-story-blue {
-  order: 3;
 }
 
 .gallery > .skin-analysis-story {
@@ -2398,7 +2536,8 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   }
 
   .analysis-report-grid figure {
-    flex: 0 0 min(30rem, 48%);
+    min-width: 0;
+    flex: 0 0 min(14rem, 30%);
     scroll-snap-align: start;
   }
 }
@@ -2446,12 +2585,8 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
     min-height: 40rem;
   }
 
-  .ritual-image-main {
-    height: 33rem;
-  }
-
-  .ritual-image-detail {
-    height: 16rem;
+  .ritual-image-feature {
+    height: 38rem;
   }
 
   .ritual-steps {
@@ -2513,10 +2648,6 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
     --shell: calc(100vw - 2rem);
     --section-space: 3.5rem;
     --header-height: 4rem;
-  }
-
-  main > :not(.hero):not(.gallery).tiktok-showcase {
-    order: 1;
   }
 
   h2 {
@@ -2792,16 +2923,14 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
     display: none;
   }
 
-  .ritual-image-main {
+  .ritual-image-feature {
     position: relative;
     inset: auto;
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 0.84;
-  }
-
-  .ritual-image-detail {
-    display: none;
+    aspect-ratio: 0.78 / 1;
+    border-width: 0;
+    box-shadow: none;
   }
 
   .vertical-note {
@@ -2964,9 +3093,11 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   }
 
   .price-tabs {
-    gap: 1.5rem;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
     margin-right: -1rem;
     padding-right: 1rem;
+    padding-bottom: 1.25rem;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
@@ -3030,9 +3161,15 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   }
 
   .treatment-meta {
-    font-size: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.68rem;
     text-align: left;
-    white-space: normal;
+    white-space: nowrap;
+  }
+
+  .treatment-price {
+    font-size: 1.45rem;
   }
 
   .treatment-meta-stack {
@@ -3300,7 +3437,8 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   }
 
   .analysis-report-grid figure {
-    flex: 0 0 min(82vw, 20rem);
+    min-width: 0;
+    flex: 0 0 min(55vw, 14rem);
     scroll-snap-align: start;
   }
 
@@ -3319,10 +3457,6 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
 
   .gallery-foot p {
     display: none;
-  }
-
-  .tiktok-showcase {
-    padding: var(--section-space) 1rem;
   }
 
   .tiktok-embed-frame {
@@ -3371,11 +3505,39 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   }
 }
 
-@media (max-width: 380px) {
-  .tiktok-showcase {
-    padding-inline: 0.5rem;
+/* ba-reel responsive */
+@media (max-width: 640px) {
+  .ba-reel {
+    margin-top: 0;
+    padding-top: 0;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    border-top: 1px solid var(--line);
   }
+  .ba-reel-viewport {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    mask-image: linear-gradient(to right, transparent 0, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 5%, black 95%, transparent 100%);
+  }
+  .ba-reel-track {
+    gap: 0.75rem;
+    animation-duration: 28s;
+  }
+  .ba-reel-card {
+    flex: 0 0 min(78vw, 20rem);
+  }
+  .ba-reel-card--wide {
+    flex: 0 0 min(92vw, 30rem);
+    aspect-ratio: 1092 / 629;
+  }
+  .ba-reel-controls {
+    padding: 0;
+    margin-top: 0.75rem;
+  }
+}
 
+@media (max-width: 380px) {
   .tiktok-embed-frame {
     padding: 0;
   }
@@ -3414,5 +3576,121 @@ main > :not(.hero):not(.gallery):not(.tiktok-showcase) {
   .reveal-ready .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Story duo: "A detailed view beneath the surface" + Herbal Congestion
+   facial shown side by side on one row (stacked only on small phones).
+   ------------------------------------------------------------------ */
+.story-duo {
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(3.5rem, 6vw, 5rem);
+}
+
+/* Preserve the previous visual order (herbal first) while stacked */
+.story-duo > .treatment-story-herbal {
+  order: 1;
+}
+
+.story-duo > .skin-analysis-story {
+  order: 2;
+}
+
+.gallery > .story-duo {
+  order: 2;
+}
+
+@media (min-width: 561px) {
+  .story-duo {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(1.75rem, 3.5vw, 3.5rem);
+    align-items: start;
+    max-width: 76rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .story-duo > .skin-analysis-story {
+    order: 0;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+    background: transparent;
+  }
+
+  .story-duo > .skin-analysis-story > .treatment-story-head {
+    display: block;
+    max-width: none;
+    margin: 0 0 1.4rem;
+  }
+
+  .story-duo > .skin-analysis-story > .treatment-story-head p {
+    display: block;
+  }
+
+  /* Match the herbal congestion heading size */
+  .story-duo > .skin-analysis-story > .treatment-story-head h3 {
+    font-size: clamp(1.9rem, 2.4vw, 2.7rem);
+  }
+
+  /* Analysis reports stack inside the narrow row column */
+  .story-duo .analysis-report-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    overflow: visible;
+  }
+
+  @media (min-width: 861px) {
+    .story-duo .analysis-report-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .story-duo > .treatment-story-herbal {
+    order: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  .story-duo > .treatment-story-herbal > .treatment-story-head {
+    display: block;
+    max-width: none;
+    margin: 0 0 1.4rem;
+    padding: 0;
+    border-top: 0;
+  }
+
+  .story-duo > .treatment-story-herbal > .treatment-story-head p,
+  .story-duo > .treatment-story-herbal > .treatment-story-head > span {
+    display: block;
+  }
+
+  .story-duo > .treatment-story-herbal > .treatment-story-head h3 {
+    color: var(--lacquer);
+    font-family: var(--display);
+    font-size: clamp(1.9rem, 2.4vw, 2.7rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    text-transform: none;
+    text-wrap: balance;
+  }
+
+  .story-duo > .treatment-story-herbal .herbal-treatment-collage {
+    width: 100%;
   }
 }
