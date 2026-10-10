@@ -1866,7 +1866,11 @@ html:lang(en) .hero-copy h1 {
 
 .ba-reel-viewport {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-behavior: auto;
   padding-block: 0.5rem;
   cursor: grab;
   user-select: none;
@@ -1875,7 +1879,11 @@ html:lang(en) .hero-copy h1 {
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 3%, black 97%, transparent 100%);
 }
 
-.ba-reel-viewport:active {
+.ba-reel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.ba-reel-viewport.is-dragging {
   cursor: grabbing;
 }
 
@@ -1889,14 +1897,6 @@ html:lang(en) .hero-copy h1 {
   align-items: center;
   gap: 1rem;
   width: max-content;
-  animation: ba-scroll 44s linear infinite;
-  will-change: transform;
-}
-
-.ba-reel-viewport:hover .ba-reel-track,
-.ba-reel-viewport:focus-within .ba-reel-track,
-.ba-reel-viewport.is-paused .ba-reel-track {
-  animation-play-state: paused;
 }
 
 .ba-reel-card {
@@ -1951,11 +1951,6 @@ html:lang(en) .hero-copy h1 {
 
 .ba-reel-controls .ba-reel-pause-hint {
   color: var(--brass);
-}
-
-@keyframes ba-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 /* make reel first in gallery visual order */
@@ -3608,6 +3603,183 @@ main > :not(.hero):not(.gallery) {
   .ba-reel-controls {
     padding: 0;
     margin-top: 0.75rem;
+  }
+}
+
+.price-bookbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .treatment,
+  .treatment-compact {
+    margin: 0;
+    padding: 1.1rem 0 1.2rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .treatment + .treatment {
+    border-top: 1px dashed rgba(143, 93, 32, 0.3);
+  }
+
+  .treatment-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.5rem;
+    padding-bottom: 0;
+    border: 0;
+  }
+
+  .treatment-head h4,
+  .treatment-head h6 {
+    flex: 0 1 auto;
+    max-width: 72%;
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  .treatment-head::after {
+    flex: 1 1 1rem;
+    order: 1;
+    min-width: 1rem;
+    border-bottom: 1px dotted rgba(23, 58, 42, 0.35);
+    transform: translateY(-0.35rem);
+    content: "";
+  }
+
+  .treatment-head .treatment-meta {
+    display: contents;
+  }
+
+  .treatment-price {
+    order: 2;
+    color: var(--brass);
+    font-family: var(--display);
+    font-size: 1.4rem;
+  }
+
+  .treatment-duration {
+    flex-basis: 100%;
+    order: 3;
+    margin-top: 0.2rem;
+    color: var(--muted);
+  }
+
+  .treatment-book {
+    display: none;
+  }
+
+  .treatment > p {
+    display: -webkit-box;
+    margin-top: 0.45rem;
+    overflow: hidden;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .treatment.is-expanded > p {
+    display: block;
+  }
+
+  .price-bookbar {
+    position: sticky;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.95rem 1.25rem;
+    border-radius: 999px;
+    background: var(--lacquer);
+    box-shadow: 0 1rem 2rem rgba(12, 41, 29, 0.3);
+    color: var(--paper);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .price-bookbar > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .price-bookbar small {
+    color: var(--brass-light);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .heritage-notes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 1.8rem;
+    border: 0;
+  }
+
+  .heritage-notes div,
+  .heritage-notes div + div {
+    display: block;
+    padding: 0.2rem 0.6rem;
+    border: 0;
+    border-left: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .heritage-notes div:first-child {
+    border-left: 0;
+  }
+
+  .heritage-notes dt {
+    color: var(--lacquer);
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .heritage-notes dd {
+    margin: 0.4rem 0 0;
+    font-size: 0.55rem;
+    line-height: 1.4;
+  }
+
+  .studio-journal {
+    display: flex;
+    gap: 0.6rem;
+    height: auto;
+    margin-inline: -1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .studio-journal::-webkit-scrollbar {
+    display: none;
+  }
+
+  .studio-journal figure,
+  .studio-journal-room,
+  .studio-journal-technology,
+  .studio-journal-result {
+    flex: 0 0 72%;
+    height: 22rem;
+    aspect-ratio: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    scroll-snap-align: start;
   }
 }
 

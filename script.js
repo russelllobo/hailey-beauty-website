@@ -43,6 +43,8 @@ const translations = {
     heroTrustHerbal: "Herbal",
     heroTrustOrigin: "Hong Kong",
     heroTrustLocation: "Oxford Circus",
+    priceBarTitle: "Book a treatment",
+    priceBarNote: "Free skin analysis",
     viewPrices: "View treatments & prices",
     proofPractice: "30 years of salon practice",
     proofOrigin: "Rooted in Hong Kong",
@@ -151,6 +153,8 @@ const translations = {
     heroTrustHerbal: "草本护理",
     heroTrustOrigin: "源自香港",
     heroTrustLocation: "Oxford Circus",
+    priceBarTitle: "预约护理",
+    priceBarNote: "免费皮肤分析",
     viewPrices: "查看护理与价目",
     proofPractice: "30年美容院实践",
     proofOrigin: "源自香港",
@@ -259,6 +263,8 @@ const translations = {
     heroTrustHerbal: "草本護理",
     heroTrustOrigin: "源自香港",
     heroTrustLocation: "Oxford Circus",
+    priceBarTitle: "預約護理",
+    priceBarNote: "免費皮膚分析",
     viewPrices: "睇護理同價目",
     proofPractice: "30年美容院實踐",
     proofOrigin: "源自香港",
@@ -369,6 +375,13 @@ function addTreatmentBookingLinks() {
     header.append(bookingLink);
   });
 }
+
+document.querySelectorAll(".price-panel .treatment").forEach((treatment) => {
+  treatment.addEventListener("click", (event) => {
+    if (event.target.closest("a")) return;
+    treatment.classList.toggle("is-expanded");
+  });
+});
 
 function translatePage(lang) {
   currentLang = translations[lang] ? lang : "en";
@@ -643,125 +656,122 @@ applySiteConfig();
 translatePage(currentLang);
 updateDepth();
 
-/* Before/After reel — drag, wheel, keys, pause */
+/* Before/After reel: one native scroll position for autoplay and interaction. */
 (() => {
   const viewport = document.querySelector("[data-ba-viewport]");
   const track = document.querySelector("[data-ba-track]");
   if (!viewport || !track) return;
 
-  // Respect reduced-motion: disable auto-scroll, enable native scroll
-  if (prefersReducedMotion.matches) {
-    track.style.animation = "none";
-    viewport.style.overflowX = "auto";
-    viewport.style.cursor = "grab";
-    return;
-  }
-
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+  let cycleWidth = 0;
+  let visible = false;
+  let hovering = false;
+  let interacting = false;
+  let focused = false;
   let resumeTimer;
+  let frame = 0;
+  let previousTime = 0;
+  let position = viewport.scrollLeft;
+  let drag;
 
-  let manualMode = false;
-  function pauseAuto() {
-    viewport.classList.add("is-paused");
-    clearTimeout(resumeTimer);
+  function animate(time) {
+    const elapsed = previousTime ? Math.min(time - previousTime, 50) : 0;
+    previousTime = time;
+    position += cycleWidth * elapsed / 44000;
+    if (position >= cycleWidth) position %= cycleWidth;
+    viewport.scrollLeft = position;
+    frame = requestAnimationFrame(animate);
   }
-  function resumeAuto() {
+
+  function updateAuto() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    previousTime = 0;
+    if (!visible || document.hidden || hovering || focused || interacting ||
+        prefersReducedMotion.matches || !cycleWidth) return;
+    position = viewport.scrollLeft;
+    frame = requestAnimationFrame(animate);
+  }
+
+  function pause() {
+    clearTimeout(resumeTimer);
+    interacting = true;
+    updateAuto();
+  }
+
+  function resume() {
     clearTimeout(resumeTimer);
     resumeTimer = setTimeout(() => {
-      viewport.classList.remove("is-paused");
-      // if user barely scrolled, restore seamless auto loop
-      if (manualMode && viewport.scrollLeft <= 16) {
-        viewport.scrollLeft = 0;
-        viewport.style.overflowX = "hidden";
-        track.style.animation = "";
-        manualMode = false;
-      }
+      interacting = false;
+      updateAuto();
     }, 2600);
   }
-  function enterManualMode() {
-    if (!manualMode) {
-      manualMode = true;
-      track.style.animation = "none";
-      viewport.style.overflowX = "auto";
-    }
+
+  new ResizeObserver(() => {
+    const duplicate = track.querySelector('[aria-hidden="true"]');
+    cycleWidth = duplicate ? duplicate.offsetLeft - track.firstElementChild.offsetLeft : 0;
+    updateAuto();
+  }).observe(track);
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    updateAuto();
+  }).observe(viewport);
+
+  viewport.addEventListener("pointerenter", (event) => {
+    if (event.pointerType !== "mouse") return;
+    hovering = true;
+    updateAuto();
+  });
+  viewport.addEventListener("pointerleave", () => {
+    hovering = false;
+    updateAuto();
+  });
+  viewport.addEventListener("focusin", () => {
+    focused = true;
+    updateAuto();
+  });
+  viewport.addEventListener("focusout", () => {
+    focused = false;
+    updateAuto();
+  });
+
+  viewport.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    pause();
+    // Touch and pen keep the browser's native swipe and momentum scrolling.
+    if (event.pointerType !== "mouse") return;
+    drag = { id: event.pointerId, x: event.clientX, left: viewport.scrollLeft };
+    viewport.setPointerCapture(event.pointerId);
+    viewport.classList.add("is-dragging");
+    event.preventDefault();
+  });
+  viewport.addEventListener("pointermove", (event) => {
+    if (!drag || event.pointerId !== drag.id) return;
+    viewport.scrollLeft = drag.left - (event.clientX - drag.x);
+  });
+  function endDrag() {
+    drag = undefined;
+    viewport.classList.remove("is-dragging");
+    resume();
   }
-
-  viewport.addEventListener("mousedown", (e) => {
-    isDown = true;
-    pauseAuto();
-    viewport.style.cursor = "grabbing";
-    startX = e.pageX - viewport.offsetLeft;
-    scrollLeft = viewport.scrollLeft;
-    e.preventDefault();
-  });
-  viewport.addEventListener("mouseleave", () => {
-    isDown = false;
-    viewport.style.cursor = "grab";
-    resumeAuto();
-  });
-  viewport.addEventListener("mouseup", () => {
-    isDown = false;
-    viewport.style.cursor = "grab";
-    resumeAuto();
-  });
-  viewport.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    // If user is dragging, switch from CSS animation to manual scroll
-    // Freeze animation by keeping is-paused and using scrollLeft
-    const x = e.pageX - viewport.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    // Only switch to scroll mode once drag is meaningful
-    if (Math.abs(walk) > 4) {
-      enterManualMode();
-      viewport.scrollLeft = scrollLeft - walk;
-    }
-  });
-
-  // Touch
-  let touchStartX = 0;
-  let touchScrollLeft = 0;
-  viewport.addEventListener("touchstart", (e) => {
-    pauseAuto();
-    touchStartX = e.touches[0].pageX - viewport.offsetLeft;
-    touchScrollLeft = viewport.scrollLeft;
-    enterManualMode();
-  }, { passive: true });
-  viewport.addEventListener("touchmove", (e) => {
-    const x = e.touches[0].pageX - viewport.offsetLeft;
-    viewport.scrollLeft = touchScrollLeft - (x - touchStartX);
-  }, { passive: true });
-  viewport.addEventListener("touchend", resumeAuto, { passive: true });
-
-  // Wheel: horizontal scroll support
-  viewport.addEventListener("wheel", (e) => {
-    if (Math.abs(e.deltaX) < Math.abs(e.deltaY) && Math.abs(e.deltaY) > 6) return;
-    enterManualMode();
-    pauseAuto();
-    resumeAuto();
+  viewport.addEventListener("pointerup", endDrag);
+  viewport.addEventListener("pointercancel", endDrag);
+  viewport.addEventListener("lostpointercapture", endDrag);
+  viewport.addEventListener("wheel", () => {
+    pause();
+    resume();
   }, { passive: true });
 
-  // Keyboard
-  viewport.addEventListener("keydown", (e) => {
-    const step = viewport.clientWidth * 0.85;
-    if (e.key === "ArrowRight") {
-      e.preventDefault();
-      pauseAuto();
-      enterManualMode();
-      viewport.scrollBy({ left: step, behavior: "smooth" });
-      resumeAuto();
-    } else if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      pauseAuto();
-      enterManualMode();
-      viewport.scrollBy({ left: -step, behavior: "smooth" });
-      resumeAuto();
-    }
+  viewport.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    event.preventDefault();
+    pause();
+    viewport.scrollBy({
+      left: viewport.clientWidth * 0.85 * (event.key === "ArrowRight" ? 1 : -1),
+      behavior: prefersReducedMotion.matches ? "instant" : "smooth"
+    });
+    resume();
   });
-
-  // Pause on visibility change
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) viewport.classList.add("is-paused");
-  });
+  document.addEventListener("visibilitychange", updateAuto);
+  prefersReducedMotion.addEventListener("change", updateAuto);
 })();
