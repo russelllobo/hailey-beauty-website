@@ -493,6 +493,11 @@ html:lang(en) .hero-copy h1 {
   font-size: 0.73rem;
 }
 
+.hero-arch,
+.hero-trust {
+  display: none;
+}
+
 .proof-line {
   background: var(--forest);
   color: rgba(246, 239, 228, 0.83);
@@ -2771,12 +2776,81 @@ main > :not(.hero):not(.gallery) {
   .hero-inner {
     display: block;
     min-height: 0;
-    padding: 1.7rem 0 1.9rem;
+    padding: 1.5rem 0 2.2rem;
   }
 
   .hero-copy {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: none;
+  }
+
+  .hero-announcement {
+    align-self: flex-start;
+  }
+
+  .hero-arch {
+    position: relative;
+    display: block;
+    margin: 1.4rem 0 0;
+    animation: hero-copy-in 0.85s cubic-bezier(0.22, 0.78, 0.22, 1) 130ms both;
+  }
+
+  .hero-arch img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.02;
+    object-fit: cover;
+    object-position: 50% 40%;
+    border-radius: 12rem 12rem 0 0;
+  }
+
+  .hero-arch-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: -0.25rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--paper);
+    box-shadow: 0 1rem 2.5rem rgba(21, 47, 34, 0.18);
+    color: var(--lacquer);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .hero-arch-badge strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--brass);
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-transform: none;
+  }
+
+  .hero-trust {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.4rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .hero-trust span + span::before {
+    margin-right: 0.9rem;
+    color: var(--brass);
+    content: "·";
   }
 
   .hero-kicker {
@@ -2805,7 +2879,7 @@ main > :not(.hero):not(.gallery) {
 
   .hero-copy h1 {
     max-width: 16ch;
-    font-size: clamp(2.5rem, 9.5vw, 3.1rem);
+    font-size: clamp(2.6rem, 12vw, 3.2rem);
     letter-spacing: -0.028em;
     line-height: 0.9;
     text-wrap: balance;
@@ -2814,7 +2888,7 @@ main > :not(.hero):not(.gallery) {
   .hero-lead {
     width: 100%;
     max-width: 32rem;
-    margin: 0.9rem 0 0;
+    margin: 1.2rem 0 0;
     font-size: 0.92rem;
     line-height: 1.58;
   }
