@@ -122,6 +122,10 @@ const translations = {
     followTikTok: "Follow @haileybeautyldn",
     bookingKicker: "Your next appointment",
     bookingTitle: "Let’s begin",
+    bookingOffer: "Free skin analysis with your first visit",
+    hoursOpenNow: "Open now · until {time}",
+    hoursOpensToday: "Opens today at {time}",
+    hoursOpensTomorrow: "Closed now · opens tomorrow at {time}",
     bookingCopy: "View live availability and choose your treatment through our booking destination. You can discuss sensitivities and goals during consultation.",
     continueBooking: "Continue to booking",
     footerVisit: "Social media",
@@ -232,6 +236,10 @@ const translations = {
     followTikTok: "关注 @haileybeautyldn",
     bookingKicker: "下一次预约",
     bookingTitle: "让我们先了解你的肌肤。",
+    bookingOffer: "首次到访即享免费皮肤分析",
+    hoursOpenNow: "营业中 · 营业至 {time}",
+    hoursOpensToday: "今天 {time} 开门",
+    hoursOpensTomorrow: "已打烊 · 明天 {time} 开门",
     bookingCopy: "通过预约平台查看实时空位并选择护理项目。咨询时可以说明敏感情况和护理目标。",
     continueBooking: "前往预约",
     footerVisit: "社交媒体",
@@ -342,6 +350,10 @@ const translations = {
     followTikTok: "關注 @haileybeautyldn",
     bookingKicker: "下一次預約",
     bookingTitle: "等我哋先了解你嘅肌膚。",
+    bookingOffer: "首次到訪即享免費皮膚分析",
+    hoursOpenNow: "營業中 · 營業至 {time}",
+    hoursOpensToday: "今日 {time} 開門",
+    hoursOpensTomorrow: "已收舖 · 聽日 {time} 開門",
     bookingCopy: "透過預約平台睇即時空位同選擇護理項目。諮詢時可以講低敏感情況同護理目標。",
     continueBooking: "前往預約",
     footerVisit: "社交媒體",
@@ -401,7 +413,36 @@ function translatePage(lang) {
 
   localStorage.setItem("hailey-language", currentLang);
   applyBookingDestination();
+  renderBookingHours();
   updateMenuLabel();
+}
+
+const STUDIO_HOURS = { open: 11, close: 20, sundayClose: 18 };
+
+function renderBookingHours() {
+  const element = document.querySelector("[data-booking-hours]");
+  if (!element) return;
+
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", weekday: "short", hour: "numeric", hourCycle: "h23" })
+      .formatToParts(new Date())
+      .map((part) => [part.type, part.value]),
+  );
+  const hour = Number(parts.hour);
+  const close = parts.weekday === "Sun" ? STUDIO_HOURS.sundayClose : STUDIO_HOURS.close;
+  const formatHour = (value) =>
+    currentLang === "en" ? `${value > 12 ? value - 12 : value}${value >= 12 ? "pm" : "am"}` : `${value}:00`;
+
+  let key = "hoursOpensTomorrow";
+  let time = STUDIO_HOURS.open;
+  if (hour < STUDIO_HOURS.open) key = "hoursOpensToday";
+  else if (hour < close) {
+    key = "hoursOpenNow";
+    time = close;
+  }
+
+  element.classList.toggle("is-open", key === "hoursOpenNow");
+  element.textContent = `${translations[currentLang][key].replace("{time}", formatHour(time))} · 52–53 Margaret St`;
 }
 
 function applyBookingDestination() {
