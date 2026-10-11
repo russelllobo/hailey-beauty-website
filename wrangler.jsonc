@@ -1,0 +1,16 @@
+{
+  "name": "hailey-beauty",
+  "pages_build_output_dir": ".dist",
+  "compatibility_date": "2026-10-11",
+  "d1_databases": [
+    {
+      "binding": "ANALYTICS_DB",
+      "database_name": "hailey-beauty-analytics",
+      "database_id": "b6a9a6d9-0674-4265-8453-3eb40e5cef97",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "SITE_HOSTS": "hailey-beauty.pages.dev,haileybeauty.studio"
+  }
+}

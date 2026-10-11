@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <title>Website analytics · Hailey Beauty</title>
+  <link rel="stylesheet" href="/analytics/dashboard.css">
+  <script src="/analytics/dashboard.js" defer></script>
+</head>
+<body>
+  <main>
+    <section id="login-view" class="login-view" hidden aria-labelledby="login-heading">
+      <div class="login-card">
+        <a class="brand" href="/">Hailey Beauty<span>BEAUTY, WITH CARE</span></a>
+        <div class="eyebrow">YOUR WEBSITE, AT A GLANCE</div>
+        <h1 id="login-heading">A little insight.<br>A clearer picture.</h1>
+        <p class="intro">Sign in to see visits, traffic sources, and booking interest.</p>
+        <form id="login-form">
+          <label for="password">Dashboard password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <button id="login-button" class="button primary" type="submit">Open dashboard <span aria-hidden="true">↗</span></button>
+          <p id="login-error" class="error" role="alert" hidden></p>
+        </form>
+        <a class="back-link" href="/">← Back to the website</a>
+      </div>
+      <p class="login-caption">A private space for your website’s story.</p>
+    </section>
+
+    <section id="dashboard-view" class="dashboard" hidden aria-labelledby="dashboard-heading">
+      <header class="topbar">
+        <a class="brand" href="/">Hailey Beauty<span>WEBSITE ANALYTICS</span></a>
+        <div class="topbar-actions"><a href="/" class="site-link">View website <span aria-hidden="true">↗</span></a><button id="logout-button" class="text-button" type="button">Sign out</button></div>
+      </header>
+      <div class="heading-row">
+        <div><div class="eyebrow">THE BIG PICTURE</div><h1 id="dashboard-heading">Your website, in numbers.</h1><p class="intro">See the visits, interest, and moments that lead to a booking.</p></div>
+        <div class="controls"><label class="sr-only" for="range">Date range</label><select id="range"><option value="1">Today</option><option value="7" selected>Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select><button id="refresh-button" class="button secondary" type="button"><span aria-hidden="true">↻</span> Refresh</button></div>
+      </div>
+      <div class="status-row"><span id="range-label">Loading your website activity…</span><span id="updated-label"></span></div>
+      <p id="dashboard-error" class="error dashboard-error" role="alert" hidden></p>
+      <div id="metrics" class="metrics" aria-live="polite">
+        <article class="metric"><div class="metric-label">Daily visitors <span aria-hidden="true">↗</span></div><div id="visitors-value" class="metric-value">—</div><p>Daily visitor estimates, added together</p></article>
+        <article class="metric"><div class="metric-label">Page views <span aria-hidden="true">▤</span></div><div id="pageviews-value" class="metric-value">—</div><p>Pages viewed across the website</p></article>
+        <article class="metric"><div class="metric-label">Booking clicks <span aria-hidden="true">↗</span></div><div id="bookings-value" class="metric-value">—</div><p>Clicks on your booking links</p></article>
+        <article class="metric active-metric"><div class="metric-label"><span class="live-dot" aria-hidden="true"></span> Seen in last 5 min</div><div id="active-value" class="metric-value">—</div><p>Visitors with a recent view or click</p></article>
+      </div>
+      <section class="panel chart-panel" aria-labelledby="activity-heading">
+        <div class="panel-heading"><div><div class="eyebrow">A LITTLE EVERY DAY</div><h2 id="activity-heading">Website activity</h2></div><div class="legend"><span><i class="visitors-key"></i>Visitors</span><span><i class="views-key"></i>Page views</span></div></div>
+        <div id="chart" class="chart" aria-live="polite"><p class="chart-message">Loading activity…</p></div>
+        <details id="chart-details" class="chart-details" hidden><summary>View daily numbers</summary><div class="table-wrap"><table><thead><tr><th scope="col">Date (UTC)</th><th scope="col">Visitors</th><th scope="col">Page views</th><th scope="col">Booking clicks</th></tr></thead><tbody id="daily-table"></tbody></table></div></details>
+      </section>
+      <div class="breakdowns">
+        <section class="panel" aria-labelledby="sources-heading"><div class="panel-heading"><div><div class="eyebrow">HOW THEY FOUND YOU</div><h2 id="sources-heading">Traffic sources</h2></div><span class="column-label">Views</span></div><div id="sources-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="pages-heading"><div class="panel-heading"><div><div class="eyebrow">WHAT THEY EXPLORED</div><h2 id="pages-heading">Popular pages</h2></div><span class="column-label">Views</span></div><div id="pages-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="countries-heading"><div class="panel-heading"><div><div class="eyebrow">NEAR & FAR</div><h2 id="countries-heading">Views by country</h2></div><span class="column-label">Views</span></div><div id="countries-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="devices-heading"><div class="panel-heading"><div><div class="eyebrow">HOW THEY BROWSED</div><h2 id="devices-heading">Devices</h2></div><span class="column-label">Views</span></div><div id="devices-list" class="breakdown-list"></div></section>
+      </div>
+      <footer class="dashboard-footer"><p>Visitors are daily estimates. Returning visitors may count again on another day. JavaScript blockers and undetected bots can affect totals.</p><p>Sources, countries, devices, and pages count page views. Recent visitors have viewed a page or clicked a booking link in the last 5 minutes; they may have since left.</p><p id="tracking-note">Dates use UTC. Booking clicks count link clicks, not completed bookings.</p></footer>
+    </section>
+    <div id="initial-loading" class="initial-loading" role="status"><span class="loading-dot"></span> Opening your dashboard…</div>
+  </main>
+</body>
+</html>

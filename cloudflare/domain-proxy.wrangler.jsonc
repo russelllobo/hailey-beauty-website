@@ -1,0 +1,10 @@
+{
+  "name": "hailey-beauty-domain-proxy",
+  "main": "domain-proxy.js",
+  "compatibility_date": "2026-07-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "keep_vars": true,
+  "routes": [{"pattern": "haileybeauty.studio/*", "zone_name": "haileybeauty.studio"}],
+  "observability": {"enabled": true, "logs": {"enabled": true, "invocation_logs": true}}
+}
