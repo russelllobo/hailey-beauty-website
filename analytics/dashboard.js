@@ -4,23 +4,13 @@
   const number = new Intl.NumberFormat('en-GB');
   const date = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
   const countryNames = typeof Intl.DisplayNames === 'function' ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
-  let authenticated = false;
+  let loaded = false;
   let pending = false;
   let currentSeries = null;
 
-  function showLogin() {
-    authenticated = false;
-    $('initial-loading').hidden = true;
-    $('dashboard-view').hidden = true;
-    $('login-view').hidden = false;
-    $('password').value = '';
-    setError('login-error', '');
-  }
-
   function showDashboard() {
-    authenticated = true;
+    loaded = true;
     $('initial-loading').hidden = true;
-    $('login-view').hidden = true;
     $('dashboard-view').hidden = false;
   }
 
@@ -126,7 +116,7 @@
     return label;
   }
 
-  function renderBreakdown(id, entries = [], format = recorded) {
+  function renderBreakdown(id, entries = [], format = recorded, emptyMessage = 'No visits recorded yet.') {
     const list = $(id);
     list.replaceChildren();
     if (!entries.length) {
@@ -268,18 +258,13 @@
     setError('dashboard-error', '');
     try {
       const response = await fetch(`/api/analytics?days=${$('range').value}`, { credentials: 'same-origin', cache: 'no-store' });
-      if (response.status === 401) { showLogin(); return; }
       if (response.status === 503) throw new Error('The analytics dashboard is not configured yet. Please try again once setup is complete.');
       if (!response.ok) throw new Error('Unable to load analytics. Please try refreshing in a moment.');
       render(await response.json());
     } catch (error) {
       const message = error instanceof TypeError ? 'Could not connect. Check your connection and try again.' : error.message;
-      if (!authenticated) {
-        showLogin();
-        setError('login-error', message);
-      } else {
-        setError('dashboard-error', message);
-      }
+      showDashboard();
+      setError('dashboard-error', message);
     } finally {
       pending = false;
       $('refresh-button').disabled = false;
@@ -287,37 +272,6 @@
     }
   }
 
-  $('login-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    $('login-button').disabled = true;
-    $('login-button').textContent = 'Signing in…';
-    setError('login-error', '');
-    try {
-      const response = await fetch('/api/analytics/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('password').value }) });
-      if (!response.ok) {
-        if (response.status === 503) throw new Error('The analytics dashboard is not configured yet. Please try again once setup is complete.');
-        if (response.status === 429) throw new Error('Too many attempts. Please wait a few minutes and try again.');
-        if (response.status === 401) throw new Error('That password wasn’t recognised. Please try again.');
-        throw new Error('Unable to sign in. Please try again in a moment.');
-      }
-      $('password').value = '';
-      await refresh();
-    } catch (error) {
-      setError('login-error', error instanceof TypeError ? 'Could not connect. Check your connection and try again.' : error.message);
-    } finally {
-      $('login-button').disabled = false;
-      $('login-button').textContent = 'Open dashboard ↗';
-    }
-  });
-  $('logout-button').addEventListener('click', async () => {
-    $('logout-button').disabled = true;
-    try {
-      const response = await fetch('/api/analytics/logout', { method: 'POST', credentials: 'same-origin' });
-      if (!response.ok) throw new Error('Unable to sign out. Please try again.');
-      showLogin();
-    } catch (error) { setError('dashboard-error', 'Unable to sign out. Check your connection and try again.'); }
-    finally { $('logout-button').disabled = false; }
-  });
   $('range').addEventListener('change', refresh);
   $('refresh-button').addEventListener('click', refresh);
   let chartWidth = 0;
@@ -325,9 +279,9 @@
     const width = Math.round(entry.contentRect.width);
     if (width !== chartWidth) {
       chartWidth = width;
-      if (authenticated && currentSeries) drawChart(currentSeries);
+      if (loaded && currentSeries) drawChart(currentSeries);
     }
   }).observe($('chart'));
-  setInterval(() => { if (authenticated && document.visibilityState === 'visible') refresh(); }, 60000);
+  setInterval(() => { if (loaded && document.visibilityState === 'visible') refresh(); }, 60000);
   refresh();
 })();

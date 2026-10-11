@@ -1,5 +1,5 @@
 import {browserDetails,locationDetails} from '../../../lib/visitor-details.js';
-import {authenticated, configured, hmac, isBot, json, parseEvent, sameOrigin, trafficSource, deviceType, proxyMetadata} from '../../../lib/analytics.js';
+import {configured, hmac, isBot, json, parseEvent, sameOrigin, trafficSource, deviceType, proxyMetadata} from '../../../lib/analytics.js';
 
 export async function onRequestPost({request, env, waitUntil}) {
   if (!configured(env)) return json({error:'Tracking is not configured.'},503);
@@ -8,7 +8,7 @@ export async function onRequestPost({request, env, waitUntil}) {
   if (!sameOrigin(request,env) || !hosts.includes(url.host)) return json({error:'Origin not allowed.'},403);
   if (Number(request.headers.get('Content-Length')) > 4096) return json({error:'Event too large.'},413);
   const proxy = await proxyMetadata(request,env);
-  if (proxy?.bot || isBot(request) || await authenticated(request,env)) return new Response(null,{status:204,headers:{'Cache-Control':'no-store'}});
+  if (proxy?.bot || isBot(request)) return new Response(null,{status:204,headers:{'Cache-Control':'no-store'}});
   let event;
   try { const text=await request.text(); if(text.length>4096)return json({error:'Event too large.'},413); event=parseEvent(JSON.parse(text)); }
   catch { return json({error:'Invalid event.'},400); }
@@ -29,8 +29,7 @@ export async function onRequestPost({request, env, waitUntil}) {
       geo.city,geo.region,agent.browser,agent.browserVersion,agent.os,agent.osVersion,details.screen,details.viewport,details.language,
       details.timezone==='Unknown'?geo.timezone:details.timezone,geo.network,details.medium,details.campaign,details.referrer).run();
   waitUntil(env.ANALYTICS_DB.batch([
-    env.ANALYTICS_DB.prepare('DELETE FROM analytics_events WHERE received_at < ?').bind(now-90*86400),
-    env.ANALYTICS_DB.prepare('DELETE FROM analytics_login_attempts WHERE window_start < ?').bind(now-900)
+    env.ANALYTICS_DB.prepare('DELETE FROM analytics_events WHERE received_at < ?').bind(now-90*86400)
   ]));
   return new Response(null,{status:204,headers:{'Cache-Control':'no-store'}});
 }

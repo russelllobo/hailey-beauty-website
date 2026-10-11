@@ -10,10 +10,10 @@ let credentials;
 try {credentials=JSON.parse(await readFile(credentialsPath,'utf8'));}
 catch(error){
   if(error.code!=='ENOENT')throw error;
-  credentials={password:randomBytes(24).toString('base64url'),secret:randomBytes(32).toString('hex')};
+  credentials={secret:randomBytes(32).toString('hex')};
   await writeFile(credentialsPath,JSON.stringify(credentials)+'\n',{mode:0o600,flag:'wx'});
 }
-if(credentials.password?.length<16 || credentials.secret?.length<32)throw new Error('Stored analytics credentials are invalid.');
+if(credentials.secret?.length<32)throw new Error('Stored analytics credentials are invalid.');
 let token=process.env.CLOUDFLARE_API_TOKEN;
 if(!token) {
   for(const file of [`${homedir()}/.config/.wrangler/config/default.toml`,`${homedir()}/.wrangler/config/default.toml`]) {
@@ -41,7 +41,7 @@ if(migration.status!==0)throw new Error('Remote D1 migration failed.');
 await api(`/accounts/${account}/pages/projects/${projectName}`,'PATCH',{
   build_config:{...project.build_config,build_command:'npm run build',destination_dir:'.dist'},
   deployment_configs:{production:{
-    env_vars:{SITE_HOSTS:{type:'plain_text',value:domains.join(',')},ANALYTICS_PASSWORD:{type:'secret_text',value:credentials.password},ANALYTICS_SECRET:{type:'secret_text',value:credentials.secret}},
+    env_vars:{SITE_HOSTS:{type:'plain_text',value:domains.join(',')},ANALYTICS_PASSWORD:null,ANALYTICS_SECRET:{type:'secret_text',value:credentials.secret}},
     d1_databases:{ANALYTICS_DB:{id:database.uuid}}
   }}
 });

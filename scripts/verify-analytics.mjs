@@ -1,12 +1,9 @@
 import assert from 'node:assert/strict';
-import {mkdir,readFile} from 'node:fs/promises';
+import {mkdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {chromium} from 'playwright';
 const base=process.env.ANALYTICS_TEST_URL || 'http://localhost:5181';
 if(!new URL(base).hostname.match(/^(localhost|127\.0\.0\.1)$/))throw new Error('This test writes synthetic visits. Use localhost only.');
-const localConfig=await readFile('.dev.vars','utf8');
-const password=process.env.ANALYTICS_TEST_PASSWORD || localConfig.match(/^ANALYTICS_PASSWORD=(.+)$/m)?.[1];
-if(!password)throw new Error('Set ANALYTICS_TEST_PASSWORD or ANALYTICS_PASSWORD in .dev.vars.');
 const evidence=process.env.EVIDENCE_DIR || resolve('../hailey-beauty-evidence');
 await mkdir(evidence,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH || undefined,args:['--no-sandbox']});
@@ -17,13 +14,9 @@ try {
   const page=await admin.newPage();
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'/analytics/');
-  await page.locator('#login-view').waitFor({state:'visible'});
-  await page.screenshot({path:evidence+'/analytics-login.png'});
-  assert.equal((await page.request.get(base+'/api/analytics')).status(),401);
-  await page.locator('#password').fill('incorrect-password');await page.locator('#login-button').click();
-  await page.getByRole('alert').filter({hasText:'recognised'}).waitFor();
-  await page.locator('#password').fill(password);await page.locator('#login-button').click();
   await page.locator('#dashboard-view').waitFor({state:'visible'});
+  assert.equal((await page.request.get(base+'/api/analytics')).status(),200);
+  assert.equal(await page.locator('input[type=password]').count(),0);
   const before=await (await page.request.get(base+'/api/analytics?days=7')).json();
   const visitor=await browser.newContext({userAgent:ua,reducedMotion:'reduce'});
   const site=await visitor.newPage();
@@ -48,14 +41,9 @@ try {
   const today=await (await page.request.get(base+'/api/analytics?days=1')).json();assert.equal(today.series.length,1);
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:evidence+'/analytics-dashboard-mobile.png',fullPage:true});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  const ownerCount=after.totals.pageviews;
-  const excluded=page.waitForResponse(r=>r.url().endsWith('/api/analytics/event')&&r.status()===204);
-  await page.goto(base+'/',{waitUntil:'domcontentloaded'});await excluded;
-  const ownerStats=await (await page.request.get(base+'/api/analytics')).json();assert.equal(ownerStats.totals.pageviews,ownerCount);
-  await page.goto(base+'/analytics/');await page.locator('#dashboard-view').waitFor({state:'visible'});
-  await page.locator('#logout-button').click();await page.locator('#login-view').waitFor({state:'visible'});
-  assert.equal((await page.request.get(base+'/api/analytics')).status(),401);
+  await page.reload();await page.locator('#dashboard-view').waitFor({state:'visible'});
+  assert.equal((await (await page.request.get(base+'/api/analytics')).json()).totals.pageviews,after.totals.pageviews);
   // Only first-party dashboard JavaScript is under test; third-party social embeds are unrelated.
   assert.deepEqual(errors,[]);
-  console.log('PASS: protected login, wrong password, two real views counted once each, daily visitor dedupe, two booking clicks, filters, owner exclusion, mobile layout, signout.');
+  console.log('PASS: public access without password, two real views counted once each, daily visitor dedupe, two booking clicks, filters, dashboard views excluded, mobile layout.');
 } finally {await browser.close();}
