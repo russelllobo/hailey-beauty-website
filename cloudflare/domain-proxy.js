@@ -1,3 +1,4 @@
+import {locationDetails} from '../lib/visitor-details.js';
 import {hmac,isBot} from '../lib/analytics.js';
 const UPSTREAM_ORIGIN='https://hailey-beauty.pages.dev';
 export default {
@@ -17,7 +18,7 @@ export default {
         const metadata=JSON.stringify({timestamp:now,
           visitor:await hmac(env.ANALYTICS_SECRET,`visitor:${day}:${ip}:${ua}`),
           client:await hmac(env.ANALYTICS_SECRET,`login:${ip}`),
-          country:request.cf?.country || 'Unknown',bot:isBot(request),origin:incomingUrl.origin});
+          country:request.cf?.country || 'Unknown',geo:locationDetails(request.cf),bot:isBot(request),origin:incomingUrl.origin});
         forwarded.headers.set('X-Hailey-Metadata',metadata);
         forwarded.headers.set('X-Hailey-Signature',await hmac(env.ANALYTICS_SECRET,`proxy:${metadata}`));
       }

@@ -1,0 +1,16 @@
+ALTER TABLE analytics_events ADD COLUMN city TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN region TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN browser TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN browser_version TEXT NOT NULL DEFAULT '';
+ALTER TABLE analytics_events ADD COLUMN os TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN os_version TEXT NOT NULL DEFAULT '';
+ALTER TABLE analytics_events ADD COLUMN screen TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN viewport TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN language TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN timezone TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN network TEXT NOT NULL DEFAULT 'Unknown';
+ALTER TABLE analytics_events ADD COLUMN medium TEXT NOT NULL DEFAULT '';
+ALTER TABLE analytics_events ADD COLUMN campaign TEXT NOT NULL DEFAULT '';
+ALTER TABLE analytics_events ADD COLUMN referrer TEXT NOT NULL DEFAULT '';
+ALTER TABLE analytics_events ADD COLUMN detailed INTEGER NOT NULL DEFAULT 0;
+INSERT OR IGNORE INTO analytics_meta VALUES ('details_since', strftime('%Y-%m-%dT%H:%M:%SZ', 'now'));

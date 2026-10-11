@@ -56,7 +56,25 @@
         <section class="panel" aria-labelledby="countries-heading"><div class="panel-heading"><div><div class="eyebrow">NEAR & FAR</div><h2 id="countries-heading">Views by country</h2></div><span class="column-label">Views</span></div><div id="countries-list" class="breakdown-list"></div></section>
         <section class="panel" aria-labelledby="devices-heading"><div class="panel-heading"><div><div class="eyebrow">HOW THEY BROWSED</div><h2 id="devices-heading">Devices</h2></div><span class="column-label">Views</span></div><div id="devices-list" class="breakdown-list"></div></section>
       </div>
-      <footer class="dashboard-footer"><p>Visitors are daily estimates. Returning visitors may count again on another day. JavaScript blockers and undetected bots can affect totals.</p><p>Sources, countries, devices, and pages count page views. Recent visitors have viewed a page or clicked a booking link in the last 5 minutes; they may have since left.</p><p id="tracking-note">Dates use UTC. Booking clicks count link clicks, not completed bookings.</p></footer>
+      <section class="panel visitors-panel" aria-labelledby="recent-heading">
+        <div class="panel-heading"><div><div class="eyebrow">A CLOSER LOOK</div><h2 id="recent-heading">Recent visitor estimates</h2></div><span id="recent-count" class="column-label"></span></div>
+        <p class="section-note">Up to 50 daily visitor estimates in the selected period. Expand a row for browsing and referral details. These are anonymous estimates, not identified people.</p>
+        <p id="details-note" class="section-note"></p>
+        <div id="recent-visitors" class="recent-visitors"></div>
+      </section>
+      <div class="details-heading"><div class="eyebrow">UNDERSTAND YOUR AUDIENCE</div><h2>Visitor details</h2><p class="section-note">Each breakdown counts page views. Locations are approximate and come from the visitor's network. Older visits may show Not recorded.</p></div>
+      <div class="breakdowns detail-breakdowns">
+        <section class="panel" aria-labelledby="cities-heading"><div class="panel-heading"><div><div class="eyebrow">APPROXIMATE LOCATION</div><h2 id="cities-heading">Cities</h2></div><span class="column-label">Views</span></div><div id="cities-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="regions-heading"><div class="panel-heading"><div><div class="eyebrow">APPROXIMATE LOCATION</div><h2 id="regions-heading">Regions</h2></div><span class="column-label">Views</span></div><div id="regions-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="browsers-heading"><div class="panel-heading"><div><div class="eyebrow">BROWSING SOFTWARE</div><h2 id="browsers-heading">Browsers</h2></div><span class="column-label">Views</span></div><div id="browsers-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="operating-systems-heading"><div class="panel-heading"><div><div class="eyebrow">BROWSING SOFTWARE</div><h2 id="operating-systems-heading">Operating systems</h2></div><span class="column-label">Views</span></div><div id="operating-systems-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="screens-heading"><div class="panel-heading"><div><div class="eyebrow">DISPLAY IN PIXELS</div><h2 id="screens-heading">Screen sizes</h2></div><span class="column-label">Views</span></div><div id="screens-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="languages-heading"><div class="panel-heading"><div><div class="eyebrow">LANGUAGE PREFERENCES</div><h2 id="languages-heading">Browser languages</h2></div><span class="column-label">Views</span></div><div id="languages-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="timezones-heading"><div class="panel-heading"><div><div class="eyebrow">BROWSER SETTINGS</div><h2 id="timezones-heading">Time zones</h2></div><span class="column-label">Views</span></div><div id="timezones-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="networks-heading"><div class="panel-heading"><div><div class="eyebrow">NETWORK PROVIDER</div><h2 id="networks-heading">Internet networks</h2></div><span class="column-label">Views</span></div><div id="networks-list" class="breakdown-list"></div></section>
+        <section class="panel" aria-labelledby="campaigns-heading"><div class="panel-heading"><div><div class="eyebrow">CAMPAIGN TAGS</div><h2 id="campaigns-heading">Campaigns</h2></div><span class="column-label">Views</span></div><div id="campaigns-list" class="breakdown-list"></div></section>
+      </div>
+      <footer class="dashboard-footer"><p>Visitors are daily estimates. Returning visitors may count again on another day. JavaScript blockers and undetected bots can affect totals.</p><p>All breakdowns count page views. The last 5 minutes count includes visitors with a recent page view or booking click; they may have since left.</p><p id="tracking-note">Dates use UTC. Booking clicks count link clicks, not completed bookings.</p></footer>
     </section>
     <div id="initial-loading" class="initial-loading" role="status"><span class="loading-dot"></span> Opening your dashboard…</div>
   </main>

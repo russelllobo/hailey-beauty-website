@@ -12,6 +12,7 @@ import {authenticated,sessionToken,dateRange,fillSeries,hmac,sameOrigin,proxyMet
 function setup() {
   const sql=new DatabaseSync(':memory:');
   sql.exec(readFileSync(new URL('../migrations/0001_analytics.sql',import.meta.url),'utf8'));
+  sql.exec(readFileSync(new URL('../migrations/0002_visitor_details.sql',import.meta.url),'utf8'));
   function statement(query,values=[]) {
     return {bind(...args){return statement(query,args)},async first(){return sql.prepare(query).get(...values) || null},async run(){return sql.prepare(query).run(...values)},async all(){return {results:sql.prepare(query).all(...values)}}};
   }
@@ -125,4 +126,38 @@ test('proxy visitor metadata is signed, expires, and preserves distinct visitors
   assert.equal(await proxyMetadata(req,env,now+61),null);
   req.headers.set('X-Hailey-Metadata',metadata.replace('GB','FR'));
   assert.equal(await proxyMetadata(req,env),null);
+});
+
+test('detailed visits preserve signed city/network and reported browser/screen/campaign; do not invent details for old visits',async()=>{
+  const {env,sql}=setup();env.SITE_HOSTS='hailey-beauty.pages.dev,haileybeauty.studio';
+  const payload={...event(),source:'instagram',medium:'social',campaign:'grand_opening',screen:{width:430,height:932},viewport:{width:390,height:844},language:'en-GB',timezone:'Europe/London',city:'FAKE CLIENT LOCATION'};
+  const iphone='Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 Version/18.1 Mobile/15E148 Safari/604.1';
+  const req=new Request('https://hailey-beauty.pages.dev/api/analytics/event',request('/api/analytics/event',payload,{ua:iphone,origin:'https://haileybeauty.studio',ip:'2a06:98c0:3600::103'}));
+  const metadata=JSON.stringify({timestamp:Math.floor(Date.now()/1000),visitor:'a'.repeat(64),client:'b'.repeat(64),country:'GB',bot:false,origin:'https://haileybeauty.studio',geo:{city:'London',region:'England',network:'British Telecommunications PLC',timezone:'Europe/London'}});
+  req.headers.set('X-Hailey-Metadata',metadata);req.headers.set('X-Hailey-Signature',await hmac(env.ANALYTICS_SECRET,'proxy:'+metadata));
+  assert.equal((await context(collect,env,req)).status,204);
+  const cookie=await signIn(env);
+  const data=await(await stats({env,request:request('/api/analytics?days=7',undefined,{cookie})})).json();
+  assert.deepEqual(data.cities,[{label:'London',count:1}]);
+  assert.deepEqual(data.browsers,[{label:'Safari',count:1}]);
+  assert.deepEqual(data.operatingSystems,[{label:'iOS',count:1}]);
+  assert.deepEqual(data.campaigns,[{label:'grand_opening',count:1}]);
+  const visitor=data.recentVisitors[0];
+  assert.equal(visitor.city,'London');assert.equal(visitor.region,'England');assert.equal(visitor.network,'British Telecommunications PLC');
+  assert.equal(visitor.device,'Mobile');assert.equal(visitor.browserVersion,'18.1');assert.equal(visitor.osVersion,'18.1');
+  assert.equal(visitor.screen,'430 × 932');assert.equal(visitor.viewport,'390 × 844');assert.equal(visitor.language,'en-GB');
+  assert.equal(visitor.medium,'social');assert.equal(visitor.pageviews,1);assert.equal(visitor.bookingClicks,0);
+  assert.equal(visitor.id,'aaaaaaaa');assert.equal(visitor.visitor_key,undefined);
+  const old=event();sql.prepare('INSERT INTO analytics_events (event_id,pageview_id,received_at,visitor_key,type,path,source,country,device) VALUES (?,?,?,?,?,?,?,?,?)').run(old.eventId,old.pageviewId,Math.floor(Date.now()/1000),'old-visitor','pageview','/','Direct','GB','Desktop');
+  const updated=await(await stats({env,request:request('/api/analytics?days=7',undefined,{cookie})})).json();
+  const oldVisitor=updated.recentVisitors.find(row=>row.id==='old-visi');assert.equal(oldVisitor.city,'Unknown');assert.equal(oldVisitor.detailed,0);
+  assert.deepEqual(updated.cities,[{label:'London',count:1}]);
+});
+
+test('details sanitize unsupported data and do not trust reduced browser versions as exact OS versions',async()=>{
+  const {clientDetails,browserDetails}=await import('../lib/visitor-details.js');
+  const detail=clientDetails({screen:{width:-1,height:900},viewport:{width:390,height:844},language:'<script>',campaign:'email@example.org',referrer:'https://example.org/private-path?email=secret@example.org'});
+  assert.equal(detail.screen,'Unknown');assert.equal(detail.language,'Unknown');assert.equal(detail.campaign,'');assert.equal(detail.referrer,'example.org');
+  assert.deepEqual(browserDetails('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/146.0.0.0 Safari/537.36 Edg/146.0.1'),{browser:'Microsoft Edge',browserVersion:'146.0.1',os:'Windows',osVersion:'10 or 11'});
+  assert.equal(browserDetails('Mozilla/5.0 (Linux; Android 10; K) Chrome/146.0.0.0 Mobile Safari/537.36').osVersion,'');
 });

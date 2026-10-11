@@ -1,3 +1,4 @@
+import {browserDetails,locationDetails} from '../../../lib/visitor-details.js';
 import {authenticated, configured, hmac, isBot, json, parseEvent, sameOrigin, trafficSource, deviceType, proxyMetadata} from '../../../lib/analytics.js';
 
 export async function onRequestPost({request, env, waitUntil}) {
@@ -20,8 +21,13 @@ export async function onRequestPost({request, env, waitUntil}) {
   const day = new Date(now*1000).toISOString().slice(0,10);
   const visitor = proxy?.visitor || await hmac(env.ANALYTICS_SECRET, `visitor:${day}:${ip || '127.0.0.1'}:${ua}`);
   const country = proxy?.country || (/^[A-Z]{2}$/.test(request.cf?.country || '') ? request.cf.country : 'Unknown');
-  await env.ANALYTICS_DB.prepare(`INSERT OR IGNORE INTO analytics_events (event_id,pageview_id,received_at,visitor_key,type,path,source,country,device) VALUES (?,?,?,?,?,?,?,?,?)`)
-    .bind(event.eventId,event.pageviewId,now,visitor,event.type,event.path,trafficSource(event,hosts),country,deviceType(ua)).run();
+  const geo=proxy ? (proxy.geo || locationDetails()) : locationDetails(request.cf);
+  const agent=browserDetails(ua);
+  const details=event.details;
+  await env.ANALYTICS_DB.prepare(`INSERT OR IGNORE INTO analytics_events (event_id,pageview_id,received_at,visitor_key,type,path,source,country,device,city,region,browser,browser_version,os,os_version,screen,viewport,language,timezone,network,medium,campaign,referrer,detailed) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)`)
+    .bind(event.eventId,event.pageviewId,now,visitor,event.type,event.path,trafficSource(event,hosts),country,deviceType(ua),
+      geo.city,geo.region,agent.browser,agent.browserVersion,agent.os,agent.osVersion,details.screen,details.viewport,details.language,
+      details.timezone==='Unknown'?geo.timezone:details.timezone,geo.network,details.medium,details.campaign,details.referrer).run();
   waitUntil(env.ANALYTICS_DB.batch([
     env.ANALYTICS_DB.prepare('DELETE FROM analytics_events WHERE received_at < ?').bind(now-90*86400),
     env.ANALYTICS_DB.prepare('DELETE FROM analytics_login_attempts WHERE window_start < ?').bind(now-900)

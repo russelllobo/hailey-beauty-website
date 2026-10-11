@@ -2,13 +2,20 @@
   if (!['/', '/index.html'].includes(location.pathname) || !window.crypto?.randomUUID) return;
   const pageviewId = crypto.randomUUID();
   let pageviewSent = false;
-  let source = new URLSearchParams(location.search).get('utm_source') || '';
+  const params=new URLSearchParams(location.search);
+  let source = params.get('utm_source') || '';
+  const campaignField=name=>{const value=params.get(name)||'';return /^[\p{L}\p{N} ._+-]{1,100}$/u.test(value)?value:'';};
+  const medium=campaignField('utm_medium');
+  const campaign=campaignField('utm_campaign');
+  let timezone='';
+  try{timezone=Intl.DateTimeFormat().resolvedOptions().timeZone;}catch{}
   if (!/^[\p{L}\p{N} ._+-]{1,80}$/u.test(source)) source = '';
   let referrer = '';
   try { referrer = new URL(document.referrer).origin; } catch {}
 
   function send(type) {
-    const body = JSON.stringify({eventId:crypto.randomUUID(),pageviewId,type,path:location.pathname,source,referrer});
+    const body = JSON.stringify({eventId:crypto.randomUUID(),pageviewId,type,path:location.pathname,source,referrer,medium,campaign,
+      screen:{width:screen.width,height:screen.height},viewport:{width:innerWidth,height:innerHeight},language:navigator.language,timezone});
     function deliver(attempt = 0) {
       fetch('/api/analytics/event', {method:'POST',headers:{'Content-Type':'application/json'},body,keepalive:true})
         .then(response => { if (response.status >= 500) throw new Error('Tracking unavailable'); })

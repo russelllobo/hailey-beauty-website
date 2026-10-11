@@ -119,20 +119,20 @@
   }
 
   function countryLabel(label) {
-    if (label === 'XX' || !label) return 'Unknown';
+    if (label === 'XX' || !label || label === 'Unknown') return 'Not recorded';
     if (/^[A-Z]{2}$/.test(label) && countryNames) {
       try { return countryNames.of(label) || label; } catch { return label; }
     }
     return label;
   }
 
-  function renderBreakdown(id, entries, format = (label) => label) {
+  function renderBreakdown(id, entries = [], format = recorded) {
     const list = $(id);
     list.replaceChildren();
     if (!entries.length) {
       const empty = document.createElement('p');
       empty.className = 'empty-list';
-      empty.textContent = 'No activity recorded yet.';
+      empty.textContent = emptyMessage;
       list.append(empty);
       return;
     }
@@ -156,6 +156,90 @@
     });
   }
 
+  function recorded(value) {
+    return value && value !== 'Unknown' && value !== 'unknown' ? String(value) : 'Not recorded';
+  }
+
+  function timestamp(value) {
+    if (!value || Number.isNaN(new Date(value).getTime())) return 'Not recorded';
+    return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }).format(new Date(value)) + ' UTC';
+  }
+
+  function software(name, version) {
+    return [recorded(name), version && version !== 'Unknown' ? version : ''].filter(Boolean).join(' ');
+  }
+
+  function renderVisitors(visitors = []) {
+    const container = $('recent-visitors');
+    const openIds = new Set([...container.querySelectorAll('details[open]')].map((row) => row.dataset.visitorId));
+    container.replaceChildren();
+    const rows = visitors.slice(0, 50);
+    $('recent-count').textContent = `${number.format(rows.length)} shown`;
+    if (!rows.length) {
+      const empty = document.createElement('p');
+      empty.className = 'empty-list';
+      empty.textContent = 'No visitor activity recorded in this period yet.';
+      container.append(empty);
+      return;
+    }
+    rows.forEach((visitor) => {
+      const row = document.createElement('details');
+      row.className = 'visitor';
+      row.dataset.visitorId = `${visitor.id}:${visitor.firstSeen}`;
+      row.open = openIds.has(row.dataset.visitorId);
+      const summary = document.createElement('summary');
+      const location = document.createElement('div');
+      location.className = 'visitor-location';
+      const place = [visitor.city, visitor.region, countryLabel(visitor.country)].filter((part) => part && part !== 'Unknown' && part !== 'Not recorded');
+      location.append(document.createTextNode(place.length ? [...new Set(place)].join(', ') : 'Location not recorded'));
+      const lastSeen = document.createElement('small');
+      lastSeen.textContent = `Last seen ${timestamp(visitor.lastSeen)}`;
+      location.append(lastSeen);
+      const browsing = document.createElement('div');
+      browsing.className = 'visitor-browse';
+      browsing.append(document.createTextNode(`${recorded(visitor.device)} · ${recorded(visitor.browser)}`));
+      const counts = document.createElement('small');
+      counts.textContent = `${number.format(visitor.pageviews || 0)} page ${visitor.pageviews === 1 ? 'view' : 'views'} · ${number.format(visitor.bookingClicks || 0)} booking ${visitor.bookingClicks === 1 ? 'click' : 'clicks'}`;
+      browsing.append(counts);
+      summary.append(location, browsing);
+      const details = document.createElement('dl');
+      details.className = 'visitor-info';
+      const fields = [
+        ['Daily estimate ID', recorded(visitor.id)],
+        ['First seen', timestamp(visitor.firstSeen)],
+        ['Last seen', timestamp(visitor.lastSeen)],
+        ['Activity', `${number.format(visitor.pageviews || 0)} ${visitor.pageviews === 1 ? 'view' : 'views'} / ${number.format(visitor.bookingClicks || 0)} booking ${visitor.bookingClicks === 1 ? 'click' : 'clicks'}`],
+        ['Country', countryLabel(visitor.country)],
+        ['City · approximate', recorded(visitor.city)],
+        ['Region · approximate', recorded(visitor.region)],
+        ['Device type', recorded(visitor.device)],
+        ['Browser', software(visitor.browser, visitor.browserVersion)],
+        ['Operating system', software(visitor.os, visitor.osVersion)],
+        ['Screen · pixels', recorded(visitor.screen)],
+        ['Browser viewport · pixels', recorded(visitor.viewport)],
+        ['Browser language', recorded(visitor.language)],
+        ['Browser time zone', recorded(visitor.timezone)],
+        ['Internet network', recorded(visitor.network)],
+        ['Traffic source', recorded(visitor.source)],
+        ['Referral website', recorded(visitor.referrer)],
+        ['Traffic medium', recorded(visitor.medium)],
+        ['Campaign', recorded(visitor.campaign)],
+      ];
+      fields.forEach(([label, value]) => {
+        const group = document.createElement('div');
+        const term = document.createElement('dt');
+        term.textContent = label;
+        const description = document.createElement('dd');
+        description.textContent = value;
+        if (label === 'Daily estimate ID') description.className = 'visitor-id';
+        group.append(term, description);
+        details.append(group);
+      });
+      row.append(summary, details);
+      container.append(row);
+    });
+  }
+
   function render(data) {
     showDashboard();
     $('visitors-value').textContent = number.format(data.totals.visitors);
@@ -170,7 +254,10 @@
     renderBreakdown('sources-list', data.sources);
     renderBreakdown('pages-list', data.pages);
     renderBreakdown('countries-list', data.countries, countryLabel);
-    renderBreakdown('devices-list', data.devices, (label) => label.charAt(0).toUpperCase() + label.slice(1));
+    renderBreakdown('devices-list', data.devices, (label) => recorded(label).charAt(0).toUpperCase() + recorded(label).slice(1));
+    [['cities', 'cities'], ['regions', 'regions'], ['browsers', 'browsers'], ['operating-systems', 'operatingSystems'], ['screens', 'screens'], ['languages', 'languages'], ['timezones', 'timezones'], ['networks', 'networks'], ['campaigns', 'campaigns']].forEach(([id, key]) => renderBreakdown(`${id}-list`, data[key] || [], undefined, 'No visits with this detail recorded yet.'));
+    renderVisitors(data.recentVisitors || []);
+    $('details-note').textContent = data.detailsSince ? `Detailed browsing information starts ${timestamp(data.detailsSince)}. Older visits show Not recorded where details were not collected.` : 'Detailed browsing information will appear when the updated tracking is available. Older visits show Not recorded.';
   }
 
   async function refresh() {
