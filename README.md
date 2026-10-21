@@ -11,8 +11,11 @@ Live at **[hailey-beauty.pages.dev](https://hailey-beauty.pages.dev)**
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/mobile-home.webp" alt="Hailey Beauty on a phone" width="30%" />
-  <img src="docs/screenshots/desktop-booking.webp" alt="Booking section and footer" width="69%" />
+  <img src="docs/screenshots/desktop-booking.webp" alt="Booking section and footer" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/mobile-home.webp" alt="Hailey Beauty on a phone" width="280" />
 </p>
 
 ## What the site does
