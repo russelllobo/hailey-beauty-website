@@ -33,32 +33,43 @@ Bone, forest green and brass, with a Cormorant Garamond display face over Manrop
 
 ## Tech
 
-- Static HTML, CSS and vanilla JavaScript — no framework, no build step
+- Static HTML, CSS and vanilla JavaScript — no framework
 - Chinese type set in Noto Sans/Serif SC and TC alongside the Latin faces
 - Booking through SumUp Bookings; map through Google Maps
+- Cloudflare Pages, with Pages Functions and a D1 database for first-party traffic analytics
+- A small Node build step that copies the static files into `.dist` and writes route and security headers
 - A Supabase Edge Function (`supabase/functions/studio`) that redirects `/studio/whatsapp` to the studio's WhatsApp link
-- Hosted on Cloudflare Pages
 
 ```
-index.html        the whole page
-styles.css        design system and layout
-script.js         translations, gallery, booking links, structured data
-assets/           photography, before/after pairs, logo, price list PDF
-supabase/         WhatsApp redirect function
-docs/screenshots/ README images
+index.html            the whole page
+styles.css            design system and layout
+script.js             translations, gallery, booking links, structured data
+analytics-tracker.js  privacy-friendly pageview and booking-click events
+analytics/            first-party traffic dashboard (noindex)
+functions/api/        Pages Functions that record and summarise events
+lib/                  analytics storage and aggregation helpers
+migrations/           D1 schema for analytics events
+scripts/              build, Cloudflare setup, browser verification
+assets/               photography, before/after pairs, logo, price list PDF
+docs/screenshots/     README images
 ```
 
 ## Run it locally
 
-Any static server works:
-
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`. There is nothing to install or compile.
+That builds the site into `.dist` and serves it with Wrangler on `http://localhost:5181`, including the Pages Functions.
 
-To deploy, publish the repository root to Cloudflare Pages (or any static host). The Supabase function is optional and only needed for the WhatsApp short link.
+```bash
+npm run build     # build .dist
+npm test          # unit tests
+npm run deploy    # build and deploy to Cloudflare Pages
+```
+
+The analytics endpoints need a D1 database bound as `ANALYTICS_DB`; without it, the site still renders and simply returns "analytics is not configured". If you only want the marketing site, any static server pointed at the repository root also works.
 
 ## Editing content
 
@@ -67,6 +78,8 @@ To deploy, publish the repository root to Cloudflare Pages (or any static host).
 - **Booking, social and canonical URLs** are in `SITE_CONFIG` at the top of `script.js`.
 - **Photography** goes in `assets/`; the before/after pairs follow the `ba-NN.webp` naming pattern.
 
-## Notes
+## Analytics
 
-This repository contains the public website only. Client records, bookings and payments live in SumUp, and the studio's internal tools are not part of this codebase.
+Pageviews and booking clicks are recorded first-hand in Cloudflare D1: path, referrer, campaign parameters, country, city, device, browser, screen size, language and timezone. No cookies are used for advertising and no data is sold or shared. Visitors can be seen in aggregate at `/analytics`.
+
+Client records, bookings and payments are not part of this codebase — SumUp owns the booking flow.
