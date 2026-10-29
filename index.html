@@ -26,7 +26,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=31" />
+    <link rel="stylesheet" href="./styles.css?v=32" />
     <script src="./analytics-google.js?v=1" defer></script>
     <script data-structured-data type="application/ld+json"></script>
   </head>
@@ -270,13 +270,16 @@
       <section class="prices section-bone" id="prices" aria-labelledby="prices-title">
         <header class="editorial-head reveal">
           <div>
-            <p class="micro-label" aria-hidden="true"><span>01</span><span data-i18n="pricesKicker">Treatments &amp; prices</span></p>
-            <h2 id="prices-title">Services</h2>
-            <p data-i18n="pricesLead">Browse every facial, package and waxing service by category — treatment lengths and prices are always shown up front.</p>
+            <p id="prices-title" class="micro-label" role="heading" aria-level="2"><span aria-hidden="true">01</span><span data-i18n="pricesKicker">Treatments &amp; prices</span></p>
           </div>
         </header>
 
         <div class="native-price-list">
+          <a class="price-bookbar" aria-disabled="true" data-booking-link>
+            <span><span data-i18n="priceBarTitle">Book a treatment</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+            <small data-i18n="priceBarNote">Free skin analysis</small>
+          </a>
+
           <div class="price-tabs reveal" role="tablist" aria-label="Service categories">
             <button
               class="price-tab is-active"
@@ -613,10 +616,6 @@
             </article>
           </section>
 
-          <a class="price-bookbar" aria-disabled="true" data-booking-link>
-            <span><span data-i18n="priceBarTitle">Book a treatment</span> <svg aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
-            <small data-i18n="priceBarNote">Free skin analysis</small>
-          </a>
         </div>
       </section>
 

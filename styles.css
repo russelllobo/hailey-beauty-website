@@ -494,6 +494,42 @@ h2 {
   font-size: 0.66rem;
   letter-spacing: 0.12em;
 }
+.reel-sound {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(21, 47, 34, 0.55);
+  color: var(--paper);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.reel-sound svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.reel-card.has-sound .reel-sound {
+  background: rgba(251, 247, 240, 0.9);
+  color: var(--lacquer);
+}
+
+.reel-sound:hover {
+  background: rgba(21, 47, 34, 0.75);
+}
+
+.reel-card.has-sound .reel-sound:hover {
+  background: var(--paper);
+}
 
 .hero-copy {
   width: min(44rem, 100%);
@@ -800,6 +836,11 @@ html:lang(en) .hero-copy h1 {
 .prices .editorial-head {
   max-width: 72rem;
   margin-inline: auto;
+  margin-bottom: 1.25rem;
+}
+
+.prices .editorial-head .micro-label {
+  margin-bottom: 0;
 }
 
 .prices .editorial-head h2 {
@@ -3897,14 +3938,11 @@ body.consent-open {
   }
 
   .price-bookbar {
-    position: sticky;
-    bottom: calc(max(0.75rem, env(safe-area-inset-bottom)) + var(--consent-offset, 0px));
-    z-index: 5;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin: 0 0 1.5rem;
     padding: 0.95rem 1.25rem;
     border-radius: 999px;
     background: var(--lacquer);
