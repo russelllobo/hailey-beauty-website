@@ -30,7 +30,6 @@ const translations = {
     navTreatments: "Treatments",
     navPrices: "Prices",
     navStory: "Our story",
-    navResults: "Results",
     bookNow: "Book now",
     messageUs: "Message us",
     bookConsultation: "Book a consultation",
@@ -72,9 +71,6 @@ const translations = {
     hongKongSalons: "Hong Kong salons",
     consultLanguages: "consultation languages",
     aboutCaption: "Herbal knowledge · careful technique",
-    studioTreatmentCaption: "Prepared for each appointment",
-    studioTechnologyCaption: "Technology chosen around your skin",
-    studioAftercareCaption: "The immediate treatment finish",
     locationLabel: "London studio",
     locationAddress: "52–53 Margaret Street",
     locationDistance: "2 min walk from Oxford Circus station",
@@ -87,9 +83,6 @@ const translations = {
     thursday: "Thursday",
     friday: "Friday",
     viewMap: "View in Google Maps",
-    galleryKicker: "Treatment journal",
-    galleryTitle: "Treatment stories, shown honestly.",
-    galleryCopy: "Real treatment moments and immediate results, grouped by the facial performed.",
     treatmentStoryLabel: "Treatment story 01",
     treatmentStoryLabelTwo: "Treatment story 02",
     blueCrystalStoryTitle: "Blue Crystal Collagen Facial",
@@ -116,8 +109,6 @@ const translations = {
     analysisStoryLabel: "Digital consultation",
     analysisStoryTitle: "Free skin analysis included",
     analysisStoryCopy: "The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.",
-    resultsNote: "Photographs show individual treatment moments. Results vary by skin and treatment plan.",
-    followInstagram: "See recent work on Instagram",
     tiktokKicker: "Inside the studio",
     tiktokTitle: "Follow the work as it happens.",
     tiktokCopy: "Recent treatments, skin education and quiet moments from the studio—updated directly from TikTok.",
@@ -150,7 +141,6 @@ const translations = {
     navTreatments: "护理",
     navPrices: "价目",
     navStory: "我们的故事",
-    navResults: "护理记录",
     bookNow: "立即预约",
     messageUs: "联系我们",
     bookConsultation: "预约皮肤咨询",
@@ -192,9 +182,6 @@ const translations = {
     hongKongSalons: "间香港美容院",
     consultLanguages: "种咨询语言",
     aboutCaption: "草本知识 · 细致技术",
-    studioTreatmentCaption: "为每次预约细心准备",
-    studioTechnologyCaption: "按你的肤况选择仪器",
-    studioAftercareCaption: "护理后的即时肤况",
     locationLabel: "伦敦工作室",
     locationAddress: "52–53 Margaret Street",
     locationDistance: "步行 2 分钟到 Oxford Circus 站",
@@ -207,9 +194,6 @@ const translations = {
     thursday: "星期四",
     friday: "星期五",
     viewMap: "在 Google 地图中查看",
-    galleryKicker: "护理记录",
-    galleryTitle: "护理故事，真实呈现。",
-    galleryCopy: "按护理项目整理真实护理过程和护理后的即时肤况。",
     treatmentStoryLabel: "护理记录 01",
     treatmentStoryLabelTwo: "护理记录 02",
     blueCrystalStoryTitle: "蓝水晶亮肤护理",
@@ -236,8 +220,6 @@ const translations = {
     analysisStoryLabel: "数码皮肤咨询",
     analysisStoryTitle: "含免费皮肤分析",
     analysisStoryCopy: "工作室的皮肤分析会查看可见问题、测量指标，并提供针对性的护理建议。",
-    resultsNote: "照片记录个人护理时刻。效果会因肤况和护理计划而异。",
-    followInstagram: "在 Instagram 查看近期作品",
     tiktokKicker: "工作室日常",
     tiktokTitle: "关注每一个护理时刻。",
     tiktokCopy: "查看近期护理、护肤知识和工作室日常，内容直接由 TikTok 更新。",
@@ -270,7 +252,6 @@ const translations = {
     navTreatments: "護理",
     navPrices: "價目",
     navStory: "我哋嘅故事",
-    navResults: "護理記錄",
     bookNow: "立即預約",
     messageUs: "聯絡我哋",
     bookConsultation: "預約皮膚諮詢",
@@ -312,9 +293,6 @@ const translations = {
     hongKongSalons: "間香港美容院",
     consultLanguages: "種諮詢語言",
     aboutCaption: "草本知識 · 細緻技術",
-    studioTreatmentCaption: "為每次預約細心準備",
-    studioTechnologyCaption: "按你嘅膚況選擇儀器",
-    studioAftercareCaption: "護理後嘅即時膚況",
     locationLabel: "倫敦工作室",
     locationAddress: "52–53 Margaret Street",
     locationDistance: "步行 2 分鐘到 Oxford Circus 站",
@@ -327,9 +305,6 @@ const translations = {
     thursday: "星期四",
     friday: "星期五",
     viewMap: "喺 Google 地圖查看",
-    galleryKicker: "護理記錄",
-    galleryTitle: "護理故事，真實呈現。",
-    galleryCopy: "按護理項目整理真實護理過程同護理後嘅即時膚況。",
     treatmentStoryLabel: "護理記錄 01",
     treatmentStoryLabelTwo: "護理記錄 02",
     blueCrystalStoryTitle: "藍水晶亮膚護理",
@@ -356,8 +331,6 @@ const translations = {
     analysisStoryLabel: "數碼皮膚諮詢",
     analysisStoryTitle: "包免費皮膚分析",
     analysisStoryCopy: "工作室嘅皮膚分析會查看可見問題、量度指標，並提供針對性護理建議。",
-    resultsNote: "相片記錄個人護理時刻。效果會因膚況同護理計劃而異。",
-    followInstagram: "喺 Instagram 睇近期作品",
     tiktokKicker: "工作室日常",
     tiktokTitle: "留意每一個護理時刻。",
     tiktokCopy: "睇近期護理、護膚知識同工作室日常，內容直接由 TikTok 更新。",
@@ -628,26 +601,13 @@ sections.forEach((section) => activeSectionObserver.observe(section));
 const heroReel = document.querySelector("[data-reel]");
 
 if (heroReel) {
+  const reelTrack = heroReel.querySelector(".reel-track");
   const reelCards = [...heroReel.querySelectorAll(".reel-card")];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const stopReelCard = (card) => {
-    const video = card.querySelector("video");
-    video?.pause();
-    card.classList.remove("is-playing");
-  };
-
-  const startReelCard = (card, video) => {
-    reelCards.forEach((other) => {
-      if (other !== card) stopReelCard(other);
-    });
+  const playVideo = (video) => {
     const playback = video.play();
-    if (!playback?.then) return;
-    playback
-      .then(() => card.classList.add("is-playing"))
-      .catch(() => {
-        video.muted = true;
-        video.play().then(() => card.classList.add("is-playing")).catch(() => {});
-      });
+    if (playback?.catch) playback.catch(() => {});
   };
 
   reelCards.forEach((card) => {
@@ -655,27 +615,105 @@ if (heroReel) {
     const toggle = card.querySelector(".reel-toggle");
     if (!video || !toggle) return;
 
+    const syncPlayState = () => {
+      const playing = !video.paused;
+      card.classList.toggle("is-playing", playing);
+      toggle.setAttribute(
+        "aria-label",
+        `${playing ? "Pause" : "Play"} studio video ${reelCards.indexOf(card) + 1}`
+      );
+    };
+
     toggle.addEventListener("click", () => {
-      if (card.classList.contains("is-playing")) stopReelCard(card);
-      else startReelCard(card, video);
+      if (video.paused) playVideo(video);
+      else video.pause();
     });
 
-    video.addEventListener("pause", () => card.classList.remove("is-playing"));
-    video.addEventListener("play", () => card.classList.add("is-playing"));
+    video.addEventListener("play", syncPlayState);
+    video.addEventListener("playing", syncPlayState);
+    video.addEventListener("pause", syncPlayState);
+    syncPlayState();
+
+    if (reduceMotion) {
+      video.removeAttribute("autoplay");
+      video.pause();
+      return;
+    }
+
+    if ("IntersectionObserver" in window) {
+      const visibilityObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) playVideo(video);
+            else video.pause();
+          });
+        },
+        { threshold: 0.55 }
+      );
+      visibilityObserver.observe(card);
+    } else {
+      playVideo(video);
+    }
   });
 
-  if ("IntersectionObserver" in window) {
-    const reelObserver = new IntersectionObserver(
-      (entries) => {
+  if (!reduceMotion && reelTrack) {
+    let autoTimer;
+    let resumeTimer;
+    let reelVisible = true;
+
+    const step = () => {
+      const maxScroll = reelTrack.scrollWidth - reelTrack.clientWidth;
+      if (maxScroll < 8) return;
+
+      const trackLeft = reelTrack.getBoundingClientRect().left;
+      const current = reelTrack.scrollLeft;
+      const nextCard = reelCards.find(
+        (card) => card.getBoundingClientRect().left - trackLeft + current > current + 8
+      );
+      let target = nextCard
+        ? Math.min(nextCard.getBoundingClientRect().left - trackLeft + current, maxScroll)
+        : 0;
+      if (target <= current + 8) target = 0;
+
+      reelTrack.scrollTo({ left: target, behavior: "smooth" });
+    };
+
+    const stopAutoScroll = () => {
+      clearInterval(autoTimer);
+      autoTimer = undefined;
+      clearTimeout(resumeTimer);
+    };
+
+    const startAutoScroll = () => {
+      if (autoTimer || !reelVisible || document.hidden) return;
+      autoTimer = setInterval(step, 5000);
+    };
+
+    const syncAutoScroll = () => {
+      if (reelVisible && !document.hidden) startAutoScroll();
+      else stopAutoScroll();
+    };
+
+    const pauseForInteraction = () => {
+      stopAutoScroll();
+      resumeTimer = setTimeout(syncAutoScroll, 9000);
+    };
+
+    syncAutoScroll();
+    ["pointerdown", "wheel", "touchstart", "keydown"].forEach((eventName) => {
+      reelTrack.addEventListener(eventName, pauseForInteraction, { passive: true });
+    });
+    document.addEventListener("visibilitychange", syncAutoScroll);
+
+    if ("IntersectionObserver" in window) {
+      const reelObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) return;
-          const card = entry.target.closest(".reel-card");
-          if (card) stopReelCard(card);
+          reelVisible = entry.isIntersecting;
+          syncAutoScroll();
         });
-      },
-      { threshold: 0.2 }
-    );
-    reelCards.forEach((card) => reelObserver.observe(card));
+      }, { threshold: 0.2 });
+      reelObserver.observe(heroReel);
+    }
   }
 }
 

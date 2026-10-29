@@ -388,14 +388,23 @@ h2 {
 }
 
 .reel-track {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(0.45rem, 0.7vw, 0.65rem);
+  --reel-gap: clamp(0.45rem, 0.7vw, 0.65rem);
+  display: flex;
+  gap: var(--reel-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.reel-track::-webkit-scrollbar {
+  display: none;
 }
 
 .reel-card {
   position: relative;
+  flex: 0 0 calc((100% - 3 * var(--reel-gap)) / 4);
   margin: 0;
+  scroll-snap-align: start;
   aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 0.6rem;
@@ -419,11 +428,20 @@ h2 {
   opacity: 0;
 }
 
-.reel-video {
+.reel-video,
+.reel-card--photo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.reel-card--photo {
+  background: var(--bone);
+}
+
+.reel-card--photo::after {
+  display: none;
 }
 
 .reel-toggle {
@@ -493,42 +511,6 @@ h2 {
   margin-top: 1rem;
   font-size: 0.66rem;
   letter-spacing: 0.12em;
-}
-.reel-sound {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(21, 47, 34, 0.55);
-  color: var(--paper);
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  transition: background 200ms ease, color 200ms ease;
-}
-
-.reel-sound svg {
-  width: 0.95rem;
-  height: 0.95rem;
-}
-
-.reel-card.has-sound .reel-sound {
-  background: rgba(251, 247, 240, 0.9);
-  color: var(--lacquer);
-}
-
-.reel-sound:hover {
-  background: rgba(21, 47, 34, 0.75);
-}
-
-.reel-card.has-sound .reel-sound:hover {
-  background: var(--paper);
 }
 
 .hero-copy {
@@ -2918,20 +2900,8 @@ main > :not(.hero):not(.gallery) {
   .hero-copy h1 { order: 1; }
   .hero-reel { order: 2; width: 100%; margin: 1.4rem 0 0; }
 
-  .reel-track {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .reel-track::-webkit-scrollbar {
-    display: none;
-  }
-
   .reel-card {
     flex: 0 0 60%;
-    scroll-snap-align: start;
   }
 
   .reel-link {

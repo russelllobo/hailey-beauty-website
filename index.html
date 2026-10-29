@@ -95,7 +95,6 @@
             <a href="#treatments" data-i18n="navTreatments">Treatments</a>
             <a href="#prices" data-i18n="navPrices">Prices</a>
             <a href="#about" data-i18n="navStory">Our story</a>
-            <a href="#gallery" data-i18n="navResults">Results</a>
           </nav>
           <div class="language-switcher" aria-label="Language">
             <button class="is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -161,10 +160,12 @@
                   width="720"
                   height="1280"
                   playsinline
-                  preload="none"
+                  preload="metadata"
+                  muted
+                  autoplay
                   loop
                 ></video>
-                <button class="reel-toggle" type="button" aria-label="Play studio video 1">
+                <button class="reel-toggle" type="button" aria-label="Pause studio video 1">
                   <span class="reel-icon" aria-hidden="true"></span>
                 </button>
               </figure>
@@ -176,10 +177,12 @@
                   width="720"
                   height="1280"
                   playsinline
-                  preload="none"
+                  preload="metadata"
+                  muted
+                  autoplay
                   loop
                 ></video>
-                <button class="reel-toggle" type="button" aria-label="Play studio video 2">
+                <button class="reel-toggle" type="button" aria-label="Pause studio video 2">
                   <span class="reel-icon" aria-hidden="true"></span>
                 </button>
               </figure>
@@ -191,10 +194,12 @@
                   width="720"
                   height="1280"
                   playsinline
-                  preload="none"
+                  preload="metadata"
+                  muted
+                  autoplay
                   loop
                 ></video>
-                <button class="reel-toggle" type="button" aria-label="Play studio video 3">
+                <button class="reel-toggle" type="button" aria-label="Pause studio video 3">
                   <span class="reel-icon" aria-hidden="true"></span>
                 </button>
               </figure>
@@ -206,12 +211,44 @@
                   width="720"
                   height="1280"
                   playsinline
-                  preload="none"
+                  preload="metadata"
+                  muted
+                  autoplay
                   loop
                 ></video>
-                <button class="reel-toggle" type="button" aria-label="Play studio video 4">
+                <button class="reel-toggle" type="button" aria-label="Pause studio video 4">
                   <span class="reel-icon" aria-hidden="true"></span>
                 </button>
+              </figure>
+              <figure class="reel-card reel-card--photo">
+                <img
+                  src="./assets/studio-treatment-room.webp"
+                  alt="A prepared treatment bed and facial equipment at Hailey Beauty"
+                  width="1200"
+                  height="1600"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure class="reel-card reel-card--photo">
+                <img
+                  src="./assets/skin-analysis-device.webp"
+                  alt="Digital skin analysis equipment inside the London studio"
+                  width="1125"
+                  height="1500"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure class="reel-card reel-card--photo">
+                <img
+                  src="./assets/blue-crystal-after.webp"
+                  alt="A client immediately after the Blue Crystal Collagen Facial"
+                  width="1200"
+                  height="1600"
+                  loading="lazy"
+                  decoding="async"
+                />
               </figure>
             </div>
             <a
@@ -638,20 +675,6 @@
           <img src="./assets/studio-overview.webp" alt="The private treatment area inside Hailey Beauty London" loading="lazy" />
           <figcaption><span>HAILEY BEAUTY LONDON</span><strong data-i18n="aboutCaption">Herbal knowledge · careful technique</strong></figcaption>
         </figure>
-        <div class="studio-journal" aria-label="Inside the Hailey Beauty studio">
-          <figure class="studio-journal-room reveal">
-            <img src="./assets/studio-treatment-room.webp" alt="A prepared treatment bed and facial equipment at Hailey Beauty" loading="lazy" />
-            <figcaption data-i18n="studioTreatmentCaption">Prepared for each appointment</figcaption>
-          </figure>
-          <figure class="studio-journal-technology reveal">
-            <img src="./assets/skin-analysis-device.webp" alt="Digital skin analysis equipment inside the London studio" loading="lazy" />
-            <figcaption data-i18n="studioTechnologyCaption">Technology chosen around your skin</figcaption>
-          </figure>
-          <figure class="studio-journal-result reveal">
-            <img src="./assets/blue-crystal-after.webp" alt="A client immediately after the Blue Crystal Collagen Facial" loading="lazy" />
-            <figcaption data-i18n="studioAftercareCaption">The immediate treatment finish</figcaption>
-          </figure>
-        </div>
         <figure class="about-map reveal">
           <iframe
             title="Google Maps showing Hailey Beauty, London"
@@ -694,82 +717,6 @@
         </figure>
       </section>
 
-      <section class="gallery section-bone" id="gallery" aria-labelledby="gallery-title">
-        <header class="gallery-head reveal">
-          <div>
-            <h2 id="gallery-title" data-i18n="galleryTitle">Treatment stories, shown honestly.</h2>
-          </div>
-          <p data-i18n="galleryCopy">Real treatment moments and immediate results, grouped by the facial performed.</p>
-        </header>
-
-        <!-- Before/After infinite scrolling reel -->
-        <div class="ba-reel reveal">
-          <div class="ba-reel-viewport" data-ba-viewport tabindex="0" aria-label="Before and after scrolling reel">
-            <div class="ba-reel-track" data-ba-track>
-              <!-- first set -->
-              <figure class="ba-reel-card">
-                <picture
-                  ><source srcset="./assets/before-after/ba-01-640.webp 640w, ./assets/before-after/ba-01-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-01.jpg" alt="Before and after of male client — cheek redness and texture improved after Herbal Congestion and Brightening Facial" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card">
-                <picture
-                  ><source srcset="./assets/before-after/ba-02-640.webp 640w, ./assets/before-after/ba-02-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-02.jpg" alt="Before and after of female client — acne and redness significantly reduced after treatment" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card">
-                <picture
-                  ><source srcset="./assets/before-after/ba-03-640.webp 640w, ./assets/before-after/ba-03-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-03.jpg" alt="Before and after of male forehead — congestion and inflammation cleared after herbal treatment" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card">
-                <picture
-                  ><source srcset="./assets/before-after/ba-04-640.webp 640w, ./assets/before-after/ba-04-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-04.jpg" alt="Before and after of cheek close-up — pigmentation and redness evened after treatment" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card ba-reel-card--wide">
-                <picture
-                  ><source srcset="./assets/before-after/ba-05-640.webp 640w, ./assets/before-after/ba-05-960.webp 960w" sizes="(max-width: 1097px) 416px, (max-width: 1347px) 38vw, 512px" type="image/webp" /><img src="./assets/before-after/ba-05.jpg" alt="Before and after side-by-side — cheek acne and texture smoothed after six months of herbal treatment" decoding="async" loading="lazy" width="1092" height="629"
-                /></picture>
-              </figure>
-              <!-- duplicate set for seamless loop (aria-hidden) -->
-              <figure class="ba-reel-card" aria-hidden="true">
-                <picture
-                  ><source srcset="./assets/before-after/ba-01-640.webp 640w, ./assets/before-after/ba-01-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-01.jpg" alt="" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card" aria-hidden="true">
-                <picture
-                  ><source srcset="./assets/before-after/ba-02-640.webp 640w, ./assets/before-after/ba-02-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-02.jpg" alt="" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card" aria-hidden="true">
-                <picture
-                  ><source srcset="./assets/before-after/ba-03-640.webp 640w, ./assets/before-after/ba-03-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-03.jpg" alt="" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card" aria-hidden="true">
-                <picture
-                  ><source srcset="./assets/before-after/ba-04-640.webp 640w, ./assets/before-after/ba-04-960.webp 960w" sizes="(max-width: 1028px) 288px, (max-width: 1257px) 28vw, 352px" type="image/webp" /><img src="./assets/before-after/ba-04.jpg" alt="" decoding="async" loading="lazy" width="1080" height="1350"
-                /></picture>
-              </figure>
-              <figure class="ba-reel-card ba-reel-card--wide" aria-hidden="true">
-                <picture
-                  ><source srcset="./assets/before-after/ba-05-640.webp 640w, ./assets/before-after/ba-05-960.webp 960w" sizes="(max-width: 1097px) 416px, (max-width: 1347px) 38vw, 512px" type="image/webp" /><img src="./assets/before-after/ba-05.jpg" alt="" decoding="async" loading="lazy" width="1092" height="629"
-                /></picture>
-              </figure>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-foot reveal">
-          <p data-i18n="resultsNote">Photographs show individual treatment moments. Results vary by skin and treatment plan.</p>
-          <a class="text-link" data-social="instagram" target="_blank" rel="noopener noreferrer">
-            <svg aria-hidden="true"><use href="#icon-instagram"></use></svg>
-            <span data-i18n="followInstagram">See recent work on Instagram</span>
-          </a>
-        </div>
-      </section>
 
       <section class="booking" id="booking" aria-labelledby="booking-title">
         <div class="booking-botanical" aria-hidden="true">
