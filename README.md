@@ -48,6 +48,7 @@ index.html            the whole page
 styles.css            design system and layout
 script.js             translations, gallery, booking links, structured data
 analytics-tracker.js  privacy-friendly pageview and booking-click events
+analytics-google.js   GA4 tag, cookie consent and booking-click conversion
 analytics/            first-party traffic dashboard (noindex)
 functions/api/        Pages Functions that record and summarise events
 lib/                  analytics storage and aggregation helpers
@@ -83,6 +84,8 @@ The analytics endpoints need a D1 database bound as `ANALYTICS_DB`; without it, 
 
 ## Analytics
 
-Pageviews and booking clicks are recorded first-hand in Cloudflare D1: path, referrer, campaign parameters, country, city, device, browser, screen size, language and timezone. No cookies are used for advertising and no data is sold or shared. Visitors can be seen in aggregate at `/analytics`.
+Pageviews and booking clicks are recorded first-hand in Cloudflare D1: path, referrer, campaign parameters, country, city, device, browser, screen size, language and timezone. That measurement uses no cookies, and visitors can be seen in aggregate at `/analytics`.
+
+Google Analytics 4 runs alongside it for Google Ads measurement. The measurement ID is set in the `ga4-id` meta tag in `index.html`. Analytics and ads storage are denied until a visitor accepts the cookie banner; accepting updates Consent Mode v2 and stores the choice in `localStorage`. Every Book Now click sends a `booking_click` event with the link URL and placement, which is the event to import as a Google Ads conversion.
 
 Client records, bookings and payments are not part of this codebase — SumUp owns the booking flow.

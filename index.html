@@ -9,6 +9,7 @@
       content="Hailey Beauty brings 30 years of Hong Kong facial practice to London, with tailored herbal treatments for acne-prone, reactive and weather-stressed skin."
     />
     <meta name="theme-color" content="#173a2a" />
+    <meta name="ga4-id" content="G-XXXXXXXXXX" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Hailey Beauty | Herbal skin treatments" />
     <meta property="og:description" content="Hong Kong herbal facial practice, now in London." />
@@ -25,7 +26,8 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=28" />
+    <link rel="stylesheet" href="./styles.css?v=31" />
+    <script src="./analytics-google.js?v=1" defer></script>
     <script data-structured-data type="application/ld+json"></script>
   </head>
   <body>
@@ -112,8 +114,11 @@
       <section class="hero hero-condensed" id="top" aria-labelledby="hero-title">
         <div class="hero-inner">
           <div class="hero-copy">
-            <p class="hero-announcement" data-i18n="heroAnnouncement">Now open in Oxford Circus — free skin analysis for our grand opening</p>
-            <h1 id="hero-title" data-i18n="heroTitle">Tailored Herbal Treatments</h1>
+            <p class="hero-announcement" data-i18n="heroAnnouncement">Free skin analysis included</p>
+            <h1 id="hero-title">
+              <span data-i18n="heroTitle">Herbal Facials</span>
+              <span class="hero-title-detail" data-i18n="heroTitleDetail">with Hong Kong Expertise</span>
+            </h1>
             <figure class="hero-arch">
               <img
                 src="./assets/hero-treatment.webp"
@@ -146,24 +151,78 @@
               <span data-i18n="heroTrustLocation">Oxford Circus</span>
             </p>
           </div>
-          <aside class="hero-tiktok" aria-label="Hailey Beauty on TikTok" aria-busy="true">
-            <div class="tiktok-embed-frame">
-              <blockquote
-                class="tiktok-embed"
-                cite="https://www.tiktok.com/@haileybeautyldn"
-                data-unique-id="haileybeautyldn"
-                data-embed-from="oembed"
-                data-embed-type="creator"
-              >
-                <section>
-                  <a
-                    href="https://www.tiktok.com/@haileybeautyldn?refer=creator_embed"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >@haileybeautyldn on TikTok</a>
-                </section>
-              </blockquote>
+          <aside class="hero-reel" aria-label="Latest videos from the studio" data-reel>
+            <div class="reel-track">
+              <figure class="reel-card">
+                <video
+                  class="reel-video"
+                  src="./assets/reel/reel-01.mp4"
+                  poster="./assets/reel/reel-01.webp"
+                  width="720"
+                  height="1280"
+                  playsinline
+                  preload="none"
+                  loop
+                ></video>
+                <button class="reel-toggle" type="button" aria-label="Play studio video 1">
+                  <span class="reel-icon" aria-hidden="true"></span>
+                </button>
+              </figure>
+              <figure class="reel-card">
+                <video
+                  class="reel-video"
+                  src="./assets/reel/reel-02.mp4"
+                  poster="./assets/reel/reel-02.webp"
+                  width="720"
+                  height="1280"
+                  playsinline
+                  preload="none"
+                  loop
+                ></video>
+                <button class="reel-toggle" type="button" aria-label="Play studio video 2">
+                  <span class="reel-icon" aria-hidden="true"></span>
+                </button>
+              </figure>
+              <figure class="reel-card">
+                <video
+                  class="reel-video"
+                  src="./assets/reel/reel-03.mp4"
+                  poster="./assets/reel/reel-03.webp"
+                  width="720"
+                  height="1280"
+                  playsinline
+                  preload="none"
+                  loop
+                ></video>
+                <button class="reel-toggle" type="button" aria-label="Play studio video 3">
+                  <span class="reel-icon" aria-hidden="true"></span>
+                </button>
+              </figure>
+              <figure class="reel-card">
+                <video
+                  class="reel-video"
+                  src="./assets/reel/reel-04.mp4"
+                  poster="./assets/reel/reel-04.webp"
+                  width="720"
+                  height="1280"
+                  playsinline
+                  preload="none"
+                  loop
+                ></video>
+                <button class="reel-toggle" type="button" aria-label="Play studio video 4">
+                  <span class="reel-icon" aria-hidden="true"></span>
+                </button>
+              </figure>
             </div>
+            <a
+              class="text-link reel-link"
+              href="https://www.tiktok.com/@haileybeautyldn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="reelLink">Watch more on TikTok</span>
+              <svg aria-hidden="true"><use href="#icon-arrow"></use></svg>
+            </a>
           </aside>
         </div>
       </section>
@@ -185,6 +244,7 @@
         </div>
 
         <div class="ritual-copy reveal">
+          <p class="ritual-banner" data-i18n="analysisStoryTitle">Free skin analysis included</p>
           <h2 id="ritual-title" data-i18n="ritualTitle">A treatment begins by listening to the skin.</h2>
           <p class="section-lead" data-i18n="ritualCopy">
             We assess sensitivity first, prepare a targeted herbal blend, then use suitable salon technology to support even application.
@@ -703,40 +763,6 @@
           </div>
         </div>
 
-        <div class="story-duo">
-          <article class="skin-analysis-story reveal" aria-labelledby="skin-analysis-story-title">
-            <header class="treatment-story-head">
-              <p data-i18n="analysisStoryLabel">Digital consultation</p>
-              <h3 id="skin-analysis-story-title" data-i18n="analysisStoryTitle">Free skin analysis</h3>
-              <span data-i18n="analysisStoryCopy">The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.</span>
-            </header>
-            <div class="analysis-report-grid">
-              <figure>
-                <img src="./assets/skin-analysis-overview.webp" alt="Digital skin analysis overview report" loading="lazy" />
-              </figure>
-              <figure>
-                <img src="./assets/skin-analysis-metrics.webp" alt="Digital skin analysis charts and measured indicators" loading="lazy" />
-              </figure>
-              <figure>
-                <img src="./assets/skin-analysis-advice.webp" alt="Digital skin analysis care advice" loading="lazy" />
-              </figure>
-            </div>
-          </article>
-
-          <article class="treatment-story treatment-story-herbal" aria-labelledby="herbal-story-title">
-            <header class="treatment-story-head reveal">
-              <p data-i18n="treatmentStoryLabel">Treatment story 01</p>
-              <h3 id="herbal-story-title" data-i18n="herbalStoryTitle">Herbal Congestion and Brightening Facial</h3>
-              <span data-i18n="herbalStoryCopy">The complete treatment journey, from skin assessment and herbal preparation to the immediate finish.</span>
-            </header>
-            <div class="herbal-story-grid">
-              <figure class="herbal-treatment-collage reveal">
-                <img src="./assets/facial-process.webp" alt="Nine-step facial treatment collage showing cleansing, peeling gel, calming toner, extractions, essence infusion, facial massage, herbal face mask, milk essence infusion and finishing creams" loading="lazy" width="1254" height="1254" />
-              </figure>
-            </div>
-          </article>
-        </div>
-
         <div class="gallery-foot reveal">
           <p data-i18n="resultsNote">Photographs show individual treatment moments. Results vary by skin and treatment plan.</p>
           <a class="text-link" data-social="instagram" target="_blank" rel="noopener noreferrer">
@@ -801,7 +827,8 @@
         <div class="footer-legal">
           <details>
             <summary data-i18n="privacyTitle">Privacy</summary>
-            <p data-i18n="privacyCopy">We measure page views and booking-link clicks without visitor cookies, including approximate city and region, device, browser, operating system, screen size, language, time zone, network provider and referral campaigns. Daily visitor estimates use a rotating identifier; raw IP addresses are not stored. Records older than 90 days are deleted when a new visit is recorded. External booking and social platforms apply their own privacy terms.</p>
+            <p data-i18n="privacyCopy">We measure page views and booking-link clicks without visitor cookies, including approximate city and region, device, browser, operating system, screen size, language, time zone, network provider and referral campaigns. Daily visitor estimates use a rotating identifier; raw IP addresses are not stored. Records older than 90 days are deleted when a new visit is recorded. With your consent we also use Google Analytics and Google Ads cookies to understand how the site is used and to measure our advertising. External booking and social platforms apply their own privacy terms.</p>
+            <button class="consent-settings" type="button" data-consent-open data-i18n="cookieSettings">Cookie settings</button>
           </details>
           <details>
             <summary data-i18n="termsTitle">Treatment information</summary>
@@ -812,7 +839,15 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=18"></script>
-    <script src="./analytics-tracker.js?v=2" defer></script>
+    <aside class="consent" data-consent hidden aria-labelledby="consent-text">
+      <p id="consent-text" data-i18n="consentText">We use cookies to understand how the site is used and to measure our ads.</p>
+      <div class="consent-actions">
+        <button class="button button-primary" type="button" data-consent-accept data-i18n="consentAccept">Accept cookies</button>
+        <button class="button button-quiet" type="button" data-consent-decline data-i18n="consentDecline">Essential only</button>
+      </div>
+    </aside>
+
+    <script src="./script.js?v=20"></script>
+    <script src="./analytics-tracker.js?v=3" defer></script>
   </body>
 </html>

@@ -34,9 +34,10 @@ const translations = {
     bookNow: "Book now",
     bookConsultation: "Book a consultation",
     enquireInstagram: "Enquire on Instagram",
-    heroAnnouncement: "Now open in Oxford Circus — free skin analysis for our grand opening",
+    heroAnnouncement: "Free skin analysis included",
     heroKicker: "Herbal facial practice",
-    heroTitle: "Tailored Herbal Treatments",
+    heroTitle: "Herbal Facials",
+    heroTitleDetail: "with Hong Kong Expertise",
     heroCopy: "Thirty years of Hong Kong facial practice, now tailoring herbal care for London skin.",
     heroBadgeYears: "30 years",
     heroBadgePractice: "Hong Kong practice",
@@ -112,7 +113,7 @@ const translations = {
     skinViewTwo: "Skin view 02",
     skinViewThree: "Skin view 03",
     analysisStoryLabel: "Digital consultation",
-    analysisStoryTitle: "Free skin analysis",
+    analysisStoryTitle: "Free skin analysis included",
     analysisStoryCopy: "The studio’s skin analysis reviews visible concerns, measured indicators and tailored care advice.",
     resultsNote: "Photographs show individual treatment moments. Results vary by skin and treatment plan.",
     followInstagram: "See recent work on Instagram",
@@ -120,6 +121,7 @@ const translations = {
     tiktokTitle: "Follow the work as it happens.",
     tiktokCopy: "Recent treatments, skin education and quiet moments from the studio—updated directly from TikTok.",
     followTikTok: "Follow @haileybeautyldn",
+    reelLink: "Watch more on TikTok",
     bookingKicker: "Your next appointment",
     bookingTitle: "Let’s begin",
     bookingOffer: "Free skin analysis with your first visit",
@@ -130,7 +132,11 @@ const translations = {
     continueBooking: "Continue to booking",
     footerVisit: "Social media",
     privacyTitle: "Privacy",
-    privacyCopy: "We measure page views and booking-link clicks without visitor cookies, including approximate city and region, device, browser, operating system, screen size, language, time zone, network provider and referral campaigns. Daily visitor estimates use a rotating identifier; raw IP addresses are not stored. Records older than 90 days are deleted when a new visit is recorded. External booking and social platforms apply their own privacy terms.",
+    privacyCopy: "We measure page views and booking-link clicks without visitor cookies, including approximate city and region, device, browser, operating system, screen size, language, time zone, network provider and referral campaigns. Daily visitor estimates use a rotating identifier; raw IP addresses are not stored. Records older than 90 days are deleted when a new visit is recorded. With your consent we also use Google Analytics and Google Ads cookies to understand how the site is used and to measure our advertising. External booking and social platforms apply their own privacy terms.",
+    cookieSettings: "Cookie settings",
+    consentText: "We use cookies to understand how the site is used and to measure our ads.",
+    consentAccept: "Accept cookies",
+    consentDecline: "Essential only",
     termsTitle: "Treatment information",
     termsCopy: "Treatment suitability and expected results are discussed during consultation. Individual results vary.",
     rights: "All rights reserved.",
@@ -148,9 +154,10 @@ const translations = {
     bookNow: "立即预约",
     bookConsultation: "预约皮肤咨询",
     enquireInstagram: "Instagram 咨询",
-    heroAnnouncement: "现已于 Oxford Circus 开业 — 盛大开业期间免费皮肤分析",
+    heroAnnouncement: "包含免费皮肤分析",
     heroKicker: "草本面部护理",
-    heroTitle: "草本修护，让肌肤看起来更平静。",
+    heroTitle: "草本面部护理",
+    heroTitleDetail: "融汇香港专业经验",
     heroCopy: "三十年香港面部护理经验，如今在伦敦为每一种肤况定制草本护理。",
     heroBadgeYears: "30年",
     heroBadgePractice: "香港护肤经验",
@@ -226,7 +233,7 @@ const translations = {
     skinViewTwo: "肌肤角度 02",
     skinViewThree: "肌肤角度 03",
     analysisStoryLabel: "数码皮肤咨询",
-    analysisStoryTitle: "免费皮肤分析",
+    analysisStoryTitle: "含免费皮肤分析",
     analysisStoryCopy: "工作室的皮肤分析会查看可见问题、测量指标，并提供针对性的护理建议。",
     resultsNote: "照片记录个人护理时刻。效果会因肤况和护理计划而异。",
     followInstagram: "在 Instagram 查看近期作品",
@@ -234,6 +241,7 @@ const translations = {
     tiktokTitle: "关注每一个护理时刻。",
     tiktokCopy: "查看近期护理、护肤知识和工作室日常，内容直接由 TikTok 更新。",
     followTikTok: "关注 @haileybeautyldn",
+    reelLink: "在 TikTok 观看更多",
     bookingKicker: "下一次预约",
     bookingTitle: "让我们先了解你的肌肤。",
     bookingOffer: "首次到访即享免费皮肤分析",
@@ -244,7 +252,11 @@ const translations = {
     continueBooking: "前往预约",
     footerVisit: "社交媒体",
     privacyTitle: "隐私",
-    privacyCopy: "本网站在不使用访客 Cookie 的情况下统计页面浏览及预约链接点击，包括大致城市和地区、设备、浏览器、操作系统、屏幕尺寸、语言、时区、网络提供商及推广来源。每日访客估算使用轮换标识，不保存原始 IP 地址。记录新访问时，会删除超过 90 天的统计记录。外部预约和社交平台适用其各自的隐私条款。",
+    privacyCopy: "本网站在不使用访客 Cookie 的情况下统计页面浏览及预约链接点击，包括大致城市和地区、设备、浏览器、操作系统、屏幕尺寸、语言、时区、网络提供商及推广来源。每日访客估算使用轮换标识，不保存原始 IP 地址。记录新访问时，会删除超过 90 天的统计记录。经你同意，本网站还会使用 Google Analytics 和 Google Ads 的 Cookie 了解网站的使用情况并衡量广告效果。外部预约和社交平台适用其各自的隐私条款。",
+    cookieSettings: "Cookie 设置",
+    consentText: "我们使用 Cookie 了解网站的使用情况并衡量广告效果。",
+    consentAccept: "接受 Cookie",
+    consentDecline: "仅必要",
     termsTitle: "护理资料",
     termsCopy: "护理是否适合和预期效果会在咨询时讨论，个人效果会有所不同。",
     rights: "保留所有权利。",
@@ -262,9 +274,10 @@ const translations = {
     bookNow: "立即預約",
     bookConsultation: "預約皮膚諮詢",
     enquireInstagram: "Instagram 查詢",
-    heroAnnouncement: "現已於 Oxford Circus 開業 — 盛大開業期間免費皮膚分析",
+    heroAnnouncement: "包括免費皮膚分析",
     heroKicker: "草本面部護理",
-    heroTitle: "草本修護，令肌膚望落更平靜。",
+    heroTitle: "草本面部護理",
+    heroTitleDetail: "融匯香港專業經驗",
     heroCopy: "三十年香港面部護理經驗，依家喺倫敦為每種膚況度身定制草本護理。",
     heroBadgeYears: "30年",
     heroBadgePractice: "香港護膚經驗",
@@ -340,7 +353,7 @@ const translations = {
     skinViewTwo: "肌膚角度 02",
     skinViewThree: "肌膚角度 03",
     analysisStoryLabel: "數碼皮膚諮詢",
-    analysisStoryTitle: "免費皮膚分析",
+    analysisStoryTitle: "包免費皮膚分析",
     analysisStoryCopy: "工作室嘅皮膚分析會查看可見問題、量度指標，並提供針對性護理建議。",
     resultsNote: "相片記錄個人護理時刻。效果會因膚況同護理計劃而異。",
     followInstagram: "喺 Instagram 睇近期作品",
@@ -348,6 +361,7 @@ const translations = {
     tiktokTitle: "留意每一個護理時刻。",
     tiktokCopy: "睇近期護理、護膚知識同工作室日常，內容直接由 TikTok 更新。",
     followTikTok: "關注 @haileybeautyldn",
+    reelLink: "喺 TikTok 睇更多",
     bookingKicker: "下一次預約",
     bookingTitle: "等我哋先了解你嘅肌膚。",
     bookingOffer: "首次到訪即享免費皮膚分析",
@@ -358,7 +372,11 @@ const translations = {
     continueBooking: "前往預約",
     footerVisit: "社交媒體",
     privacyTitle: "私隱",
-    privacyCopy: "本網站唔使用訪客 Cookie，會統計頁面瀏覽同預約連結點擊，包括大概城市同地區、裝置、瀏覽器、操作系統、螢幕尺寸、語言、時區、網絡供應商同推廣來源。每日訪客估算使用輪換識別碼，唔保存原始 IP 位址。記錄新訪問時，會刪除超過 90 日嘅統計記錄。外部預約同社交平台適用各自嘅私隱條款。",
+    privacyCopy: "本網站唔使用訪客 Cookie，會統計頁面瀏覽同預約連結點擊，包括大概城市同地區、裝置、瀏覽器、操作系統、螢幕尺寸、語言、時區、網絡供應商同推廣來源。每日訪客估算使用輪換識別碼，唔保存原始 IP 位址。記錄新訪問時，會刪除超過 90 日嘅統計記錄。經你同意，本網站亦會用 Google Analytics 同 Google Ads 嘅 Cookie 了解網站嘅使用情況同衡量廣告成效。外部預約同社交平台適用各自嘅私隱條款。",
+    cookieSettings: "Cookie 設定",
+    consentText: "我哋用 Cookie 了解網站嘅使用情況同衡量廣告成效。",
+    consentAccept: "接受 Cookie",
+    consentDecline: "只用必要",
     termsTitle: "護理資料",
     termsCopy: "護理是否適合同預期效果會喺諮詢時討論，個人效果會有所不同。",
     rights: "保留所有權利。",
@@ -607,65 +625,58 @@ const activeSectionObserver = new IntersectionObserver(
 );
 sections.forEach((section) => activeSectionObserver.observe(section));
 
-const tiktokEmbed = document.querySelector(".tiktok-embed");
-const heroTiktok = document.querySelector(".hero-tiktok");
-let tiktokLoadObserver;
+const heroReel = document.querySelector("[data-reel]");
 
-function revealTikTok() {
-  if (!heroTiktok) return;
-  heroTiktok.classList.add("is-loaded");
-  heroTiktok.setAttribute("aria-busy", "false");
-  tiktokLoadObserver?.disconnect();
-}
+if (heroReel) {
+  const reelCards = [...heroReel.querySelectorAll(".reel-card")];
 
-function watchTikTokLoad() {
-  if (!heroTiktok || !tiktokEmbed || !("MutationObserver" in window)) return;
-
-  let observedIframe;
-  const attachIframeListener = () => {
-    const iframe = heroTiktok.querySelector("iframe");
-    if (!iframe) return false;
-    if (observedIframe === iframe) return true;
-
-    observedIframe = iframe;
-    iframe.addEventListener("load", revealTikTok, { once: true });
-    if (iframe.contentDocument?.readyState === "complete") revealTikTok();
-    return true;
+  const stopReelCard = (card) => {
+    const video = card.querySelector("video");
+    video?.pause();
+    card.classList.remove("is-playing");
   };
 
-  if (attachIframeListener() && heroTiktok.classList.contains("is-loaded")) return;
+  const startReelCard = (card, video) => {
+    reelCards.forEach((other) => {
+      if (other !== card) stopReelCard(other);
+    });
+    const playback = video.play();
+    if (!playback?.then) return;
+    playback
+      .then(() => card.classList.add("is-playing"))
+      .catch(() => {
+        video.muted = true;
+        video.play().then(() => card.classList.add("is-playing")).catch(() => {});
+      });
+  };
 
-  tiktokLoadObserver = new MutationObserver(() => {
-    if (attachIframeListener() && heroTiktok.classList.contains("is-loaded")) {
-      tiktokLoadObserver.disconnect();
-    }
+  reelCards.forEach((card) => {
+    const video = card.querySelector("video");
+    const toggle = card.querySelector(".reel-toggle");
+    if (!video || !toggle) return;
+
+    toggle.addEventListener("click", () => {
+      if (card.classList.contains("is-playing")) stopReelCard(card);
+      else startReelCard(card, video);
+    });
+
+    video.addEventListener("pause", () => card.classList.remove("is-playing"));
+    video.addEventListener("play", () => card.classList.add("is-playing"));
   });
-  tiktokLoadObserver.observe(heroTiktok, { childList: true, subtree: true });
-}
 
-function loadTikTokEmbed() {
-  if (!tiktokEmbed || document.querySelector("script[data-tiktok-embed-script]")) return;
-  const embedScript = document.createElement("script");
-  embedScript.src = "https://www.tiktok.com/embed.js";
-  embedScript.async = true;
-  embedScript.dataset.tiktokEmbedScript = "";
-  document.body.append(embedScript);
-}
-
-watchTikTokLoad();
-
-if (tiktokEmbed && "IntersectionObserver" in window) {
-  const tiktokObserver = new IntersectionObserver(
-    (entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      loadTikTokEmbed();
-      tiktokObserver.disconnect();
-    },
-    { rootMargin: "500px 0px" }
-  );
-  tiktokObserver.observe(tiktokEmbed);
-} else {
-  loadTikTokEmbed();
+  if ("IntersectionObserver" in window) {
+    const reelObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) return;
+          const card = entry.target.closest(".reel-card");
+          if (card) stopReelCard(card);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    reelCards.forEach((card) => reelObserver.observe(card));
+  }
 }
 
 document.documentElement.classList.add("reveal-ready");

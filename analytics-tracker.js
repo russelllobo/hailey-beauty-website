@@ -36,6 +36,7 @@
     const link = event.target.closest('a[data-booking-link]');
     if (!link || link.getAttribute('aria-disabled') === 'true' || !link.href.startsWith('https://www.sumupbookings.com/')) return;
     pageview();
+    window.haileyGA?.bookingClick(link);
     send('booking_click');
   });
 })();

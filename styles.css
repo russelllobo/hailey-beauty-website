@@ -378,32 +378,121 @@ h2 {
   padding: clamp(2.6rem, 5.5vw, 4rem) 0 clamp(2.6rem, 5vw, 3.75rem);
 }
 
-.hero-tiktok {
+.hero-reel {
   position: relative;
-  flex: 0 1 clamp(20rem, 35vw, 38rem);
-  width: clamp(20rem, 35vw, 38rem);
+  flex: 0 1 clamp(22rem, 42vw, 44rem);
+  width: clamp(22rem, 42vw, 44rem);
   min-width: 0;
   margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  animation: hero-copy-in 0.9s cubic-bezier(0.22, 0.78, 0.22, 1) 140ms both;
 }
 
-.hero-tiktok.is-loaded {
+.reel-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.45rem, 0.7vw, 0.65rem);
+}
+
+.reel-card {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: var(--bone);
+  box-shadow: 0 1.2rem 2.8rem rgba(21, 47, 34, 0.14);
+  isolation: isolate;
+}
+
+.reel-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(21, 47, 34, 0.1), transparent 24%, transparent 72%, rgba(21, 47, 34, 0.16));
+  content: "";
   opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  animation: hero-copy-in 1s cubic-bezier(0.22, 0.78, 0.22, 1) 120ms both;
+  pointer-events: none;
+  transition: opacity 260ms ease;
 }
 
-.hero-tiktok .tiktok-embed-frame {
-  min-height: clamp(27rem, 38vw, 34rem);
-  padding: clamp(0.55rem, 1vw, 0.85rem);
+.reel-card.is-playing::after {
+  opacity: 0;
 }
 
-.hero-tiktok .tiktok-embed {
-  min-width: min(288px, 100%);
-  margin: 0 auto !important;
+.reel-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reel-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--lacquer);
+  cursor: pointer;
+}
+
+.reel-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: rgba(251, 247, 240, 0.9);
+  box-shadow: 0 0.35rem 1rem rgba(21, 47, 34, 0.28);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.reel-icon::before {
+  width: 0;
+  height: 0;
+  margin-left: 0.13rem;
+  border-left: 0.58rem solid currentColor;
+  border-top: 0.37rem solid transparent;
+  border-bottom: 0.37rem solid transparent;
+  content: "";
+}
+
+.reel-card.is-playing .reel-icon {
+  opacity: 0;
+  transform: scale(0.86);
+}
+
+.reel-card.is-playing .reel-icon::before {
+  width: 0.28rem;
+  height: 0.86rem;
+  margin-left: -0.28rem;
+  border: 0;
+  background: currentColor;
+  box-shadow: 0.56rem 0 0 currentColor;
+}
+
+.reel-toggle:focus-visible .reel-icon {
+  transform: scale(1.06);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reel-toggle:hover .reel-icon {
+    transform: scale(1.06);
+  }
+
+  .reel-card.is-playing .reel-toggle:hover .reel-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reel-link {
+  margin-top: 1rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
 }
 
 .hero-copy {
@@ -460,6 +549,15 @@ h2 {
 html:lang(en) .hero-copy h1 {
   overflow-wrap: normal;
   word-break: normal;
+}
+
+.hero-title-detail {
+  display: block;
+  margin-top: 0.55em;
+  font-size: 0.47em;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
 }
 
 .hero-lead {
@@ -615,6 +713,19 @@ html:lang(en) .hero-copy h1 {
 
 .ritual-copy {
   max-width: 45rem;
+}
+
+.ritual-banner {
+  margin: 0 0 1.5rem;
+  padding: 0.8rem 1rem;
+  background: var(--brass-fill);
+  color: var(--lacquer);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .ritual-copy h2 {
@@ -1956,23 +2067,6 @@ html:lang(en) .hero-copy h1 {
 /* make reel first in gallery visual order */
 .gallery > .ba-reel { order: 0; }
 
-.tiktok-embed-frame {
-  width: 100%;
-  min-width: 0;
-  min-height: 31rem;
-  padding: clamp(0.7rem, 1.5vw, 1.25rem);
-  border: 1px solid rgba(143, 93, 32, 0.24);
-  background: var(--bone);
-  box-shadow: var(--shadow);
-}
-
-.tiktok-embed-frame .tiktok-embed {
-  width: 100%;
-  max-width: 780px;
-  min-width: 288px;
-  margin: 0 auto !important;
-}
-
 .booking {
   position: relative;
   display: grid;
@@ -2269,7 +2363,7 @@ html:lang(en) .hero-copy h1 {
     padding-block: 2.4rem 2.8rem;
   }
 
-  .hero-tiktok {
+  .hero-reel {
     width: min(100%, 38rem);
     margin: 2.25rem auto 0;
   }
@@ -2769,17 +2863,42 @@ main > :not(.hero):not(.gallery) {
   }
 
   .hero-inner {
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-height: 0;
     padding: 1.5rem 0 2.2rem;
   }
 
   .hero-copy {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: none;
+    display: contents;
   }
+
+  .hero-announcement { order: 0; }
+  .hero-copy h1 { order: 1; }
+  .hero-reel { order: 2; width: 100%; margin: 1.4rem 0 0; }
+
+  .reel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .reel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reel-card {
+    flex: 0 0 60%;
+    scroll-snap-align: start;
+  }
+
+  .reel-link {
+    margin-top: 0.9rem;
+  }
+  .hero-lead { order: 3; }
+  .hero-actions { order: 4; }
+  .hero-trust { order: 5; }
 
   .hero-announcement {
     align-self: flex-start;
@@ -2787,7 +2906,7 @@ main > :not(.hero):not(.gallery) {
 
   .hero-arch {
     position: relative;
-    display: block;
+    display: none;
     margin: 1.4rem 0 0;
     animation: hero-copy-in 0.85s cubic-bezier(0.22, 0.78, 0.22, 1) 130ms both;
   }
@@ -3528,12 +3647,6 @@ main > :not(.hero):not(.gallery) {
     display: none;
   }
 
-  .tiktok-embed-frame {
-    min-height: 27rem;
-    padding: 0.4rem;
-    box-shadow: 0 1.2rem 3rem rgba(21, 47, 34, 0.12);
-  }
-
   .booking {
     min-height: 29rem;
     padding: 3rem 1rem 3.25rem;
@@ -3604,6 +3717,97 @@ main > :not(.hero):not(.gallery) {
     padding: 0;
     margin-top: 0.75rem;
   }
+}
+
+.button-quiet {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.button-quiet:hover {
+  border-color: var(--lacquer);
+  background: transparent;
+}
+
+.consent {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 120;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.5rem;
+  padding: 1rem clamp(1.25rem, 4vw, 2.5rem) calc(1rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 0 -1rem 2.5rem rgba(12, 41, 29, 0.1);
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.consent[hidden] {
+  display: none;
+}
+
+.consent.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.consent-open {
+  padding-bottom: var(--consent-offset, 0px);
+}
+
+@media (max-width: 640px) {
+  .consent {
+    gap: 0.75rem;
+  }
+
+  .consent-actions {
+    width: 100%;
+  }
+
+  .consent-actions .button {
+    flex: 1 1 8rem;
+  }
+}
+
+.consent p {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.consent .button {
+  min-height: 2.7rem;
+  padding: 0.65rem 1.15rem;
+  font-size: 0.66rem;
+}
+
+.consent-settings {
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--brass);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .price-bookbar,
@@ -3694,7 +3898,7 @@ main > :not(.hero):not(.gallery) {
 
   .price-bookbar {
     position: sticky;
-    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    bottom: calc(max(0.75rem, env(safe-area-inset-bottom)) + var(--consent-offset, 0px));
     z-index: 5;
     display: flex;
     align-items: center;
@@ -3842,10 +4046,6 @@ main > :not(.hero):not(.gallery) {
 }
 
 @media (max-width: 380px) {
-  .tiktok-embed-frame {
-    padding: 0;
-  }
-
   .hero-copy h1 {
     font-size: clamp(2.3rem, 11.5vw, 2.8rem);
   }

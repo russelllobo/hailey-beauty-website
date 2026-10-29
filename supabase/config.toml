@@ -1,0 +1,4 @@
+project_id = "hailey-beauty-website"
+
+[functions.studio]
+verify_jwt = false
